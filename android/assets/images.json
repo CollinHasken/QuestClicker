@@ -1,0 +1,48 @@
+{
+  "com.badlogic.gdx.graphics.g2d.BitmapFont":{
+    "regular":{"file": "goldfont.fnt"},
+    "small":{"file":"small.fnt"},
+    "buff":{"file":"bufffont.fnt"},
+    "name":{"file":"namefont.fnt"},
+    "button":{"file":"buttonfont.fnt"}
+  },
+  "com.badlogic.gdx.graphics.Color": {
+    "white": { "r": 1, "g": 1, "b": 1, "a": 1 },
+    "black": { "r": 0, "g": 0, "b": 0, "a": 1 }
+  },
+  "com.badlogic.gdx.scenes.scene2d.ui.Label$LabelStyle": {
+    "default": { "font": "regular" , "fontColor": "white","background":"emptyHealth"},
+    "upgrade":  {"font": "small", "fontColor": "white"},
+    "name":{"font": "small","fontColor":"white"},
+    "level":{"font":"small","fontColor":"white"},
+    "buffi":{"font":"buff","fontColor":"white","background":"buffi"},
+    "combo":{"font":"buff","fontColor":"white"},
+    "version":{"font":"small","fontColor":"white"},                                                 //Fix
+    "title":{"font": "regular","fontColor":"white"},                                                 //Fix
+    "nameAsk":{"font": "small","fontColor":"white"},                                             //Fix
+    "nameTitle":{"font": "regular","fontColor":"white"}                                                 //Fix
+  },
+  "com.badlogic.gdx.scenes.scene2d.ui.Button$ButtonStyle": {
+    "upgrade": { "down": "upgrade-tab-down", "up": "upgrade-tab", "checked": "upgrade-tab-down"},
+    "default": { "down": "abilityDamageUsed", "up": "abilityDamage", "checked": "abilityDamageUsed"}
+  },
+  "com.badlogic.gdx.scenes.scene2d.ui.ImageButton$ImageButtonStyle": {
+    "reset":{"down":"reset-button-down","up":"reset-button"},
+    "exit":{"down":"exit","up":"exit"},
+    "menu":{"down":"menuButton","up":"menuButton"},
+    "go":{"down":"goButton","up":"goButton"}
+  },
+  "com.badlogic.gdx.scenes.scene2d.ui.TextButton$TextButtonStyle":{
+    "gold":{"checked":"gold-button-disabled","up":"gold-button","down":"gold-button-disabled","font":"button"},
+    "power":{"checked":"power-button-disabled","up":"power-button","down":"power-button-disabled","font":"button"},
+    "buff":{"checked":"buffButton","up":"buffButton","down":"buffButton","font":"button"}
+  },
+
+  "com.badlogic.gdx.scenes.scene2d.ui.TextButton$TextButtonStyle": {
+  "default": { "up": "emptyHealth" , "down": "healthBar", "font": "regular", "pressedOffsetY": -4 }
+  },
+
+  "com.badlogic.gdx.scenes.scene2d.ui.TextField$TextFieldStyle":{
+    "name":{"font":"small","fontColor":"white","cursor":"cursor"}                                                                    //Fix
+  }
+}

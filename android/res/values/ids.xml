@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name = "app_id">38924426120</string>
+    <string name="achievement_100_combo">CgkIiLfOgJEBEAIQAQ</string>
+    <string name="achievement_100_enemies">CgkIiLfOgJEBEAIQAg</string>
+    <string name="achievement_quest_10">CgkIiLfOgJEBEAIQAw</string>
+    <string name="achievement_play_game">CgkIiLfOgJEBEAIQBA</string>
+    <string name="achievement_restart">CgkIiLfOgJEBEAIQBQ</string>
+</resources>
