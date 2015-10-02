@@ -5,6 +5,7 @@ import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.utils.Pool;
+import com.tophattiger.GameObjects.Characters.GeneralHelper;
 import com.tophattiger.Helper.Data.AssetLoader;
 
 import java.util.Random;
@@ -21,7 +22,11 @@ public class Projectile extends Actor implements Pool.Poolable{
     Animation animation;
     TextureRegion frame;
 
-    public Projectile(com.tophattiger.GameObjects.Characters.GeneralHelper helper){
+    /**
+     * Projectile that is shot by helpers. It has a simple trajectory launch that can be changed with variables
+     * @param helper    Helper for the projectile to come from
+     */
+    public Projectile(GeneralHelper helper){
         rand = new Random();
         originalX = helper.getProjectileX();
         originalY = helper.getProjectileY();
@@ -34,6 +39,9 @@ public class Projectile extends Actor implements Pool.Poolable{
         animation = new Animation(animationTime/animationFrames,AssetLoader.textureAtlas.findRegions(helper.getName()+"Projectile"));
     }
 
+    /**
+     * Initialize starting position and random velocity
+     */
     public void init(){
         x = originalX;
         y = originalY;
@@ -44,6 +52,10 @@ public class Projectile extends Actor implements Pool.Poolable{
         }
     }
 
+    /**
+     * Change x and y of projectile
+     * @param delta
+     */
     @Override
     public void act(float delta) {
         super.act(delta);
@@ -52,12 +64,21 @@ public class Projectile extends Actor implements Pool.Poolable{
         y += ((yV0 + 10 * randomNum) + (gravity * time)) * delta;
     }
 
+    /**
+     * Draw the projectile animation
+     * @param batch Batch to draw to
+     * @param parentAlpha   Parent alpha
+     */
     @Override
     public void draw(Batch batch, float parentAlpha) {
         frame = animation.getKeyFrame(time, true);
         batch.draw(frame,x,y);
     }
 
+    /**
+     * If the projectile is past the specified x(enemy center), then it is dead
+     * @return True if the projectile is past max X, false otherwise
+     */
     public boolean isDead(){
         return(x >= maxX);
     }

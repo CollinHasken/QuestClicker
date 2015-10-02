@@ -16,6 +16,12 @@ public class UpgradeButton extends Button {
     UpgradeTable table;
     MoveToAction mta = new MoveToAction();
 
+    /**
+     * Button to open and close the upgrade table
+     * @param skin Skin for looks
+     * @param styleName Name for style
+     * @param _table Table the button is hooked with
+     */
     public UpgradeButton(Skin skin, String styleName, UpgradeTable _table) {
         super(skin, styleName);
         this.setPosition(0, 285);

@@ -12,7 +12,7 @@ import com.tophattiger.UI.Table.Helper.HelperGroup;
 
 public class ScrollTable extends Table {
 
-    public ScrollPane container;
+    ScrollPane container;
     Helpers helpers;
     Array<HelperGroup> helperGroups = new Array<HelperGroup>();
     Skin skin;
@@ -43,7 +43,7 @@ public class ScrollTable extends Table {
 
     public void load(){
         for(int i = 0;i<DataHolder.helperAmount;i++){
-            helperGroups.add(new HelperGroup(this,helpers.getHelper(i)));
+            helperGroups.add(new HelperGroup(this, helpers.getHelper(i)));
         }
     }
 
@@ -61,4 +61,8 @@ public class ScrollTable extends Table {
     public void setAsContainer(UpgradeTable table){
         table.container = this.container;
     }
+    public ScrollPane getContainer(){return container;}
+    public Skin getSkin(){return skin;}
+    public  Array<HelperGroup> getHelperGroups(){return helperGroups;}
+    public Helpers getHelpers(){return helpers;}
 }

@@ -73,7 +73,7 @@ public class Enemy extends Actor implements Pool.Poolable {
     /**
      * Set the health, gold and progress recieved
      */
-    public void set(){
+    private void set(){
         health = 10+ game.getHero().questCompleted*game.getHero().questCompleted*5*multiplier;
         totalHealth = health;
         gold = 10 + (int)(game.getHero().questCompleted*5*multiplier);
@@ -158,7 +158,7 @@ public class Enemy extends Actor implements Pool.Poolable {
      * Function to call when the enemy is dead
      * Set animation to dead and drop coins
      */
-    public void dead(){
+    private void dead(){
         health = 0;
         hit = false;
         dead = true;

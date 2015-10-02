@@ -23,8 +23,8 @@ public class Hero extends Actor {
     final int positionX = 998;
     final int positionY = 414;
 
-    public int questCompleted,questRequired;
-    public double questProgress;
+    int questCompleted,questRequired;
+    double questProgress;
     float animationTime,levelAnimationTime;
     int touchLevel;
     double touchCost,touchPower;
@@ -34,6 +34,9 @@ public class Hero extends Actor {
     Animation idle,attack,animation,levelAnimation;
     TextureRegion frame,levelFrame;
 
+    /**
+     * The hero stores the click data, quest data, name and level
+     */
     public Hero(){
         questCompleted = 0;
         touchPower = 1;
@@ -51,6 +54,10 @@ public class Hero extends Actor {
         picture.setSize(128, 128);
     }
 
+    /**
+     * Check if the user has made enough progress to go to next quest
+     * @param delta Amount of time between calls
+     */
     @Override
     public void act(float delta) {
         animationTime += delta;
@@ -63,6 +70,11 @@ public class Hero extends Actor {
         checkAnimation();
     }
 
+    /**
+     * Draw the hero and if he has recently leveled, play the level up graphic
+     * @param batch Batch to draw to
+     * @param parentAlpha   Parent alpha
+     */
     @Override
     public void draw(Batch batch, float parentAlpha) {
         if(level){
@@ -73,7 +85,9 @@ public class Hero extends Actor {
         batch.draw(frame,positionX,positionY,256,256);
     }
 
-
+    /**
+     * Level up the touch, cost and play animation
+     */
     public void levelTouch(){
         touchLevel ++;
         touchCost = touchCost * 1.5;
@@ -81,32 +95,50 @@ public class Hero extends Actor {
         levelAnimation();
     }
 
-    public void checkAnimation(){
-        if (animation == attack && animation.isAnimationFinished(animationTime)){
+    /**
+     * Check what state the animation is in
+     */
+    private void checkAnimation(){
+        if (animation == attack && animation.isAnimationFinished(animationTime)){   //If the user is attacking and is done, then become idle
             animation = idle;
             animationTime = 0;
         }
-        if(levelAnimation.isAnimationFinished(levelAnimationTime) && level){
+        if(levelAnimation.isAnimationFinished(levelAnimationTime) && level){    //If user leveled and the animation is now over, turn off level
             level = false;
         }
     }
 
+    /**
+     * Start the level animation, but don't reset it for multiple level ups
+     */
     public void levelAnimation(){
         if(!level)
             levelAnimationTime = 0;
         level = true;
     }
 
+    /**
+     * Play the attack animation
+     */
     public void attack(){
         if(animation != attack) {
             animation = attack;
             animationTime = 0;
         }
     }
+
+    /**
+     * Change the attack power based off of combo
+     * @param amount Amount to multiply damage by
+     */
     public void comboDamage(double amount){
         touchPower *= amount;
     }
 
+    /**
+     * Undo the attack power based off of combo
+     * @param amount Amount to undo damage by
+     */
     public void undoComboDamage(double amount){
         touchPower /= amount;
     }
@@ -132,7 +164,13 @@ public class Hero extends Actor {
     public String getTouchPowerString(){return Gold.getNumberWithSuffix(touchPower);}
     public double getTouchPower(){return touchPower;}
     public void setTouchPower(double _power){touchPower = _power;}
+    public int getQuestCompleted(){return questCompleted;}
+    public int getQuestRequired(){return questRequired;}
 
+    /**
+     * Load the quest, name and power data from JSON
+     * @param jData Class that holds data
+     */
     public void load(DataManagement.JsonData jData){
         if(jData.currentVersion >= 1) {
             setTouchPower(jData.clickPower);
@@ -145,6 +183,10 @@ public class Hero extends Actor {
         }
     }
 
+    /**
+     * Save the quest, name and power data to JSON
+     * @param jData Class that holds data
+     */
     public void save(DataManagement.JsonData jData){
         jData.clickPower = getTouchPower();
         jData.questCompleted = questCompleted;
@@ -155,6 +197,9 @@ public class Hero extends Actor {
         jData.name = getName();
     }
 
+    /**
+     * Reset the class to default
+     */
     public void reset(){
         touchPower = 1;
         questCompleted = 0;

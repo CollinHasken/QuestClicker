@@ -25,6 +25,11 @@ public class Menu extends Table {
     Menu menuPopup;
     TextureRegion fade;
 
+    /**
+     * Menu which hold the reset button, version of the game and more
+     * @param skin Skin for the looks
+     * @param game Game to put into
+     */
     public Menu(Skin skin,GameRenderer game) {
         super();
         menuPopup = this;
@@ -39,12 +44,19 @@ public class Menu extends Table {
         setVisible(false);
     }
 
+    /**
+     * Show the menu
+     */
     public void show() {
         NameScreen.SettingName = true;
         setVisible(true);
     }
 
-    public void createAssets(Skin skin){
+    /**
+     * Create the assets for the menu
+     * @param skin Skin to create the looks
+     */
+    private void createAssets(Skin skin){
         title = new Label("Quest Clicker",skin,"title");
         version = new Label("Version: " + GameRenderer.getNewestVersionString(),skin,"version");
         exit = new ImageButton(skin, "exit");
@@ -59,19 +71,30 @@ public class Menu extends Table {
         });
     }
 
+    /**
+     * Draw the menu and faded background
+     * @param batch Batch to draw to
+     * @param parentAlpha Parent alpha
+     */
     @Override
     public void draw(Batch batch, float parentAlpha) {
         batch.draw(fade,0,0);
         super.draw(batch, parentAlpha);
     }
 
-    public void addActors(){
+    /**
+     * Add actors to the menu(table)
+     */
+    private void addActors(){
         add(exit).pad(20,0,50,20).right().top().row();
         add(title).padBottom(50).center().row();
         add(resetButton).center().row();
         add(version).expand().center().bottom().padBottom(30);
     }
 
+    /**
+     * Close the menu
+     */
     public void close(){
         menuPopup.setVisible(false);
         NameScreen.SettingName = false;

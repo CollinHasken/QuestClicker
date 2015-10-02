@@ -163,7 +163,7 @@ public class GeneralHelper extends Actor {
     /**
      * Set the picture of the helper and animations based off the helper's name
      */
-    public void setPicture(){
+    private void setPicture(){
         picture = new Image(AssetLoader.textureAtlas.findRegion(name));
         picture.setSize(128, 128);
         attack = new Animation(attackTime/attackFrames,AssetLoader.textureAtlas.findRegions(name + "Attack"));
@@ -198,7 +198,7 @@ public class GeneralHelper extends Actor {
     /**
      * Add buffs to list and set their descriptions and set the picture
      */
-    public void createBuffs(){
+    protected void createBuffs(){
         buffs.add(buff1);
         buffs.add(buff2);
         buffs.add(buff3);
@@ -217,7 +217,7 @@ public class GeneralHelper extends Actor {
     /**
      * Check which buffs to activate based off level of helper
      */
-    public void activateBuffs(){
+    private void activateBuffs(){
         int i = 0;
         if(level >= 1000)i = 9;
         else if(level >= 750)i = 8;
@@ -236,7 +236,7 @@ public class GeneralHelper extends Actor {
     /**
      * Reset each buffer
      */
-    public void resetBuffs(){
+    private void resetBuffs(){
         for(int i = 0;i<9;i++){
             buffs.get(i).reset();
         }
@@ -245,7 +245,7 @@ public class GeneralHelper extends Actor {
     /**
      * Check leveled up to activate the next buff
      */
-    public void checkBuffs(){
+    private void checkBuffs(){
         if(level == 1000)buff9.activate(this);
         else if(level == 750)buff8.activate(this);
         else if(level == 500)buff7.activate(this);
@@ -327,7 +327,7 @@ public class GeneralHelper extends Actor {
     /**
      * Hit the enemy for total power
      */
-    public void hitEnemy(){
+    private void hitEnemy(){
         helpers.getGame().getEnemies().get(helpers.getGame().getEnemies().size -1).helperAttack(totalPower);
     }
 
@@ -371,7 +371,8 @@ public class GeneralHelper extends Actor {
     }
 
     public void resetAnimation(){animationTime = 0;}
-    public com.tophattiger.GameObjects.Characters.Helpers getHelpers(){return helpers;}
+
+    public Helpers getHelpers(){return helpers;}
 
     public String getName(){return name;}
 

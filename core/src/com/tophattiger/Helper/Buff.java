@@ -20,6 +20,12 @@ public class Buff {
     double amount;
     boolean isActive;
 
+    /**
+     * Buff that become unlocked when a helper is leveled to a certain level
+     * @param _description Description for the buff
+     * @param _amount Amount it holds
+     * @param _type Type of buff
+     */
     public Buff(String _description, double _amount, TYPE _type){
         amount = _amount;
         type = _type;
@@ -27,6 +33,10 @@ public class Buff {
         isActive = false;
     }
 
+    /**
+     * Activate the buff. Check what the type is and activate the corresponding buff
+     * @param helper Helper to put the buff on
+     */
     public void activate(GeneralHelper helper){
         if(type == TYPE.HELPERDAMAGE){
             helper.buffPower(1+amount);
@@ -43,6 +53,10 @@ public class Buff {
         isActive = true;
     }
 
+    /**
+     * Set the description of the buff in the buff table
+     * @param i Order of the buff out of 9
+     */
     public void setDescription(int i){
         order = i + 1;
         name = Integer.toString(order);
@@ -54,7 +68,11 @@ public class Buff {
         inactive = new TextureRegionDrawable(com.tophattiger.Helper.Data.AssetLoader.textureAtlas.findRegion(name+"i"));
     }
 
-    public void setLevel(int i){
+    /**
+     * Set the level requirement for the description
+     * @param i Order of the buff out of 9
+     */
+    private void setLevel(int i){
         level = "Required Level: ";
         if (i == 1)level += "10";
         else if(i ==2)level +="25";
@@ -68,7 +86,11 @@ public class Buff {
         level += "\n";
     }
 
-    public void setStat(double amount){
+    /**
+     * Set the stats for the description
+     * @param amount Amount for the buff
+     */
+    private void setStat(double amount){
         stat ="Increase ";
         if(type == TYPE.HELPERDAMAGE){
             stat += "this character's damage by ";

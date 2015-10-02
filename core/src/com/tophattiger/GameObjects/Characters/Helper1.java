@@ -66,7 +66,7 @@ public class Helper1 extends com.tophattiger.GameObjects.Characters.GeneralHelpe
      * Create the 9 custom buffs
      */
     @Override
-    public void createBuffs() {
+    protected void createBuffs() {
         buff1 = new Buff("Gain a sword.",1, Buff.TYPE.HELPERDAMAGE);
         buff2 = new Buff("Help the hero more.",.1, Buff.TYPE.HERODAMAGE);
         buff3 = new Buff("Help all your partners.",2, Buff.TYPE.ALLHELPERDAMAGE);

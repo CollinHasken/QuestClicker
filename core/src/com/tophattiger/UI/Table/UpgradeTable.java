@@ -24,19 +24,24 @@ public class UpgradeTable extends Table {
     GameRenderer game;
     MoveToAction mta = new MoveToAction();
     Drawable sprite = new TextureRegionDrawable(AssetLoader.textureAtlas.findRegion("table"));
-    com.tophattiger.UI.Table.ScrollTable helperTable;
+    ScrollTable helperTable;
     HeroTable heroTable;
-    com.tophattiger.UI.Table.SwitchTableButton heroButton,helperButton;
+    SwitchTableButton heroButton,helperButton;
     ScrollPane container;
     Label title;
 
+    /**
+     * Table for user to purchase and level upgrades
+     * @param _skin Skin for looks
+     * @param _game Game to put this into
+     */
     public UpgradeTable(Skin _skin, GameRenderer _game) {
         super();
         game = _game;
-        helperTable = new com.tophattiger.UI.Table.ScrollTable(_skin, game.getHelpers());
-        helperButton = new com.tophattiger.UI.Table.SwitchTableButton("Helpers",_skin,"power",helperTable,this);
+        helperTable = new ScrollTable(_skin, game.getHelpers());
+        helperButton = new SwitchTableButton("Helpers",_skin,"power",helperTable,this);
         heroTable = new HeroTable(_skin,game.getHero(),game.getComboList(),game.getAbilityList());
-        heroButton = new com.tophattiger.UI.Table.SwitchTableButton("Hero",_skin,"power",heroTable,this);
+        heroButton = new SwitchTableButton("Hero",_skin,"power",heroTable,this);
         this.setBackground(sprite);
         this.setFillParent(false);
         this.setHeight(1080f);
@@ -47,9 +52,13 @@ public class UpgradeTable extends Table {
         title.setAlignment(Align.center);
         title.setWrap(true);
 
-        setAsContainer(heroTable);
+        setAsContainer(heroTable);  //Default to hero upgrade table
     }
 
+    /**
+     * Set the container to the specified table
+     * @param table Table to set as container
+     */
     void setAsContainer(Table table){
         if(table == helperTable){
             tableInt = 1;
@@ -69,12 +78,18 @@ public class UpgradeTable extends Table {
         }
     }
 
-    void redraw(){
+    /**
+     * Redraw the table
+     */
+    private void redraw(){
         this.add(title).fill().height(100f).pad(100f, 0, 20f, 0).colspan(2).row();
         this.add(heroButton).padBottom(25f);this.add(helperButton).width(250).padBottom(25f).row();
         this.add(container).expand().align(Align.topLeft).padBottom(100f).colspan(2);
     }
 
+    /**
+     * Move the upgrade table with the upgrade button has been pressed
+     */
     public void move(){
         mta.reset();
         mta.setPosition(0, 0);
@@ -85,6 +100,9 @@ public class UpgradeTable extends Table {
         this.addAction(mta);
     }
 
+    /**
+     * Update the state based off which table it is on
+     */
     public void update(){
         if(tableInt == 0){
             heroTable.updateState();
@@ -96,16 +114,25 @@ public class UpgradeTable extends Table {
         }
     }
 
+    /**
+     * Update teh name in the hero table
+     */
     public void updateName(){
         heroTable.setNameText();
         heroTable.reset();
     }
 
+    /**
+     * Load each table
+     */
     public void loadTables(){
         helperTable.load();
         heroTable.load();
     }
 
+    /**
+     * Reset each table
+     */
     public void resetButton(){
         helperTable.reset();
         heroTable.reset();
@@ -115,5 +142,6 @@ public class UpgradeTable extends Table {
        return helperTable.getBuffScreen();
     }
     public GameRenderer getGame(){return game;}
+    public void setContainer(ScrollPane _container){container = _container;}
 
 }

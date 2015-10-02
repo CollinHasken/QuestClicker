@@ -23,8 +23,8 @@ public  class DataManagement {
         jData.currentVersion = game.getVersion();
         jData.gold = Gold.getGold();
         game.getHero().save(jData);
-        jData.closeTime = com.tophattiger.Helper.Data.DataHolder.currentTime;
-        jData.helperAmount = com.tophattiger.Helper.Data.DataHolder.helperAmount;
+        jData.closeTime = DataHolder.currentTime;
+        jData.helperAmount = DataHolder.helperAmount;
         jData.combosUnlocked = game.getComboList().getCombosUnlocked();
         jData.abilitiesUnlocked = game.getAbilityList().getAbilitiesUnlocked();
         JsonData.helpers.clear();
@@ -56,12 +56,12 @@ public  class DataManagement {
 
             Gold.setGold(jData.gold);
             game.getHero().load(jData);
-            game.getEnemy().set();
+            game.getEnemy().init();
             //Check for version recorded to make sure version conflicts don't arise when updating
             if(jData.currentVersion >= 1) {
-                com.tophattiger.Helper.Data.DataHolder.pastTime = jData.closeTime;
-                com.tophattiger.Helper.Data.DataHolder.helperAmount = jData.helperAmount;
-                com.tophattiger.Helper.Data.DataHolder.timeDif = (com.tophattiger.Helper.Data.DataHolder.currentTime.getTimeInMillis() - com.tophattiger.Helper.Data.DataHolder.pastTime.getTimeInMillis())/1000;
+               DataHolder.pastTime = jData.closeTime;
+                DataHolder.helperAmount = jData.helperAmount;
+                DataHolder.timeDif = (DataHolder.currentTime.getTimeInMillis() - DataHolder.pastTime.getTimeInMillis())/1000;
                 game.autoGold();
                 game.getComboList().setCombosUnlocked(jData.combosUnlocked);
                 JsonData.comboLevels = jData.comboLevel;
@@ -75,8 +75,8 @@ public  class DataManagement {
                 }
             }
             else {
-                com.tophattiger.Helper.Data.DataHolder.pastTime = com.tophattiger.Helper.Data.DataHolder.currentTime;
-                com.tophattiger.Helper.Data.DataHolder.helperAmount = 1;
+                DataHolder.pastTime = DataHolder.currentTime;
+                DataHolder.helperAmount = 1;
             }
         }
         if(save.isEmpty() || game.getHero().getName().equals("Hero's Name"))
@@ -94,18 +94,18 @@ public  class DataManagement {
         game.getBackground().reset();
         game.getComboList().reset();
         game.getAbilityList().reset();
-        com.tophattiger.Helper.Data.DataHolder.helperAmount = 1;
+        DataHolder.helperAmount = 1;
         game.getTable().resetButton();
         game.getMenu().close();
         game.getNameScreen().show();
     }
 
-    public static void writeFiles(String fileName, String s){
+    private static void writeFiles(String fileName, String s){
         FileHandle file = Gdx.files.local(fileName);
         file.writeString(com.badlogic.gdx.utils.Base64Coder.encodeString(s), false);
     }
 
-    public static String readFile(String fileName) {
+    private static String readFile(String fileName) {
         FileHandle file = Gdx.files.local(fileName);
         if (file != null && file.exists()) {
             String s = file.readString();

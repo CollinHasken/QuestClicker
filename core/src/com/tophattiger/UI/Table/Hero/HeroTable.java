@@ -11,12 +11,10 @@ import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.utils.Array;
 import com.tophattiger.GameObjects.Characters.Hero;
-import com.tophattiger.Helper.Ability.AbilityList;
+import com.tophattiger.Helper.Abilities.AbilityList;
 import com.tophattiger.Helper.Data.AssetLoader;
-import com.tophattiger.Helper.Combo.ComboList;
+import com.tophattiger.Helper.Combos.ComboList;
 import com.tophattiger.Helper.Data.Gold;
-import com.tophattiger.UI.Table.Hero.AbilityGroup;
-import com.tophattiger.UI.Table.Hero.ComboGroup;
 import com.tophattiger.UI.Table.UpgradeTable;
 
 
@@ -51,7 +49,7 @@ public class HeroTable extends Table {
     }
 
     public void setAsContainer(UpgradeTable table){
-        table.container = this.container;
+        table.setContainer(this.container);
     }
 
     void setVariables(){

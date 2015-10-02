@@ -1,7 +1,6 @@
-package com.tophattiger.Helper.Combo;
+package com.tophattiger.Helper.Combos;
 
 import com.badlogic.gdx.graphics.Color;
-import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.GlyphLayout;
 import com.badlogic.gdx.utils.Pool;
 
@@ -26,10 +25,20 @@ public class Combo extends GlyphLayout implements Pool.Poolable {
     int randomNum;
     Color color,origColor;
 
+    /**
+     * A String with a position. It will display the combo amount and fade away.
+     * If the combo increases, the current combo string will fly away randomly as it disappears
+     */
     public Combo(){
         rand = new Random();
     }
 
+    /**
+     * Initialize the string, set the position and store the color for fading.
+     * Get a random power and direction
+     * @param _comboString String to display
+     * @param _color Initial color
+     */
     public void init(String _comboString,Color _color){
         comboString = _comboString;
         time = 0;
@@ -37,7 +46,7 @@ public class Combo extends GlyphLayout implements Pool.Poolable {
         alpha = 1;
         start = false;
         randomNum = rand.nextInt(8);
-        while(randomNum == 0){
+        while(randomNum == 0){      //Get random integer that isn't 0
             randomNum = rand.nextInt(8);
         }
         sign = rand.nextBoolean();
@@ -45,21 +54,28 @@ public class Combo extends GlyphLayout implements Pool.Poolable {
         color = new Color(_color);
     }
 
+    /**
+     * Update position of string
+     * @param delta Change in time between calls
+     */
     public void update(float delta){
         alpha = delta;
         time += delta;
-        if(start){
-            if(sign){
+        if(start){      //If its started to move
+            if(sign){   //Move the x dependent of initial velocity and random power
                 x += (xV0 + 10 * randomNum)*(delta);
             }
             else x -= (xV0 + 10 * randomNum)*(delta);
-            y += ((yV0 + 10 * randomNum) + (gravity * time)) * delta;
+            y += ((yV0 + 10 * randomNum) + (gravity * time)) * delta;   //Move y dependent on initial velocity and random num
         }
 
     }
 
+    /**
+     * Start the movement
+     */
     public  void start(){
-        if(!start) {
+        if(!start) {    //If it hasn't started yet
             start = true;
             alpha = 1;
             time = 0;
@@ -67,8 +83,13 @@ public class Combo extends GlyphLayout implements Pool.Poolable {
         }
     }
 
+    /**
+     * Check whether it's time has gone past the max time
+     * @return True if dead, false if not
+     */
     public boolean isDead(){
-        if(time>maxTime)return true;
+        if(time>maxTime)
+            return true;
         return false;
     }
 

@@ -6,8 +6,8 @@ import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.utils.Align;
-import com.tophattiger.Helper.Ability.Ability;
 import com.tophattiger.Helper.Data.Gold;
+import com.tophattiger.Helper.Abilities.BaseAbility;
 
 /**
  * Created by Collin on 8/5/2015.
@@ -17,9 +17,9 @@ public class AbilityGroup {
     Image picture;
     Label level, description,currentAmount;
     TextButton abilityButton;
-    Ability ability;
+    BaseAbility ability;
 
-    public AbilityGroup(HeroTable _table,Ability _ability){
+    public AbilityGroup(HeroTable _table, BaseAbility _ability){
         table = _table;
         ability = _ability;
         level = new Label("Level " + Gold.getNumberWithSuffix(ability.getLevel()),table.getSkin(),"level");

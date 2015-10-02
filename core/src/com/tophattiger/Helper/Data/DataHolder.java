@@ -1,8 +1,5 @@
 package com.tophattiger.Helper.Data;
 
-import com.badlogic.gdx.graphics.g2d.Animation;
-
-import java.text.DecimalFormat;
 import java.util.Calendar;
 
 /**
@@ -15,6 +12,9 @@ public class DataHolder {
     public static int hBarWidth,pBarWidth,helperAmount;
     public static Calendar currentTime, pastTime;
 
+    /**
+     * Initialize the current and past time calendar dates.
+     */
     public static void Initialize(){
         currentTime = Calendar.getInstance();
         pastTime = Calendar.getInstance();

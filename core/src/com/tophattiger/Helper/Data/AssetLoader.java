@@ -35,10 +35,10 @@ public class AssetLoader {
         coinGot = new Animation(.33f,textureAtlas.findRegions("coinGot"));
         healthBar = new Image(textureAtlas.findRegion("healthBar"));
         healthBar.setPosition(1440, 848);healthBar.setSize(438, 26);
-        com.tophattiger.Helper.Data.DataHolder.hBarWidth = (int)healthBar.getWidth();
+        DataHolder.hBarWidth = (int)healthBar.getWidth();
         progressBar = new Image(textureAtlas.findRegion("progressBar"));
         progressBar.setPosition(28,88);progressBar.setSize(1865, 44);
-        com.tophattiger.Helper.Data.DataHolder.pBarWidth = (int)progressBar.getWidth();
+        DataHolder.pBarWidth = (int)progressBar.getWidth();
         progressBar.setWidth(0);
         regBackground = new Sprite(textureAtlas.findRegion("regBackground"));
         table = new Sprite(textureAtlas.findRegion("table"));

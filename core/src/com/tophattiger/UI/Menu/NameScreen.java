@@ -26,6 +26,12 @@ public class NameScreen extends Table {
     NameScreen nameScreen;
     GameRenderer game;
 
+    /**
+     * Popup that allows the user to insert a name for their hero.
+     * Will show up first time playing, reseting the game, and retiring
+     * @param skin Skin for the looks
+     * @param _game Game to put into
+     */
     public NameScreen(Skin skin,GameRenderer _game) {
         super();
         game = _game;
@@ -45,13 +51,20 @@ public class NameScreen extends Table {
         setVisible(false);
     }
 
+    /**
+     * Show the popup
+     */
     public void show() {
         SettingName = true;
         setVisible(true);
         this.toFront();
     }
 
-    public void createAssets(Skin skin){
+    /**
+     * Create the assets for the popup
+     * @param skin Skin for looks
+     */
+    private void createAssets(Skin skin){
         title = new Label("What is your hero's name?",skin,"nameTitle");
         nameAsk = new Label("Name: ",skin,"nameAsk");
         text = new TextField("Hero's Name",skin,"name");
@@ -81,7 +94,10 @@ public class NameScreen extends Table {
         });
     }
 
-    public void addActors(){
+    /**
+     * Add actors to the popup(table)
+     */
+    private void addActors(){
         this.top().left();
         add().width(610).height(250).row();
         add();add(title).colspan(3).top().left().row();

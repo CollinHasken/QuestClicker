@@ -15,9 +15,9 @@ import com.tophattiger.GameObjects.Characters.Enemy;
 import com.tophattiger.GameObjects.Characters.Helpers;
 import com.tophattiger.GameObjects.Characters.Hero;
 import com.tophattiger.GameObjects.Text;
-import com.tophattiger.Helper.Ability.AbilityList;
+import com.tophattiger.Helper.Abilities.AbilityList;
 import com.tophattiger.Helper.Data.AssetLoader;
-import com.tophattiger.Helper.Combo.ComboList;
+import com.tophattiger.Helper.Combos.ComboList;
 import com.tophattiger.Helper.Data.DataHolder;
 import com.tophattiger.Helper.Data.DataManagement;
 import com.tophattiger.UI.Background;
@@ -74,8 +74,8 @@ public class GameRenderer {
         }
     };
 
-    /** Create the game renderer
-     *
+    /**
+     * Create the game renderer
      * @param stag Stage to put the game renderer in
      */
     public GameRenderer(Stage stag){
@@ -86,8 +86,8 @@ public class GameRenderer {
         comboGold = 1;
     }
 
-    /** Function to render the scene
-     *
+    /**
+     * Function to render the scene
      * @param runTime Time since the game has started
      */
     public void render(float runTime){
@@ -104,13 +104,17 @@ public class GameRenderer {
         stage.draw();
     }
 
-    /** Set the bar graphics */
+    /**
+     * Set the bar graphics
+     */
     public void setBar(){
         progressBar.setWidth((int) (((hero.questProgress / hero.questRequired)) * DataHolder.pBarWidth));
         healthBar.setWidth((int) ((enemy.getHealth() / enemy.getTotalHealth()) * DataHolder.hBarWidth));
     }
 
-    /** Add the created actors to the stage*/
+    /**
+     * Add the created actors to the stage
+     */
     public void addActors(){
         stage.addActor(background);
         stage.addActor(progressBar);
@@ -132,7 +136,9 @@ public class GameRenderer {
         stage.addActor(nameScreen);
     }
 
-    /** Initialize all the assets */
+    /**
+     * Initialize all the assets
+     */
     public void loadAssets(){
         DataHolder.Initialize();
 
@@ -171,8 +177,8 @@ public class GameRenderer {
         helpers.load();
     }
 
-    /** Update the state of the coins
-     *
+    /**
+     * Update the state of the coins
      * @param _runTime Runtime of the stage
      */
     public void updateCoins(float _runTime){
@@ -193,13 +199,15 @@ public class GameRenderer {
         }
     }
 
-    /** Call helper's auto gold function when coming back */
+    /**
+     * Call helper's auto gold function when coming back
+     */
     public void autoGold(){
         helpers.autoGold();
     }
 
-    /** Function to create coins in the stage
-     *
+    /**
+     * Function to create coins in the stage
      * @param gold Amount of total gold to drop
      * @param coins Amount of coins to drop
      */
@@ -212,8 +220,8 @@ public class GameRenderer {
         }
     }
 
-    /** Remove the enemy from the array and pool
-     *
+    /**
+     * Remove the enemy from the array and pool
      * @param enemy Enemy to delete
      */
     public void removeEnemy(Enemy enemy){
@@ -222,7 +230,9 @@ public class GameRenderer {
         enemyPool.free(enemy);
     }
 
-    /** Create a new enemy in the pool and array*/
+    /**
+     * Create a new enemy in the pool and array
+     */
     public void newEnemy(){
         enemy = enemyPool.obtain();
         enemy.init();
@@ -230,16 +240,16 @@ public class GameRenderer {
         stage.addActor(enemy);
     }
 
-    /** Multiply the combo gold amount increase
-     *
+    /**
+     * Multiply the combo gold amount increase
      * @param amount Amount to multiply by
      */
     public void comboGold(double amount){
         comboGold *= amount;
     }
 
-    /** Undo the combo gold amount to original value
-     *
+    /**
+     * Undo the combo gold amount to original value
      * @param amount Amount to divide by
      */
     public void undoComboGold(double amount){
@@ -263,7 +273,9 @@ public class GameRenderer {
     public int getVersion(){return newestVersion;}
     public static String getNewestVersionString(){return newestVersionString;}
 
-    /** Dispose of assets*/
+    /**
+     * Dispose of assets
+     */
     public void dispose(){
         healthText.dispose();
         goldText.dispose();

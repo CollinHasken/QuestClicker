@@ -42,20 +42,34 @@ public class Gold {
 
     static public void add(int amount){gold += amount;}
 
+    /**
+     * Get the gold with the proper suffix.
+     * @return String with the gold amount and suffix
+     */
     static public String getGoldWithSuffix(){
         return getNumberWithSuffix(gold);
     }
 
+    /**
+     * Convert number to be a number with the correct suffix
+     * @param number Number to turn into suffix
+     * @return String with the number and suffix
+     */
     static public String getNumberWithSuffix(int number){
         return getNumberWithSuffix((double) number);
     }
 
+    /**
+     * Convert number to be a number with the correct suffix
+     * @param _number Number to turn into suffix
+     * @return String with the number and suffix
+     */
     static public String getNumberWithSuffix(double _number){
         suffix = getSuffix(_number);
         if(!suffix.isEmpty()) {
             first = Character.toUpperCase(suffix.charAt(0));           //Make first letter capitalized
             if(!suffix.equals("K"))
-                suffix = first + suffix.substring(1) + "llion";
+                suffix = first + suffix.substring(1) + "llion";     //Add the suffix and llion if the suffix is not just K
             suffix = " " + suffix;
         }
         return formater.format(displayNumber) + suffix;
@@ -65,31 +79,36 @@ public class Gold {
         hundreds = tens = ones = "";            //Reset prefixes
         displayNumber = number;
         if(number < 1000)
-            return "";
+            return "";                          //If no suffix is required, return empty
         if(number < 1000000){
-            displayNumber /= 1000;
+            displayNumber /= 1000;              //Return K if the number is less than 1 million
             return "K";
         }
-        displayNumber /= 1000000;
+        displayNumber /= 1000000;               //Number is greater than 1 million
         int i = 1;
         while(displayNumber /1000 >=1){               //Count amount of 000's
             i ++;
             displayNumber /= 1000;
         }
         if(i/100 > 0){                          //Get hundreds, tens, then ones prefix
-            hundreds = getHundredsPrefix((int)i/100);
-            i -= ((int)(i/100))*100;
+            hundreds = getHundredsPrefix(i/100);
+            i -= ((i/100))*100;
         }
         if(i/10 >=1){
-            tens = getTensPrefix((int)i/10);
-            i -= ((int)(i/10))*10;
+            tens = getTensPrefix(i/10);
+            i -= ((i/10))*10;
         }
-        ones = getOnesPrefix((int)i);
+        ones = getOnesPrefix(i);
         return ones + tens + hundreds;
     }
 
+    /**
+     * Retrieves the correct prefix for the ones place
+     * @param i Number in ones place
+     * @return String for prefix for ones place
+     */
     static private String getOnesPrefix(int i){
-        if(hundreds.equals("") && tens.equals("")){
+        if(hundreds.equals("") && tens.equals("")){ //If the number is less than 10 ~
             if(i == 1){
                 return "mil";
             }
@@ -118,7 +137,7 @@ public class Gold {
                 return "noni";
             }
         }
-        if(i == 0){
+        if(i == 0){ //If number is greater than 10 ~, return corresponding prefix
             return "";
         }
         if(i == 1){
@@ -151,8 +170,13 @@ public class Gold {
         return "";
     }
 
+    /**
+     * Retrieves the correct prefix for the tens place
+     * @param i Number in tens place
+     * @return String for prefix for tens place
+     */
     static private String getTensPrefix(int i){
-        if(i == 0){
+        if(i == 0){         //The number is greater than or equal to 10 ~
             return "";
         }
         if(i == 1){
@@ -185,8 +209,13 @@ public class Gold {
         return "";
     }
 
+    /**
+     * Retrieves the correct prefix for the hundreds place
+     * @param i Number in hundreds place
+     * @return String for prefix for hundreds place
+     */
     static private String getHundredsPrefix(int i){
-        if(i == 0){
+        if(i == 0){         //The number is greater than or equal to 100 ~
             return "";
         }
         if(i == 1){

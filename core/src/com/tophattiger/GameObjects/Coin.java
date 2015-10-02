@@ -119,7 +119,7 @@ public class Coin extends Actor implements Pool.Poolable{
     /**
      * Set animation and other variables when the coin has been clicked
      */
-    public void got(){
+    private void got(){
         animation = AssetLoader.coinGot;
         time = 0;
         got = true;
@@ -127,7 +127,6 @@ public class Coin extends Actor implements Pool.Poolable{
         Gold.add(gold);
     }
 
-    public boolean isGot(){return got;}
     public boolean isAlive(){return alive;}
     public boolean isNewCoin(){return newCoin;}
     public void setNewCoin(boolean isNewCoin){newCoin = isNewCoin;}

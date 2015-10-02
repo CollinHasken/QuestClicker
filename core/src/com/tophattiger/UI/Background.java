@@ -12,11 +12,12 @@ import com.tophattiger.GameObjects.Characters.Enemy;
 import com.tophattiger.GameWorld.GameRenderer;
 import com.tophattiger.Helper.Data.AssetLoader;
 import com.tophattiger.Helper.Data.DataHolder;
+import com.tophattiger.UI.Menu.NameScreen;
 
 
 
 public class Background extends Actor {
-    public Array<Enemy> activeEnemies;
+    Array<Enemy> activeEnemies;
     Enemy enemy;
     float abilityGoldTime;
     boolean touch;
@@ -26,6 +27,10 @@ public class Background extends Actor {
     public Stage stage;
     public Sprite sprite;
 
+    /**
+     * Background of the game. User can tap on it to attack enemy
+     * @param _game Game to add this
+     */
     public Background(GameRenderer _game){
         game = _game;
         stage = game.getStage();
@@ -45,12 +50,12 @@ public class Background extends Actor {
         addListener(new InputListener() {
             @Override
             public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
-                if (!touch && !Menu.NameScreen.SettingName) {
-                    if(abilityGoldTime > 0){
+                if (!touch && !NameScreen.SettingName) {
+                    if(abilityGoldTime > 0){    //Drop coins if the gold ability is activated and tapped
                         game.dropCoins((int)abilityGoldAmount,1);
                     }
                     touch = true;
-                    combo.tap();
+                    combo.tap();    //Increase combo
                     for (int i = activeEnemies.size; --i >= 0; ) {
                         game.getHero().attack();
                         enemy = activeEnemies.get(i);
@@ -67,6 +72,10 @@ public class Background extends Actor {
         });
     }
 
+    /**
+     * Decrement gold ability and buffer for touching
+     * @param delta Time in between calls
+     */
     @Override
     public void act(float delta) {
         if(touch){
@@ -77,17 +86,30 @@ public class Background extends Actor {
         }
     }
 
+    /**
+     * Draw the background
+     * @param batch Batch to draw to
+     * @param parentAlpha Parent alpha
+     */
     @Override
          public void draw(Batch batch, float parentAlpha) {
         sprite.draw(batch);
 
     }
 
+    /**
+     * Start the ability to drop gold each tap
+     * @param amount Amount of gold to drop
+     * @param time Duration
+     */
     public void abilityGold(double amount,int time){
         abilityGoldAmount = amount;
         abilityGoldTime = time;
     }
 
+    /**
+     * Reset gold ability time
+     */
     public void reset(){
         abilityGoldTime = 0;
     }

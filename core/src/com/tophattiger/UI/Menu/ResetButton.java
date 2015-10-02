@@ -15,6 +15,12 @@ public class ResetButton extends ImageButton {
 
     GameRenderer game;
 
+    /**
+     * Reset button
+     * @param skin Skin for looks
+     * @param styleName Style for the reset button
+     * @param _game Game to put into
+     */
     public ResetButton(Skin skin, String styleName, GameRenderer _game) {
         super(skin, styleName);
         game = _game;

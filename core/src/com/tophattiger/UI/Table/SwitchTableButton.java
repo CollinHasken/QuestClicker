@@ -14,6 +14,14 @@ public class SwitchTableButton extends TextButton {
     Table table;
     UpgradeTable upgrade;
 
+    /**
+     * Button to switch between upgrade tablers
+     * @param _text Text for the button
+     * @param _skin Skin for looks
+     * @param _style Style name for button
+     * @param _table Table to put table into
+     * @param _upgrade Upgrade table to switch to
+     */
     public SwitchTableButton(String _text,Skin _skin, String _style,Table _table,UpgradeTable _upgrade){
 
         super(_text,_skin,_style);

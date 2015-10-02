@@ -1,4 +1,4 @@
-package com.tophattiger.Helper.Ability;
+package com.tophattiger.Helper.Abilities;
 
 import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
@@ -9,12 +9,15 @@ import com.badlogic.gdx.scenes.scene2d.actions.MoveToAction;
 import com.badlogic.gdx.scenes.scene2d.ui.Button;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.tophattiger.GameWorld.GameRenderer;
+import com.tophattiger.Helper.Data.DataHolder;
+import com.tophattiger.Helper.Data.DataManagement;
+import com.tophattiger.Helper.Data.Gold;
 import com.tophattiger.UI.Table.Helper.BuffScreen;
 
 /**
  * Created by Collin on 8/2/2015.
  */
-public class Ability extends Button{
+public class BaseAbility extends Button{
 
     final int PAD = 10;
 
@@ -34,7 +37,14 @@ public class Ability extends Button{
     GlyphLayout layout;
     Image picture;
 
-    public Ability(TYPE _type,GameRenderer _game){
+    /**
+     * An ability has an image, level and function
+     * The user can buy and level up the ability and then use it
+     * They have a duration and cool down
+     * @param _type Type of ability
+     * @param _game Game to place them in
+     */
+    public BaseAbility(TYPE _type, GameRenderer _game){
         super(_game.getSkin());
         level = 0;
         resetTime = 0;
@@ -46,25 +56,25 @@ public class Ability extends Button{
         setStats();
         setCost();
         setDescription();
-        if(type == TYPE.BIGDAMAGE){
+        if(type == TYPE.BIGDAMAGE){     //Deals large damage to the enemy
             this.setStyle(new ButtonStyle(game.getSkin().getDrawable("abilityDamage"),game.getSkin().getDrawable("abilityDamageUsed"),game.getSkin().getDrawable("abilityDamageUsed")));
             picture = new Image(com.tophattiger.Helper.Data.AssetLoader.textureAtlas.findRegion("abilityDamageIcon"));
             transformX = x + 410;
             transformY = y;
         }
-        else if(type == TYPE.HELPERSPEED){
+        else if(type == TYPE.HELPERSPEED){      //Increase the helpers' attack speed
             setStyle(new ButtonStyle(game.getSkin().getDrawable("abilityHelper"),game.getSkin().getDrawable("abilityHelperUsed"),game.getSkin().getDrawable("abilityHelperUsed")));
             picture = new Image(com.tophattiger.Helper.Data.AssetLoader.textureAtlas.findRegion("abilityHelperIcon"));
             transformX = x + 410;
             transformY = y;
         }
-        else if(type == TYPE.GOLDDROP){
+        else if(type == TYPE.GOLDDROP){     //Drop gold every time the user clicks
             setStyle(new ButtonStyle(game.getSkin().getDrawable("abilityGold"),game.getSkin().getDrawable("abilityGoldUsed"),game.getSkin().getDrawable("abilityGoldUsed")));
             picture = new Image(com.tophattiger.Helper.Data.AssetLoader.textureAtlas.findRegion("abilityGoldIcon"));
             transformX = x + 110;
             transformY = (int)(y - getHeight() - PAD - 40);
         }
-        if(type != TYPE.RETIRE){
+        if(type != TYPE.RETIRE){        //Restarts the game with added stats
             font = com.tophattiger.Helper.Data.AssetLoader.timerFont;
             layout = new GlyphLayout();
             setPosition(x, y);
@@ -84,6 +94,10 @@ public class Ability extends Button{
         }
     }
 
+    /**
+     * Check for when the cool down is over
+     * @param delta Time between function calls
+     */
     @Override
     public void act(float delta) {
         super.act(delta);
@@ -98,23 +112,34 @@ public class Ability extends Button{
         }
     }
 
+    /**
+     * Draw the button if it has been bought
+     * @param batch Batch to draw to
+     * @param parentAlpha   Parent alpha
+     */
     @Override
     public void draw(Batch batch, float parentAlpha) {
         if(level>0 && type != TYPE.RETIRE){
             super.draw(batch, parentAlpha);
-            if(!timeText.equals("0:00"))
+            if(!timeText.equals("0:00"))    //If the cool down isn't over, show how much time remains
                 font.draw(batch, layout, getX() + (getWidth() / 2) - (layout.width / 2), getY());
         }
     }
 
-    public void setText(){
+    /**
+     * Set the text of how much time is left on the cool down
+     */
+    private void setText(){
         timeText = Integer.toString((int)(resetTime/60)) + ":";
         if(resetTime % 60 < 10)
             timeText += "0";
         timeText += Integer.toString((int)(resetTime % 60));
     }
 
-    public void setStats(){
+    /**
+     * Set the variables for next purchase depending on the ability type
+     */
+    private void setStats(){
         if(type == TYPE.BIGDAMAGE){
             amount = 150 + level*100;
         }
@@ -128,7 +153,10 @@ public class Ability extends Button{
         }
     }
 
-    public void setCurrentStats(){
+    /**
+     * Set the variables for the amount for the actual level
+     */
+    private void setCurrentStats(){
         if(type == TYPE.BIGDAMAGE){
             currentAmount = 150 + (level-1)*100;
         }
@@ -142,7 +170,10 @@ public class Ability extends Button{
         }
     }
 
-    public void setCost(){
+    /**
+     * Set the cost of upgrading
+     */
+    private void setCost(){
         if(type == TYPE.BIGDAMAGE){
             cost = 100 + level*100;
         }
@@ -154,7 +185,10 @@ public class Ability extends Button{
         }
     }
 
-    public void regularCoordinates(){
+    /**
+     * Sets the coordinates of the abilities to the position without the upgrade table opened
+     */
+    private void regularCoordinates(){
         if(type == TYPE.BIGDAMAGE){
             x = 500;
         }
@@ -167,23 +201,32 @@ public class Ability extends Button{
         y = (int)(game.getStage().getHeight() - getHeight() - PAD);
     }
 
+    /**
+     * Set the coordinates to the position they should be when the upgrade table is opened
+     */
     public void transformCoordinates(){
         setPosition(transformX,transformY);
     }
 
-    public void setDescription(){
+    /**
+     * Set the description of the ability in the upgrade shop
+     */
+    private void setDescription(){
         description = "Activate ability to ";
         if(type == TYPE.BIGDAMAGE){
-            description += "deal " + com.tophattiger.Helper.Data.Gold.getNumberWithSuffix(amount) + " damage to the enemy";
+            description += "deal " + Gold.getNumberWithSuffix(amount) + " damage to the enemy";
         }
         else if(type == TYPE.HELPERSPEED){
-            description += "multiply helpers' attack speed by " + com.tophattiger.Helper.Data.Gold.getNumberWithSuffix(amount);
+            description += "multiply helpers' attack speed by " + Gold.getNumberWithSuffix(amount);
         }
         else if(type == TYPE.GOLDDROP){
-            description += "drop "+ com.tophattiger.Helper.Data.Gold.getNumberWithSuffix(amount) + " gold every tap";
+            description += "drop "+ Gold.getNumberWithSuffix(amount) + " gold every tap";
         }
     }
 
+    /**
+     * Increase the level, cost, and set the stats and description
+     */
     public void level(){
         level ++;
         cost *= level;
@@ -193,7 +236,10 @@ public class Ability extends Button{
         setDescription();
     }
 
-    public void activate(){
+    /**
+     * Activate the ability and set checked
+     */
+    private void activate(){
         if(type == TYPE.BIGDAMAGE){
            for(int i = 0; i< game.getEnemies().size;i++){
                if(!game.getEnemies().get(i).isDead()){
@@ -213,21 +259,28 @@ public class Ability extends Button{
         setChecked(true);
     }
 
+    /**
+     * Move the ability to the correct position based on if the table is open or closed
+     */
     public void move(){
         mta.reset();
         mta.setPosition(x, y);
         mta.setDuration(0.5f);
-        if(com.tophattiger.Helper.Data.DataHolder.open){
+        if(DataHolder.open){
             mta.setPosition(transformX, transformY);
         }
         this.addAction(mta);
     }
 
+    /**
+     * Load the ability data
+     * @param i Index in list of abilities from JSON
+     */
     public void load(int i){
-        if(com.tophattiger.Helper.Data.DataManagement.JsonData.abilityLevels != null) {
-            level = com.tophattiger.Helper.Data.DataManagement.JsonData.abilityLevels.get(i*2);
-            resetTime = com.tophattiger.Helper.Data.DataManagement.JsonData.abilityLevels.get((i*2)+1);
-            resetTime -= com.tophattiger.Helper.Data.DataHolder.timeDif;
+        if(DataManagement.JsonData.abilityLevels != null) {
+            level = DataManagement.JsonData.abilityLevels.get(i*2);
+            resetTime = DataManagement.JsonData.abilityLevels.get((i*2)+1);
+            resetTime -= DataHolder.timeDif;        //Make the reset time count amount of time the game has been closed for
             if(resetTime <= 0)
                 resetTime = 0;
             else
@@ -239,11 +292,17 @@ public class Ability extends Button{
         }
     }
 
+    /**
+     * Save the level and reset time of the ability
+     */
     public void save(){
         com.tophattiger.Helper.Data.DataManagement.JsonData.abilityLevels.add(level);
         com.tophattiger.Helper.Data.DataManagement.JsonData.abilityLevels.add((int) resetTime);
     }
 
+    /**
+     * Resets all data for ability
+     */
     public void reset(){
         level = 0;
         amount = 0;

@@ -1,4 +1,4 @@
-package com.tophattiger.Helper.Combo;
+package com.tophattiger.Helper.Combos;
 
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.tophattiger.GameWorld.GameRenderer;
@@ -23,7 +23,13 @@ public class ComboBuff {
     Image picture;
     GameRenderer game;
 
-
+    /**
+     * Buff class for when the user has achieved a certain combo of clicks
+     * @param _amount Amount for the combo
+     * @param _reqCombo Required amount of combo before activated
+     * @param _type Type of buff
+     * @param _game Game to put in
+     */
     public ComboBuff(double _amount,int _reqCombo, TYPE _type, GameRenderer _game){
         originalAmount = _amount;
         type = _type;
@@ -40,17 +46,25 @@ public class ComboBuff {
         setDescription();
     }
 
+    /**
+     * Check whether the combo should be activated
+     * @param combo Combo currently at
+     */
     public void check(int combo){
-        if(level != 0 && combo==reqCombo){
+        if(level != 0 && combo==reqCombo){  //If the combo is equal to the amount and not level 0
             activate();
         }
-        else if(leveled && combo >= reqCombo){
+        else if(leveled && combo >= reqCombo){ //If just been leveled update how much the buff should be doing
             undo();
             activate();
             leveled = false;
         }
     }
-    public void activate(){
+
+    /**
+     * Activate the buff. Check what the type is and activate the corresponding buff
+     */
+    private void activate(){
         if(type == TYPE.ALLHELPERDAMAGE){
             game.getHelpers().comboDamage(currentAmount);
         }
@@ -63,6 +77,9 @@ public class ComboBuff {
         active = true;
     }
 
+    /**
+     * Undo the buff. Check what the type is and deactivate the corresponding buff
+     */
     public void undo(){
         if(active){
             if(type == TYPE.ALLHELPERDAMAGE){
@@ -78,6 +95,9 @@ public class ComboBuff {
         }
     }
 
+    /**
+     * Increase level and amount. Reset the description and cost and play character level animation
+     */
     public void level(){
         level ++;
         currentAmount = amount;
@@ -88,7 +108,10 @@ public class ComboBuff {
         game.getHero().levelAnimation();
     }
 
-    public void setDescription(){
+    /**
+     * Set the description for the upgrade table
+     */
+    private void setDescription(){
         description = "Achieve a " + Integer.toString(reqCombo) + "x combo to multiply ";
         if(type == TYPE.ALLHELPERDAMAGE){
             description += "all helper damage ";
@@ -118,6 +141,9 @@ public class ComboBuff {
 
     public double getCurrentAmount(){return currentAmount;}
 
+    /**
+     * Reset to default values and reset description and cost
+     */
     public void reset(){
         amount = originalAmount;
         currentAmount = 0;
@@ -126,6 +152,10 @@ public class ComboBuff {
         setCost();
     }
 
+    /**
+     * Load level, amount and reset description and cost
+     * @param i Index for information
+     */
     public void load(int i){
         if(DataManagement.JsonData.comboLevels != null) {
             level = DataManagement.JsonData.comboLevels.get(i);
@@ -136,6 +166,9 @@ public class ComboBuff {
         }
     }
 
+    /**
+     * Save the level
+     */
     public void save(){
         DataManagement.JsonData.comboLevels.add(level);
     }
