@@ -23,11 +23,9 @@ public class Hero extends Actor {
     final int positionX = 998;
     final int positionY = 414;
 
-    int questCompleted,questRequired;
-    double questProgress;
+    int questCompleted,questRequired, touchLevel,artifacts;
+    double questProgress,touchCost,touchPower,artifactDamage;
     float animationTime,levelAnimationTime;
-    int touchLevel;
-    double touchCost,touchPower;
     boolean level;
     Image picture;
     String name;
@@ -38,8 +36,8 @@ public class Hero extends Actor {
      * The hero stores the click data, quest data, name and level
      */
     public Hero(){
-        questCompleted = 0;
-        touchPower = 1;
+        questCompleted = artifacts= 0;
+        touchPower = artifactDamage = 1;
         questProgress = 0;
         animationTime = 0;
         touchLevel = 1;
@@ -128,7 +126,7 @@ public class Hero extends Actor {
     }
 
     /**
-     * Change the attack power based off of combo
+     * Change the attack power by multiplying by the damage from the combo
      * @param amount Amount to multiply damage by
      */
     public void comboDamage(double amount){
@@ -136,13 +134,29 @@ public class Hero extends Actor {
     }
 
     /**
-     * Undo the attack power based off of combo
+     * Undo the attack power by dividing by the damage from the combo
      * @param amount Amount to undo damage by
      */
     public void undoComboDamage(double amount){
         touchPower /= amount;
     }
 
+    /**
+     * Change the attack power by multiplying by the artifact amount
+     * @param amount Amount to multiply damage by
+     */
+    public void artifactDamage(double amount){
+        touchPower /= artifactDamage;
+        touchPower *= amount;
+        artifactDamage = amount;
+    }
+
+    /**
+     * Restart the game with artifacts based off of how many enemies defeated and other stats
+     */
+    public void retire(){
+        artifacts += touchLevel; //Need to come up with algorithm
+    }
     public String getName(){
         return name;
     }
@@ -161,11 +175,15 @@ public class Hero extends Actor {
     public int getTouchLevel(){return touchLevel;}
     public  void setTouchLevel(int _level){touchLevel = _level;}
 
+    public int getArtifacts(){return artifacts;}
+    public void setArtifacts(int amount){artifacts = amount;}
+
     public String getTouchPowerString(){return Gold.getNumberWithSuffix(touchPower);}
     public double getTouchPower(){return touchPower;}
     public void setTouchPower(double _power){touchPower = _power;}
     public int getQuestCompleted(){return questCompleted;}
     public int getQuestRequired(){return questRequired;}
+    public double getQuestProgress(){return questProgress;}
 
     /**
      * Load the quest, name and power data from JSON
@@ -180,6 +198,7 @@ public class Hero extends Actor {
             setName(jData.name);
             setTouchCost(jData.touchCost);
             setTouchLevel(jData.touchLevel);
+            setArtifacts(jData.artifacts);
         }
     }
 
@@ -195,6 +214,7 @@ public class Hero extends Actor {
         jData.touchCost = getTouchCost();
         jData.touchLevel = getTouchLevel();
         jData.name = getName();
+        jData.artifacts = getArtifacts();
     }
 
     /**

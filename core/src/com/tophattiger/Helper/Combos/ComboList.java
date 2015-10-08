@@ -8,8 +8,8 @@ import com.tophattiger.GameWorld.GameRenderer;
  */
 public class ComboList {
 
-    com.tophattiger.Helper.Combos.ComboBuff combo1,combo2,combo3,combo4,combo5,combo6,combo7,combo8,combo9;
-    Array<com.tophattiger.Helper.Combos.ComboBuff> combos = new Array<com.tophattiger.Helper.Combos.ComboBuff>();
+    ComboBuff combo1,combo2,combo3,combo4,combo5,combo6,combo7,combo8,combo9;
+    Array<ComboBuff> combos = new Array<ComboBuff>();
     int combosUnlocked;
     GameRenderer game;
 

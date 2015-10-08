@@ -24,8 +24,8 @@ public class Background extends Actor {
     double abilityGoldAmount;
     ComboText combo;
     GameRenderer game;
-    public Stage stage;
-    public Sprite sprite;
+    Stage stage;
+    Sprite sprite;
 
     /**
      * Background of the game. User can tap on it to attack enemy

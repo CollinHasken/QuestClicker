@@ -9,6 +9,7 @@ import com.badlogic.gdx.scenes.scene2d.actions.MoveToAction;
 import com.badlogic.gdx.scenes.scene2d.ui.Button;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.tophattiger.GameWorld.GameRenderer;
+import com.tophattiger.Helper.Data.AssetLoader;
 import com.tophattiger.Helper.Data.DataHolder;
 import com.tophattiger.Helper.Data.DataManagement;
 import com.tophattiger.Helper.Data.Gold;
@@ -58,24 +59,24 @@ public class BaseAbility extends Button{
         setDescription();
         if(type == TYPE.BIGDAMAGE){     //Deals large damage to the enemy
             this.setStyle(new ButtonStyle(game.getSkin().getDrawable("abilityDamage"),game.getSkin().getDrawable("abilityDamageUsed"),game.getSkin().getDrawable("abilityDamageUsed")));
-            picture = new Image(com.tophattiger.Helper.Data.AssetLoader.textureAtlas.findRegion("abilityDamageIcon"));
+            picture = new Image(AssetLoader.textureAtlas.findRegion("abilityDamageIcon"));
             transformX = x + 410;
             transformY = y;
         }
         else if(type == TYPE.HELPERSPEED){      //Increase the helpers' attack speed
             setStyle(new ButtonStyle(game.getSkin().getDrawable("abilityHelper"),game.getSkin().getDrawable("abilityHelperUsed"),game.getSkin().getDrawable("abilityHelperUsed")));
-            picture = new Image(com.tophattiger.Helper.Data.AssetLoader.textureAtlas.findRegion("abilityHelperIcon"));
+            picture = new Image(AssetLoader.textureAtlas.findRegion("abilityHelperIcon"));
             transformX = x + 410;
             transformY = y;
         }
         else if(type == TYPE.GOLDDROP){     //Drop gold every time the user clicks
             setStyle(new ButtonStyle(game.getSkin().getDrawable("abilityGold"),game.getSkin().getDrawable("abilityGoldUsed"),game.getSkin().getDrawable("abilityGoldUsed")));
-            picture = new Image(com.tophattiger.Helper.Data.AssetLoader.textureAtlas.findRegion("abilityGoldIcon"));
+            picture = new Image(AssetLoader.textureAtlas.findRegion("abilityGoldIcon"));
             transformX = x + 110;
             transformY = (int)(y - getHeight() - PAD - 40);
         }
-        if(type != TYPE.RETIRE){        //Restarts the game with added stats
-            font = com.tophattiger.Helper.Data.AssetLoader.timerFont;
+        if(type != TYPE.RETIRE){        //Creates and positions the icon to use the ability if it is not retire
+            font = AssetLoader.timerFont;
             layout = new GlyphLayout();
             setPosition(x, y);
             setSize(128, 128);
@@ -183,6 +184,9 @@ public class BaseAbility extends Button{
         else if(type == TYPE.GOLDDROP){
             cost = 2000 + level*3000;
         }
+        else if(type == TYPE.RETIRE){
+            cost = 80000;
+        }
     }
 
     /**
@@ -239,7 +243,7 @@ public class BaseAbility extends Button{
     /**
      * Activate the ability and set checked
      */
-    private void activate(){
+    public void activate(){
         if(type == TYPE.BIGDAMAGE){
            for(int i = 0; i< game.getEnemies().size;i++){
                if(!game.getEnemies().get(i).isDead()){
@@ -255,6 +259,10 @@ public class BaseAbility extends Button{
         else if(type == TYPE.GOLDDROP){
             game.getBackground().abilityGold(currentAmount,maxTime);
             resetTime = 1800;
+        }
+        else if(type == TYPE.RETIRE){
+            game.getHero().retire();
+            DataManagement.reset(game);
         }
         setChecked(true);
     }
@@ -296,8 +304,8 @@ public class BaseAbility extends Button{
      * Save the level and reset time of the ability
      */
     public void save(){
-        com.tophattiger.Helper.Data.DataManagement.JsonData.abilityLevels.add(level);
-        com.tophattiger.Helper.Data.DataManagement.JsonData.abilityLevels.add((int) resetTime);
+        DataManagement.JsonData.abilityLevels.add(level);
+        DataManagement.JsonData.abilityLevels.add((int) resetTime);
     }
 
     /**
@@ -329,6 +337,8 @@ public class BaseAbility extends Button{
     public Image getPicture(){return picture;}
 
     public double getCurrentAmount(){return currentAmount;}
+
+    public TYPE getType(){return type;}
 
     public void dispose(){
         font.dispose();

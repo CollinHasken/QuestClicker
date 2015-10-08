@@ -24,6 +24,10 @@ public class AbilityGroup {
         ability = _ability;
         level = new Label("Level " + Gold.getNumberWithSuffix(ability.getLevel()),table.getSkin(),"level");
         currentAmount = new Label("Current: " + Gold.getNumberWithSuffix(ability.getCurrentAmount()),table.getSkin(),"level");
+        if(ability.getType() == BaseAbility.TYPE.RETIRE){
+            currentAmount.setText("");
+            level.setText("Retire");
+        }
         description = new Label(ability.getDescription(),table.getSkin(),"combo");
         description.setWrap(true);
         description.setAlignment(Align.right);
@@ -36,6 +40,10 @@ public class AbilityGroup {
             public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
                 super.touchDown(event, x, y, pointer, button);
                 if (!abilityButton.isChecked() && ability.getCost() <= Gold.getGold()) {
+                    if(ability.getType() == BaseAbility.TYPE.RETIRE){
+                        ability.activate();
+                        return true;
+                    }
                     Gold.subtract(ability.getCost());
                     ability.level();
                     abilityButton.setText(Gold.getNumberWithSuffix(ability.getCost()));

@@ -16,6 +16,7 @@ import com.tophattiger.GameObjects.Characters.Helpers;
 import com.tophattiger.GameObjects.Characters.Hero;
 import com.tophattiger.GameObjects.Text;
 import com.tophattiger.Helper.Abilities.AbilityList;
+import com.tophattiger.Helper.Artifacts.ArtifactList;
 import com.tophattiger.Helper.Data.AssetLoader;
 import com.tophattiger.Helper.Combos.ComboList;
 import com.tophattiger.Helper.Data.DataHolder;
@@ -52,10 +53,11 @@ public class GameRenderer {
     Image progressBar,healthBar;
 
     AbilityList abilityList;
+    ArtifactList artifactList;
     Coin coin;
     ComboText comboText;
     ComboList combos;
-    double comboGold;
+    double comboGold,artifactEnemyGold;
     float runTime;
 
 
@@ -83,7 +85,7 @@ public class GameRenderer {
 
         loadAssets();
         addActors();
-        comboGold = 1;
+        artifactEnemyGold = comboGold = 1;
     }
 
     /**
@@ -108,7 +110,7 @@ public class GameRenderer {
      * Set the bar graphics
      */
     public void setBar(){
-        progressBar.setWidth((int) (((hero.questProgress / hero.questRequired)) * DataHolder.pBarWidth));
+        progressBar.setWidth((int) (((hero.getQuestProgress() / hero.getQuestRequired())) * DataHolder.pBarWidth));
         healthBar.setWidth((int) ((enemy.getHealth() / enemy.getTotalHealth()) * DataHolder.hBarWidth));
     }
 
@@ -151,6 +153,7 @@ public class GameRenderer {
         combos = new ComboList(this);
         comboText = new ComboText(combos);
         abilityList = new AbilityList(this);
+        artifactList = new ArtifactList(this);
         background = new Background(this);
         healthBar = AssetLoader.healthBar;
         progressBar = AssetLoader.progressBar;
@@ -256,9 +259,19 @@ public class GameRenderer {
         comboGold /= amount;
     }
 
+    /**
+     * Set the amount to multiply the gold dropped from the enemy
+     * @param gold Amount to multiply the enemy gold by
+     */
+    public void artifactEnemyGold(double gold){
+        enemy.setGold(artifactEnemyGold);
+        artifactEnemyGold = gold;
+    }
+
     //Getters for variables
     public ComboList getComboList(){return combos;}
     public AbilityList getAbilityList(){return abilityList;}
+    public ArtifactList getArtifactList(){return artifactList;}
     public Array<Enemy> getEnemies(){return activeEnemies;}
     public Enemy getEnemy(){return enemy;}
     public Stage getStage(){return stage;}
@@ -272,6 +285,7 @@ public class GameRenderer {
     public Skin getSkin(){return skin;}
     public int getVersion(){return newestVersion;}
     public static String getNewestVersionString(){return newestVersionString;}
+    public double getArtifactEnemyGold(){return artifactEnemyGold;}
 
     /**
      * Dispose of assets

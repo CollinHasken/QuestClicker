@@ -71,13 +71,22 @@ public class Enemy extends Actor implements Pool.Poolable {
     }
 
     /**
-     * Set the health, gold and progress recieved
+     * Set the health, gold and progress received
      */
     private void set(){
         health = 10+ game.getHero().questCompleted*game.getHero().questCompleted*5*multiplier;
         totalHealth = health;
-        gold = 10 + (int)(game.getHero().questCompleted*5*multiplier);
+        gold = 10 + (int)(game.getHero().questCompleted*game.getArtifactEnemyGold()*multiplier*5);
         progress = (int) (multiplier*(game.getHero().questCompleted+1));
+    }
+
+    /**
+     * Multiply the gold dropped by the artifact amount
+     * @param artifactGold
+     */
+    public void setGold(double artifactGold){
+        gold /= game.getArtifactEnemyGold();
+        gold *= artifactGold;
     }
 
     @Override

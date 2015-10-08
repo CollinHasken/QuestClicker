@@ -25,7 +25,7 @@ public class HeroTable extends Table {
 
     final int FONTWIDTH = 100;
 
-    public ScrollPane container;
+    ScrollPane container;
     Skin skin;
     TextButton heroButton;
     Image heroImage;
@@ -187,4 +187,6 @@ public class HeroTable extends Table {
         comboGroups.get(0).add();
         comboGroups.get(0).updateState();
     }
+
+    public ScrollPane getContainer(){return container;}
 }

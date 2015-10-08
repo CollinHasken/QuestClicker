@@ -1,5 +1,6 @@
 package com.tophattiger.Helper.Abilities;
 
+import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.utils.Array;
 import com.tophattiger.GameWorld.GameRenderer;
 
@@ -38,9 +39,9 @@ public class AbilityList {
 
     /**
      * Add the actors to the scene
-     * @param stage Stage to put abilites into
+     * @param stage Stage to put abilities into
      */
-    public void addActors(com.badlogic.gdx.scenes.scene2d.Stage stage){
+    public void addActors(Stage stage){
         for(int i = 0; i < abilities.size;i++){
           stage.addActor(abilities.get(i));
         }

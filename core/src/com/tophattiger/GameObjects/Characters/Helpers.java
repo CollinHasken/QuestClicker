@@ -144,6 +144,16 @@ public class Helpers {
     }
 
     /**
+     * Multiply each helper's power by the artifacts damage
+     * @param amount Amount to multiply all damage
+     */
+    public void artifactDamage(double amount){
+        for(int i =0; i < DataHolder.helperAmount;i++){
+            helpers.get(i).setArtifactPower(amount);
+        }
+    }
+
+    /**
      * Increase helper attack speed
      * @param amount    Amount to increase attack speed
      * @param length    How long to keep extra speed

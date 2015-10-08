@@ -17,8 +17,8 @@ import com.tophattiger.UI.Table.ScrollTable;
  */
 public class HelperGroup {
 
-    public Label name, level, pLevel, gLevel;
-    public TextButton gold,power,buff;
+    Label name, level, pLevel, gLevel;
+    TextButton gold,power,buff;
     ScrollTable table;
     Image picture;
     GeneralHelper helper;

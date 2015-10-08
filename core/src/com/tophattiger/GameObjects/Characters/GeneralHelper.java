@@ -27,7 +27,7 @@ public class GeneralHelper extends Actor {
     boolean abilitySpeed;
     int level,pLevel,gLevel,positionX,positionY,attackFrames,projectileX,projectileY,xV0,yV0,projectileAnimationFrames,idleFrames;
     float animationTime,attackTime,eachProjectileTime,projectileTime,gravity,projectileAnimationTime,abilitySpeedTime,idleTime;
-    double totalPower,totalGold,autoPower,autoGold,autoPowerCost,autoGoldCost,abilitySpeedAmount;
+    double totalPower,totalGold,autoPower,autoGold,autoPowerCost,autoGoldCost,abilitySpeedAmount,artifactDamage;
     Buff buff1,buff2,buff3,buff4,buff5,buff6,buff7,buff8,buff9;
     FloatArray buffPower = new FloatArray();
     FloatArray buffGold = new FloatArray();
@@ -53,11 +53,12 @@ public class GeneralHelper extends Actor {
      * up or combo buffs
      * @param _helpers  Helper list to place the helper inside of
      */
-    public GeneralHelper(com.tophattiger.GameObjects.Characters.Helpers _helpers){
+    public GeneralHelper(Helpers _helpers){
         helpers = _helpers;
         totalGold = totalPower = autoPower = autoGold = autoPowerCost = autoGoldCost = 0;
         pLevel = gLevel = level = 0;
         abilitySpeedTime = projectileTime=0;
+        artifactDamage =1;
         abilitySpeed = false;
     }
 
@@ -297,6 +298,17 @@ public class GeneralHelper extends Actor {
      */
     public void undoComboPower(){
         comboPower.clear();
+        set();
+    }
+
+    /**
+     * Multiply amount from artifact to the power
+     * @param amount Amount to multiply power by
+     */
+    public void setArtifactPower(double amount){
+        autoPower /= artifactDamage;
+        autoPower *= amount;
+        artifactDamage = amount;
         set();
     }
 

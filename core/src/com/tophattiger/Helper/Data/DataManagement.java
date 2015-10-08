@@ -27,6 +27,7 @@ public  class DataManagement {
         jData.helperAmount = DataHolder.helperAmount;
         jData.combosUnlocked = game.getComboList().getCombosUnlocked();
         jData.abilitiesUnlocked = game.getAbilityList().getAbilitiesUnlocked();
+        jData.artifactsUnlocked = game.getArtifactList().getArtifactsUnlocked();
         JsonData.helpers.clear();
         JsonData.comboLevels.clear();
         JsonData.abilityLevels.clear();
@@ -37,6 +38,7 @@ public  class DataManagement {
         jData.comboLevel = JsonData.comboLevels;
         jData.helper = JsonData.helpers;
         jData.abilityLevel = JsonData.abilityLevels;
+        jData.artifact = JsonData.artifacts;
 
         Json json = new Json();
         writeFiles(fileName,json.toJson(jData));
@@ -72,6 +74,11 @@ public  class DataManagement {
                     JsonData.abilityLevels = jData.abilityLevel;
                     game.getAbilityList().setAbilitiesUnlocked(jData.abilitiesUnlocked);
                     game.getAbilityList().load();
+                    if(jData.currentVersion >= 9){
+                        JsonData.artifacts = jData.artifact;
+                        game.getArtifactList().setArtifactsUnlocked(jData.artifactsUnlocked);
+                        game.getArtifactList().load();
+                    }
                 }
             }
             else {
@@ -118,10 +125,12 @@ public  class DataManagement {
 
     /** Class to hold data for saving and loading*/
     public static class JsonData{
-        public int questCompleted,questRequired,helperAmount,touchLevel,combosUnlocked,abilitiesUnlocked,currentVersion;
+        public int questCompleted,questRequired,helperAmount,touchLevel,combosUnlocked,abilitiesUnlocked,currentVersion,artifactsUnlocked;
         public static IntArray abilityLevels = new IntArray();
         public static IntArray helpers = new IntArray();
         public static IntArray comboLevels = new IntArray();
+        public static IntArray artifacts = new IntArray();
+        IntArray artifact;
         IntArray comboLevel;
         IntArray helper;
         IntArray abilityLevel;
