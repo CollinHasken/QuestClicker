@@ -198,7 +198,7 @@ public class Hero extends Actor {
             setName(jData.name);
             setTouchCost(jData.touchCost);
             setTouchLevel(jData.touchLevel);
-            setArtifacts(jData.artifacts);
+            setArtifacts(jData.artifactsUnlocked);
         }
     }
 
@@ -214,7 +214,7 @@ public class Hero extends Actor {
         jData.touchCost = getTouchCost();
         jData.touchLevel = getTouchLevel();
         jData.name = getName();
-        jData.artifacts = getArtifacts();
+        jData.artifactsUnlocked = getArtifacts();
     }
 
     /**

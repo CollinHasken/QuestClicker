@@ -28,6 +28,7 @@ public class ResetButton extends ImageButton {
             @Override
             public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
                 DataManagement.reset(game);
+                game.hardReset();
                 return true;
             }
         });

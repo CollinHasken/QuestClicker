@@ -11,6 +11,7 @@ import com.badlogic.gdx.utils.Align;
 import com.tophattiger.GameWorld.GameRenderer;
 import com.tophattiger.Helper.Data.AssetLoader;
 import com.tophattiger.Helper.Data.DataHolder;
+import com.tophattiger.UI.Table.Artifact.ArtifactTable;
 import com.tophattiger.UI.Table.Helper.BuffScreen;
 import com.tophattiger.UI.Table.Hero.HeroTable;
 
@@ -26,7 +27,8 @@ public class UpgradeTable extends Table {
     Drawable sprite = new TextureRegionDrawable(AssetLoader.textureAtlas.findRegion("table"));
     ScrollTable helperTable;
     HeroTable heroTable;
-    SwitchTableButton heroButton,helperButton;
+    ArtifactTable artifactTable;
+    SwitchTableButton heroButton,helperButton,artifactButton;
     ScrollPane container;
     Label title;
 
@@ -39,9 +41,11 @@ public class UpgradeTable extends Table {
         super();
         game = _game;
         helperTable = new ScrollTable(_skin, game.getHelpers());
-        helperButton = new SwitchTableButton("Helpers",_skin,"power",helperTable,this);
         heroTable = new HeroTable(_skin,game.getHero(),game.getComboList(),game.getAbilityList());
+        artifactTable = new ArtifactTable(_skin,game.getArtifactList());
+        helperButton = new SwitchTableButton("Helpers",_skin,"power",helperTable,this);
         heroButton = new SwitchTableButton("Hero",_skin,"power",heroTable,this);
+        artifactButton = new SwitchTableButton("Artifacts",_skin,"power",artifactTable,this);
         this.setBackground(sprite);
         this.setFillParent(false);
         this.setHeight(1080f);
@@ -65,6 +69,16 @@ public class UpgradeTable extends Table {
             helperTable.setAsContainer(this);
             title.setText("Helper Upgrades");
             heroButton.setChecked(false);
+            artifactButton.setChecked(false);
+            clearChildren();
+            redraw();
+        }
+        else if(table == artifactTable){
+            tableInt = 2;
+            artifactTable.setAsContainer(this);
+            title.setText("Artifact Upgrades");
+            helperButton.setChecked(false);
+            heroButton.setChecked(false);
             clearChildren();
             redraw();
         }
@@ -73,6 +87,7 @@ public class UpgradeTable extends Table {
             heroTable.setAsContainer(this);
             title.setText("Hero Upgrades");
             helperButton.setChecked(false);
+            artifactButton.setChecked(false);
             clearChildren();
             redraw();
         }
@@ -112,6 +127,10 @@ public class UpgradeTable extends Table {
             helperTable.updateState();
             helperButton.setChecked(true);
         }
+        if(tableInt == 2){
+            artifactTable.updateState();
+            artifactButton.setChecked(true);
+        }
     }
 
     /**
@@ -128,6 +147,7 @@ public class UpgradeTable extends Table {
     public void loadTables(){
         helperTable.load();
         heroTable.load();
+        artifactTable.load();
     }
 
     /**
@@ -136,6 +156,13 @@ public class UpgradeTable extends Table {
     public void resetButton(){
         helperTable.reset();
         heroTable.reset();
+    }
+
+    /**
+     * Reset the artifact table when not retiring
+     */
+    public void hardReset(){
+        artifactTable.reset();
     }
 
     public BuffScreen getBuffScreen(){

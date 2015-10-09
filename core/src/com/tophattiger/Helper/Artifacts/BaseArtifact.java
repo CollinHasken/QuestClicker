@@ -17,6 +17,7 @@ public class BaseArtifact {
     String description;
     double amount,cost,originalAmount,currentAmount;
     int level;
+    boolean offering;
     TYPE type;
     Image picture;
     GameRenderer game;
@@ -33,6 +34,7 @@ public class BaseArtifact {
         type = _type;
         game = _game;
         cost = _cost;
+        offering = false;
         currentAmount = 0;
         level = 0;
         picture = new Image(AssetLoader.textureAtlas.findRegion(getName()));
@@ -107,6 +109,10 @@ public class BaseArtifact {
         cost = 0.5*(level)*(level) + 2;
     }
 
+    public void switchOffering(){offering = !offering;}
+
+    public boolean isOffering(){return offering;}
+
     public double getCost(){return cost;}
 
     public int getLevel(){return level;}
@@ -145,6 +151,8 @@ public class BaseArtifact {
      */
     public void save(){
         DataManagement.JsonData.artifacts.add(level);
+        if(offering)
+            DataManagement.JsonData.offeringArtifact = this;
     }
 
 }

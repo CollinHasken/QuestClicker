@@ -16,9 +16,14 @@ public class ArtifactGroup {
     ArtifactTable table;
     Image picture;
     Label level, description,currentAmount;
-    TextButton abilityButton;
+    TextButton artifactButton;
     BaseArtifact artifact;
 
+    /**
+     * Group to handle artifact upgrades. Has amount, description, picture and button
+     * @param _table Table to add to
+     * @param _artifact Artifact for group
+     */
     public ArtifactGroup(ArtifactTable _table, BaseArtifact _artifact){
         table = _table;
         artifact = _artifact;
@@ -28,22 +33,23 @@ public class ArtifactGroup {
         description.setWrap(true);
         description.setAlignment(Align.right);
         picture = artifact.getPicture();
-        abilityButton = new TextButton(Gold.getNumberWithSuffix(artifact.getCost()),table.skin,"gold");
-        abilityButton.setDisabled(true);
-        abilityButton.addListener(new InputListener() {
+        artifactButton = new TextButton(Gold.getNumberWithSuffix(artifact.getCost()),table.skin,"gold");
+        artifactButton.setDisabled(true);
+        artifactButton.addListener(new InputListener() {
 
             @Override
             public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
                 super.touchDown(event, x, y, pointer, button);
-                if (!abilityButton.isChecked() && artifact.getCost() <= Gold.getGold()) {
+                if (!artifactButton.isChecked() && artifact.getCost() <= Gold.getGold()) {  //If the user has enough gold
                     Gold.subtract(artifact.getCost());
                     artifact.level();
-                    abilityButton.setText(Gold.getNumberWithSuffix(artifact.getCost()));
+                    artifactButton.setText(Gold.getNumberWithSuffix(artifact.getCost()));
                     level.setText("Level " + Gold.getNumberWithSuffix(artifact.getLevel()));
                     currentAmount.setText("Current: " + Gold.getNumberWithSuffix(artifact.getCurrentAmount()));
                     description.setText(artifact.getDescription());
-                    if (artifact.getLevel() == 1 && table.getAbilitySize() < table.getAbilityMax()) {
-                        table.addAbility();
+                    if (artifact.getLevel() == 1) {     //If this is the first level, add another artifact to the table
+                        artifact.switchOffering();
+                        table.addArtifact();
                     }
                     return true;
                 }
@@ -52,26 +58,34 @@ public class ArtifactGroup {
         });
         updateState();
     }
+
+    /**
+     * Check whether the button should be able to press or not if the player has enough goldd
+     */
     public void updateState(){
         if(Gold.isLess(artifact.getCost())){
-            abilityButton.setChecked(true);
+            artifactButton.setChecked(true);
         }
-        else abilityButton.setChecked(false);
+        else artifactButton.setChecked(false);
     }
+
+    /**
+     * Resets the text and button
+     */
     public void reset(){
         level.setText("Level " + Gold.getNumberWithSuffix(artifact.getLevel()));
         currentAmount.setText("Current: " + Gold.getNumberWithSuffix(artifact.getCurrentAmount()));
         description.setText(artifact.getDescription());
-        abilityButton.setText(Gold.getNumberWithSuffix(artifact.getCost()));
+        artifactButton.setText(Gold.getNumberWithSuffix(artifact.getCost()));
     }
 
+    /**
+     * Add the table elements to the table
+     */
     public void add(){
         table.add(picture).width(128).left().padLeft(20f);
-        if(table.getNameTextLength()>= 114)
-            table.add(description).pad(5, 20, 0, 20).width(560-table.getNameTextLength());
-        else
-            table.add(description).pad(5, 20, 0, 20).width(446);
-        table.add(abilityButton).width(200f).row();
+        table.add(description).pad(5, 20, 0, 20).width(446);
+        table.add(artifactButton).width(200f).row();
         table.add(level).left().padLeft(20f);table.add();table.add(currentAmount).row();
     }
 }

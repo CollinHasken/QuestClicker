@@ -5,6 +5,7 @@ import com.badlogic.gdx.files.FileHandle;
 import com.badlogic.gdx.utils.IntArray;
 import com.badlogic.gdx.utils.Json;
 import com.tophattiger.GameWorld.GameRenderer;
+import com.tophattiger.Helper.Artifacts.BaseArtifact;
 
 import java.util.Calendar;
 
@@ -31,9 +32,11 @@ public  class DataManagement {
         JsonData.helpers.clear();
         JsonData.comboLevels.clear();
         JsonData.abilityLevels.clear();
+        JsonData.artifacts.clear();
         game.getHelpers().saveGame();
         game.getComboList().save();
         game.getAbilityList().save();
+        game.getArtifactList().save();
 
         jData.comboLevel = JsonData.comboLevels;
         jData.helper = JsonData.helpers;
@@ -130,6 +133,7 @@ public  class DataManagement {
         public static IntArray helpers = new IntArray();
         public static IntArray comboLevels = new IntArray();
         public static IntArray artifacts = new IntArray();
+        public static BaseArtifact offeringArtifact;
         IntArray artifact;
         IntArray comboLevel;
         IntArray helper;

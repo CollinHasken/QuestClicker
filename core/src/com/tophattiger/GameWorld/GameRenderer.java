@@ -268,6 +268,14 @@ public class GameRenderer {
         artifactEnemyGold = gold;
     }
 
+    /**
+     * Resets everything instead of only when retiring
+     */
+    public void hardReset(){
+        table.hardReset();
+        artifactList.reset();
+    }
+
     //Getters for variables
     public ComboList getComboList(){return combos;}
     public AbilityList getAbilityList(){return abilityList;}
