@@ -134,7 +134,7 @@ public class UpgradeTable extends Table {
     }
 
     /**
-     * Update teh name in the hero table
+     * Update the name in the hero table
      */
     public void updateName(){
         heroTable.setNameText();

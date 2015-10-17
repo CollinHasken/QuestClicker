@@ -94,11 +94,11 @@ public class BaseArtifact {
      */
     public String getName(){
         if(type == TYPE.ALLHELPERDAMAGE)
-            return "Moral Banner";
+            return "Moral-Banner";
         else if(type == TYPE.HERODAMAGE)
-            return "Cosmic Ghost Blade";
+            return "Cosmic-Ghost-Sword";
         else if(type == TYPE.ENEMYGOLD)
-            return "Golden Skinning Knife";
+            return "Golden-Skinning-Knife";
         return "";
     }
     public String getDescription(){
