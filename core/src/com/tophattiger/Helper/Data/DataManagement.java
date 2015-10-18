@@ -128,7 +128,7 @@ public  class DataManagement {
 
     /** Class to hold data for saving and loading*/
     public static class JsonData{
-        public int questCompleted,questRequired,questSelect,helperAmount,touchLevel,combosUnlocked,abilitiesUnlocked,currentVersion,artifactsUnlocked;
+        public int questCompleted,questRequired,questSelect,helperAmount,touchLevel,combosUnlocked,abilitiesUnlocked,currentVersion,artifactsUnlocked, inheritance;
         public boolean hasRetired;
         public static IntArray abilityLevels = new IntArray();
         public static IntArray helpers = new IntArray();

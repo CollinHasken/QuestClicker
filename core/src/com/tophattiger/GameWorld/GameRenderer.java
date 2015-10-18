@@ -32,7 +32,7 @@ import com.tophattiger.UI.Table.UpgradeTable;
 public class GameRenderer {
 
     //Update to keep record of which version is downloaded
-    private static final int newestVersion = 8;
+    private static final int newestVersion = 9;
     private static final String newestVersionString = "0.2.3 ";
 
     Stage stage;

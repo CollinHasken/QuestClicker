@@ -25,7 +25,7 @@ public class Hero extends Actor {
     final int positionX = 998;
     final int positionY = 414;
 
-    int questCompleted,questRequired, touchLevel,artifacts,questSelect;
+    int questCompleted,questRequired, touchLevel,inheritance,questSelect;
     double questProgress,touchCost,touchPower,artifactDamage;
     float animationTime,levelAnimationTime;
     boolean level,retired;
@@ -39,7 +39,7 @@ public class Hero extends Actor {
      * The hero stores the click data, quest data, name and level
      */
     public Hero(){
-        questCompleted = artifacts= 0;
+        questCompleted = inheritance= 0;
         touchPower = artifactDamage = 1;
         questProgress = 0;
         rand = new Random();
@@ -131,11 +131,18 @@ public class Hero extends Actor {
     }
 
     /**
-     * Restart the game with artifacts based off of how many enemies defeated and other stats
+     * Restart the game with artifactsUnlocked based off of how many enemies defeated and other stats
      */
     public void retire(){
         retired = true;
-        artifacts += touchLevel; //Need to come up with algorithm
+        inheritance += touchLevel; //Need to come up with algorithm
+    }
+
+    /**
+     * subtract inheritance after bying artifact
+     */
+    public void buyArtifact(double cost){
+        inheritance -= cost;
     }
 
     /**
@@ -230,9 +237,8 @@ public class Hero extends Actor {
     public int getTouchLevel(){return touchLevel;}
     public  void setTouchLevel(int _level){touchLevel = _level;}
 
-    public int getArtifacts(){return artifacts;}
-    public void setArtifacts(int amount){artifacts = amount;}
     public boolean hasRetired(){return retired;}
+    public int getInheritance(){return inheritance;}
 
     public String getTouchPowerString(){return Gold.getNumberWithSuffix(touchPower);}
     public double getTouchPower(){return touchPower;}
@@ -255,10 +261,10 @@ public class Hero extends Actor {
             setName(jData.name);
             setTouchCost(jData.touchCost);
             setTouchLevel(jData.touchLevel);
-            setArtifacts(jData.artifactsUnlocked);
             retired = jData.hasRetired;
             questSelect = jData.questSelect;
             setQuestDescription(questSelect);
+            inheritance = jData.inheritance;
         }
     }
 
@@ -274,9 +280,9 @@ public class Hero extends Actor {
         jData.touchCost = getTouchCost();
         jData.touchLevel = getTouchLevel();
         jData.name = getName();
-        jData.artifactsUnlocked = getArtifacts();
         jData.hasRetired = retired;
         jData.questSelect = questSelect;
+        jData.inheritance = inheritance;
     }
 
     /**
@@ -298,6 +304,6 @@ public class Hero extends Actor {
      */
     public void hardReset(){
         retired = false;
-        artifacts = 0;
+        inheritance = 0;
     }
 }

@@ -144,7 +144,7 @@ public class Helpers {
     }
 
     /**
-     * Multiply each helper's power by the artifacts damage
+     * Multiply each helper's power by the artifactsUnlocked damage
      * @param amount Amount to multiply all damage
      */
     public void artifactDamage(double amount){

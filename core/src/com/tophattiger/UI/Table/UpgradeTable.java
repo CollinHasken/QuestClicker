@@ -11,6 +11,7 @@ import com.badlogic.gdx.utils.Align;
 import com.tophattiger.GameWorld.GameRenderer;
 import com.tophattiger.Helper.Data.AssetLoader;
 import com.tophattiger.Helper.Data.DataHolder;
+import com.tophattiger.Helper.Data.Gold;
 import com.tophattiger.UI.Table.Artifact.ArtifactTable;
 import com.tophattiger.UI.Table.Helper.BuffScreen;
 import com.tophattiger.UI.Table.Hero.HeroTable;
@@ -42,7 +43,7 @@ public class UpgradeTable extends Table {
         game = _game;
         helperTable = new ScrollTable(_skin, game.getHelpers());
         heroTable = new HeroTable(_skin,game.getHero(),game.getComboList(),game.getAbilityList());
-        artifactTable = new ArtifactTable(_skin,game.getArtifactList());
+        artifactTable = new ArtifactTable(_skin,game.getArtifactList(),game.getHero());
         helperButton = new SwitchTableButton("Helpers",_skin,"power",helperTable,this);
         heroButton = new SwitchTableButton("Hero",_skin,"power",heroTable,this);
         artifactButton = new SwitchTableButton("Artifacts",_skin,"power",artifactTable,this);
@@ -76,7 +77,7 @@ public class UpgradeTable extends Table {
         else if(table == artifactTable){
             tableInt = 2;
             artifactTable.setAsContainer(this);
-            title.setText("Artifact Upgrades");
+            title.setText("Artifact Upgrades: " + Gold.getNumberWithSuffix(game.getHero().getInheritance()));
             helperButton.setChecked(false);
             heroButton.setChecked(false);
             clearChildren();

@@ -146,6 +146,8 @@ public class BaseArtifact {
             if(level > 0)
                 activate();
         }
+        if(DataManagement.JsonData.offeringArtifact == this)
+            offering = true;
     }
 
     /**
