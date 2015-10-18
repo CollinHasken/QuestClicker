@@ -63,25 +63,25 @@ public  class DataManagement {
             game.getHero().load(jData);
             game.getEnemy().init();
             //Check for version recorded to make sure version conflicts don't arise when updating
+            if(jData.currentVersion >= 9){
+                JsonData.artifacts = jData.artifact;
+                game.getArtifactList().setArtifactsUnlocked(jData.artifactsUnlocked);
+                game.getArtifactList().load();
+            }
             if(jData.currentVersion >= 1) {
                DataHolder.pastTime = jData.closeTime;
                 DataHolder.helperAmount = jData.helperAmount;
+                JsonData.helpers = jData.helper;
+                game.getHelpers().loadGame();
                 DataHolder.timeDif = (DataHolder.currentTime.getTimeInMillis() - DataHolder.pastTime.getTimeInMillis())/1000;
                 game.autoGold();
                 game.getComboList().setCombosUnlocked(jData.combosUnlocked);
                 JsonData.comboLevels = jData.comboLevel;
-                JsonData.helpers = jData.helper;
-                game.getHelpers().loadGame();
                 game.getComboList().load();
                 if(jData.currentVersion >= 5){
                     JsonData.abilityLevels = jData.abilityLevel;
                     game.getAbilityList().setAbilitiesUnlocked(jData.abilitiesUnlocked);
                     game.getAbilityList().load();
-                    if(jData.currentVersion >= 9){
-                        JsonData.artifacts = jData.artifact;
-                        game.getArtifactList().setArtifactsUnlocked(jData.artifactsUnlocked);
-                        game.getArtifactList().load();
-                    }
                 }
             }
             else {
@@ -128,7 +128,8 @@ public  class DataManagement {
 
     /** Class to hold data for saving and loading*/
     public static class JsonData{
-        public int questCompleted,questRequired,helperAmount,touchLevel,combosUnlocked,abilitiesUnlocked,currentVersion,artifactsUnlocked;
+        public int questCompleted,questRequired,questSelect,helperAmount,touchLevel,combosUnlocked,abilitiesUnlocked,currentVersion,artifactsUnlocked;
+        public boolean hasRetired;
         public static IntArray abilityLevels = new IntArray();
         public static IntArray helpers = new IntArray();
         public static IntArray comboLevels = new IntArray();

@@ -61,7 +61,7 @@ public class Text extends Actor {
                 font.draw(batch, layout, (int) (1650 - layout.width/2), 1050);
                 break;
             case QUEST:
-                layout.setText(font,"Quest " + Gold.getNumberWithSuffix(stage.getHero().getQuestCompleted()));
+                layout.setText(font,"Quest " + (Gold.getNumberWithSuffix(stage.getHero().getQuestCompleted())) + ": " + stage.getHero().getQuestDescription());
                 font.draw(batch,layout,DataHolder.width*.5f - layout.width/2,128);
                 break;
             case HEALTH:

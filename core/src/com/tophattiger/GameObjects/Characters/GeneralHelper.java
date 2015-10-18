@@ -80,7 +80,8 @@ public class GeneralHelper extends Actor {
                 if(abilitySpeedTime < 0){
                     abilitySpeedTime = 0;
                     abilitySpeed = false;
-                    eachProjectileTime *= abilitySpeedAmount;   //Decrease the time inbetween projectiles
+                    eachProjectileTime *= abilitySpeedAmount;   //reset the time in between projectiles
+                    attack.setFrameDuration((attackTime/attackFrames)*(float)abilitySpeedAmount);   //reset the animation speed
                 }
             }
 
@@ -322,6 +323,7 @@ public class GeneralHelper extends Actor {
         abilitySpeedAmount = amount;
         abilitySpeedTime = length;
         abilitySpeed = true;
+        attack.setFrameDuration((attackTime/attackFrames)/(float)amount);   //Speed up animation
     }
 
     public String getBuffDesc(int i){

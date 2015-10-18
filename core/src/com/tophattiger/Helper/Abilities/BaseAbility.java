@@ -226,6 +226,9 @@ public class BaseAbility extends Button{
         else if(type == TYPE.GOLDDROP){
             description += "drop "+ Gold.getNumberWithSuffix(amount) + " gold every tap";
         }
+        else if(type == TYPE.RETIRE){
+            description += "restart with " + Gold.getNumberWithSuffix(amount) + " artifacts";
+        }
     }
 
     /**

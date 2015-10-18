@@ -9,6 +9,8 @@ import com.tophattiger.Helper.Data.AssetLoader;
 import com.tophattiger.Helper.Data.DataManagement;
 import com.tophattiger.Helper.Data.Gold;
 
+import java.util.Random;
+
 /**
  * Created by Collin on 5/27/2015.
  */
@@ -23,12 +25,13 @@ public class Hero extends Actor {
     final int positionX = 998;
     final int positionY = 414;
 
-    int questCompleted,questRequired, touchLevel,artifacts;
+    int questCompleted,questRequired, touchLevel,artifacts,questSelect;
     double questProgress,touchCost,touchPower,artifactDamage;
     float animationTime,levelAnimationTime;
-    boolean level;
+    boolean level,retired;
+    Random rand;
     Image picture;
-    String name;
+    String name,questDescription;
     Animation idle,attack,animation,levelAnimation;
     TextureRegion frame,levelFrame;
 
@@ -39,11 +42,13 @@ public class Hero extends Actor {
         questCompleted = artifacts= 0;
         touchPower = artifactDamage = 1;
         questProgress = 0;
+        rand = new Random();
+        newQuest();
         animationTime = 0;
         touchLevel = 1;
         touchCost = 10;
         name = "Hero's Name";
-        level = false;
+        retired = level = false;
         idle = new Animation(idleTime/idleFrames,AssetLoader.textureAtlas.findRegions("heroIdle"));
         attack = new Animation(attackTime/attackFrames,AssetLoader.textureAtlas.findRegions("heroAttack"));
         levelAnimation = new Animation(levelTime/levelFrames,AssetLoader.textureAtlas.findRegions("level"));
@@ -80,7 +85,7 @@ public class Hero extends Actor {
             batch.draw(levelFrame,positionX-80,positionY-40,256,256);
         }
         frame = animation.getKeyFrame(animationTime,true);
-        batch.draw(frame,positionX,positionY,256,256);
+        batch.draw(frame, positionX, positionY, 256, 256);
     }
 
     /**
@@ -126,6 +131,62 @@ public class Hero extends Actor {
     }
 
     /**
+     * Restart the game with artifacts based off of how many enemies defeated and other stats
+     */
+    public void retire(){
+        retired = true;
+        artifacts += touchLevel; //Need to come up with algorithm
+    }
+
+    /**
+     * Set the quest description to a random quest from a pool of quests.
+     */
+    public void newQuest(){
+        int newQuestNumber = questSelect;
+        int totalQuests = 10;
+        while(newQuestNumber == questSelect){
+            newQuestNumber = rand.nextInt(totalQuests);
+        }
+        questSelect = newQuestNumber;
+        setQuestDescription(questSelect);
+    }
+
+    public void setQuestDescription(int questNumber){
+        switch (questNumber){
+            case 0:
+                questDescription = "Raise your self-esteem by defeating animals.";
+                break;
+            case 1:
+                questDescription = "Find the holy stick of butt scratching.";
+                break;
+            case 2:
+                questDescription = "Rescue Mike Hawk from being eaten by wild animals.";
+                break;
+            case 3:
+                questDescription = "Run around in circles for a bit.";
+                break;
+            case 4:
+                questDescription = "Hang on while I think of another quest.";
+                break;
+            case 5:
+                questDescription = "Go to the farthest corner of the world. Then clean it.";
+                break;
+            case 6:
+                questDescription = "Grab me some ice cream, I'm starving!";
+                break;
+            case 7:
+                questDescription = "Fix our over population problem. Or was it endangered...";
+                break;
+            case 8:
+                questDescription = "Find a date for the royal ball. Ask the princess, or prince. I don't judge.";
+                break;
+            case 9:
+                questDescription = "Find your spirit animal. My guess is it's a chicken. A baby chicken.";
+                break;
+
+        }
+    }
+    /**
      * Change the attack power by multiplying by the damage from the combo
      * @param amount Amount to multiply damage by
      */
@@ -151,12 +212,6 @@ public class Hero extends Actor {
         artifactDamage = amount;
     }
 
-    /**
-     * Restart the game with artifacts based off of how many enemies defeated and other stats
-     */
-    public void retire(){
-        artifacts += touchLevel; //Need to come up with algorithm
-    }
     public String getName(){
         return name;
     }
@@ -177,13 +232,15 @@ public class Hero extends Actor {
 
     public int getArtifacts(){return artifacts;}
     public void setArtifacts(int amount){artifacts = amount;}
+    public boolean hasRetired(){return retired;}
 
     public String getTouchPowerString(){return Gold.getNumberWithSuffix(touchPower);}
     public double getTouchPower(){return touchPower;}
     public void setTouchPower(double _power){touchPower = _power;}
-    public int getQuestCompleted(){return questCompleted;}
+    public int getQuestCompleted(){return questCompleted+1;}
     public int getQuestRequired(){return questRequired;}
     public double getQuestProgress(){return questProgress;}
+    public String getQuestDescription(){return questDescription;}
 
     /**
      * Load the quest, name and power data from JSON
@@ -199,6 +256,9 @@ public class Hero extends Actor {
             setTouchCost(jData.touchCost);
             setTouchLevel(jData.touchLevel);
             setArtifacts(jData.artifactsUnlocked);
+            retired = jData.hasRetired;
+            questSelect = jData.questSelect;
+            setQuestDescription(questSelect);
         }
     }
 
@@ -215,6 +275,8 @@ public class Hero extends Actor {
         jData.touchLevel = getTouchLevel();
         jData.name = getName();
         jData.artifactsUnlocked = getArtifacts();
+        jData.hasRetired = retired;
+        jData.questSelect = questSelect;
     }
 
     /**
@@ -226,7 +288,16 @@ public class Hero extends Actor {
         questProgress = 0;
         questRequired = 10;
         name = "Hero";
+        newQuest();
         touchCost = 10;
         touchLevel = 1;
+    }
+
+    /**
+     * Resets fully
+     */
+    public void hardReset(){
+        retired = false;
+        artifacts = 0;
     }
 }

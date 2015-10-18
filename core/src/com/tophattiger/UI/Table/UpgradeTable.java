@@ -97,9 +97,13 @@ public class UpgradeTable extends Table {
      * Redraw the table
      */
     private void redraw(){
-        this.add(title).fill().height(100f).pad(100f, 0, 20f, 0).colspan(2).row();
-        this.add(heroButton).padBottom(25f);this.add(helperButton).width(250).padBottom(25f).row();
-        this.add(container).expand().align(Align.topLeft).padBottom(100f).colspan(2);
+        this.add(title).fill().height(100f).pad(100f, 0, 20f, 0).colspan(3).row();
+        this.add(heroButton).padBottom(25f);this.add(helperButton).width(250).padBottom(25f);
+        if(game.getHero().hasRetired())
+            this.add(artifactButton).padBottom(25f);
+        this.row();
+        this.add(container).expand().align(Align.topLeft).padBottom(100f).colspan(3);
+        this.debug();
     }
 
     /**
@@ -148,6 +152,8 @@ public class UpgradeTable extends Table {
         helperTable.load();
         heroTable.load();
         artifactTable.load();
+        clearChildren();
+        redraw();
     }
 
     /**

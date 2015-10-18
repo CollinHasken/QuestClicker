@@ -40,7 +40,7 @@ public class ArtifactGroup {
             @Override
             public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
                 super.touchDown(event, x, y, pointer, button);
-                if (!artifactButton.isChecked() && artifact.getCost() <= Gold.getGold()) {  //If the user has enough gold
+                if (!artifactButton.isChecked() && artifact.getCost() <= table.getHero().getArtifacts()) {  //If the user has enough gold
                     Gold.subtract(artifact.getCost());
                     artifact.level();
                     artifactButton.setText(Gold.getNumberWithSuffix(artifact.getCost()));

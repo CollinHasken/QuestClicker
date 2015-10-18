@@ -82,7 +82,7 @@ public class Enemy extends Actor implements Pool.Poolable {
 
     /**
      * Multiply the gold dropped by the artifact amount
-     * @param artifactGold
+     * @param artifactGold Amount to increase gold dropping from artifacts
      */
     public void setGold(double artifactGold){
         gold /= game.getArtifactEnemyGold();
@@ -106,6 +106,7 @@ public class Enemy extends Actor implements Pool.Poolable {
         }
         if(DeathTime < enemyTime && newEnemy){      //If the timer is past the buffer and there needs to be a new enemy, create one
             game.newEnemy();
+            game.dropCoins(gold,coins);
             newEnemy = false;
         }
         if(hit && this.animation.isAnimationFinished(enemyTime)){   //If the enemies been hit and the animation is finished, go back to idleling
@@ -174,7 +175,6 @@ public class Enemy extends Actor implements Pool.Poolable {
         animation = eDead;
         enemyTime = 0;
         newEnemy = true;
-        game.dropCoins(gold,coins);
     }
 
     public boolean isDead(){return dead;}

@@ -273,6 +273,7 @@ public class GameRenderer {
      */
     public void hardReset(){
         table.hardReset();
+        hero.hardReset();
         artifactList.reset();
     }
 

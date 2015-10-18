@@ -22,7 +22,7 @@ public class ArtifactList {
     public ArtifactList(GameRenderer _game){
         game = _game;
         createArtifacts();
-        artifactsUnlocked = 1;
+        artifactsUnlocked = 0;
         rand = new Random();
     }
 
@@ -52,11 +52,13 @@ public class ArtifactList {
     public BaseArtifact getRandomArtifact(){
         if(artifactsUnlocked >= artifacts.size)
             return null;
-        for(int i =0; i < artifacts.size;i = rand.nextInt()){
-            if(artifacts.get(i).getLevel() != 0)
-                return artifacts.get(i);
-        }
-        return null;
+       while(true){
+           int artifact = rand.nextInt(artifacts.size);
+           if(artifacts.get(artifact).getLevel() == 0){
+               artifacts.get(artifact).switchOffering();
+               return artifacts.get(artifact);
+           }
+       }
     }
 
     public BaseArtifact getArtifact(int i){

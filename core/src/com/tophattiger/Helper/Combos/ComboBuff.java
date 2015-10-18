@@ -86,10 +86,10 @@ public class ComboBuff {
                 game.getHelpers().undoComboDamage();
             }
             else if(type == TYPE.HERODAMAGE){
-                game.getHero().undoComboDamage(amount);
+                game.getHero().undoComboDamage(currentAmount);
             }
             else if(type == TYPE.GOLD){
-                game.undoComboGold(amount);
+                game.undoComboGold(currentAmount);
             }
             active = false;
         }

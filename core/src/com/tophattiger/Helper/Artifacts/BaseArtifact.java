@@ -143,6 +143,8 @@ public class BaseArtifact {
             currentAmount = 1.5*level;
             setDescription();
             setCost();
+            if(level > 0)
+                activate();
         }
     }
 
