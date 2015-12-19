@@ -103,7 +103,6 @@ public class UpgradeTable extends Table {
             this.add(artifactButton).padBottom(25f);
         this.row();
         this.add(container).expand().align(Align.topLeft).padBottom(100f).colspan(3);
-        this.debug();
     }
 
     /**
