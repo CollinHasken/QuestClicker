@@ -144,7 +144,7 @@ public class GameRenderer {
     public void loadAssets(){
         DataHolder.Initialize();
 
-        hero = new Hero();
+        hero = new Hero(this);
         enemy = enemyPool.obtain();
         enemy.init();
         activeEnemies.add(enemy);

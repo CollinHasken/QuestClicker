@@ -575,104 +575,104 @@ octopusIdle
   orig: 512, 512
   offset: 0, 0
   index: 0
-Bob
+abilityRetireIcon
   rotate: false
   xy: 521, 269
   size: 128, 128
   orig: 128, 128
   offset: 0, 0
   index: -1
-BobAttack
+Bob
   rotate: false
   xy: 521, 139
+  size: 128, 128
+  orig: 128, 128
+  offset: 0, 0
+  index: -1
+BobAttack
+  rotate: false
+  xy: 521, 9
   size: 128, 128
   orig: 128, 128
   offset: 0, 0
   index: 0
 BobAttack
   rotate: false
-  xy: 521, 139
+  xy: 521, 9
   size: 128, 128
   orig: 128, 128
   offset: 0, 0
   index: 5
 BobAttack
   rotate: false
-  xy: 521, 9
+  xy: 651, 269
   size: 128, 128
   orig: 128, 128
   offset: 0, 0
   index: 1
 BobAttack
   rotate: false
-  xy: 521, 9
+  xy: 651, 269
   size: 128, 128
   orig: 128, 128
   offset: 0, 0
   index: 4
 BobAttack
   rotate: false
-  xy: 651, 269
+  xy: 651, 139
   size: 128, 128
   orig: 128, 128
   offset: 0, 0
   index: 2
 BobAttack
   rotate: false
-  xy: 651, 269
+  xy: 651, 139
   size: 128, 128
   orig: 128, 128
   offset: 0, 0
   index: 3
 BobIdle
   rotate: false
-  xy: 651, 139
+  xy: 651, 9
   size: 128, 128
   orig: 128, 128
   offset: 0, 0
   index: 0
-BobIdle
-  rotate: false
-  xy: 651, 139
-  size: 128, 128
-  orig: 128, 128
-  offset: 0, 0
-  index: 2
 BobIdle
   rotate: false
   xy: 651, 9
   size: 128, 128
   orig: 128, 128
   offset: 0, 0
-  index: 1
-Cosmic-Ghost-Sword
+  index: 2
+BobIdle
   rotate: false
   xy: 781, 269
   size: 128, 128
   orig: 128, 128
   offset: 0, 0
-  index: -1
-default128
+  index: 1
+Cosmic-Ghost-Sword
   rotate: false
   xy: 781, 139
   size: 128, 128
   orig: 128, 128
   offset: 0, 0
   index: -1
-Golden-Skinning-Knife
+default128
   rotate: false
   xy: 781, 9
   size: 128, 128
   orig: 128, 128
   offset: 0, 0
   index: -1
-heroAttack
+Golden-Skinning-Knife
   rotate: false
   xy: 911, 269
   size: 128, 128
   orig: 128, 128
   offset: 0, 0
-  index: 0
+  index: -1
 octopusIdle
   rotate: false
   xy: 1029, 399
@@ -693,140 +693,140 @@ heroAttack
   size: 128, 128
   orig: 128, 128
   offset: 0, 0
-  index: 1
+  index: 0
 heroAttack
   rotate: false
   xy: 911, 9
   size: 128, 128
   orig: 128, 128
   offset: 0, 0
-  index: 2
+  index: 1
 heroAttack
   rotate: false
   xy: 1041, 269
   size: 128, 128
   orig: 128, 128
   offset: 0, 0
-  index: 3
+  index: 2
 heroAttack
   rotate: false
   xy: 1041, 139
   size: 128, 128
   orig: 128, 128
   offset: 0, 0
-  index: 4
+  index: 3
 heroAttack
   rotate: false
   xy: 1041, 9
   size: 128, 128
   orig: 128, 128
   offset: 0, 0
+  index: 4
+heroAttack
+  rotate: false
+  xy: 1171, 269
+  size: 128, 128
+  orig: 128, 128
+  offset: 0, 0
   index: 5
 heroIdle
   rotate: false
-  xy: 1171, 269
+  xy: 1171, 139
   size: 128, 128
   orig: 128, 128
   offset: 0, 0
   index: 0
 heroIdle
   rotate: false
-  xy: 1171, 139
+  xy: 1171, 9
   size: 128, 128
   orig: 128, 128
   offset: 0, 0
   index: 1
 heroIdle
   rotate: false
-  xy: 1171, 139
+  xy: 1171, 9
   size: 128, 128
   orig: 128, 128
   offset: 0, 0
   index: 6
 heroIdle
   rotate: false
-  xy: 1171, 9
+  xy: 1301, 269
   size: 128, 128
   orig: 128, 128
   offset: 0, 0
   index: 2
 heroIdle
   rotate: false
-  xy: 1171, 9
+  xy: 1301, 269
   size: 128, 128
   orig: 128, 128
   offset: 0, 0
   index: 5
 heroIdle
   rotate: false
-  xy: 1301, 269
+  xy: 1301, 139
   size: 128, 128
   orig: 128, 128
   offset: 0, 0
   index: 3
 heroIdle
   rotate: false
-  xy: 1301, 269
+  xy: 1301, 139
   size: 128, 128
   orig: 128, 128
   offset: 0, 0
   index: 4
 heroMug
   rotate: false
-  xy: 1301, 139
+  xy: 1301, 9
   size: 128, 128
   orig: 128, 128
   offset: 0, 0
   index: -1
 level
   rotate: false
-  xy: 1301, 9
+  xy: 1431, 269
   size: 128, 128
   orig: 128, 128
   offset: 0, 0
   index: 0
 level
   rotate: false
-  xy: 1431, 269
+  xy: 1431, 139
   size: 128, 128
   orig: 128, 128
   offset: 0, 0
   index: 1
 level
   rotate: false
-  xy: 1431, 139
+  xy: 1431, 9
   size: 128, 128
   orig: 128, 128
   offset: 0, 0
   index: 2
 level
   rotate: false
-  xy: 1431, 9
+  xy: 1543, 783
   size: 128, 128
   orig: 128, 128
   offset: 0, 0
   index: 3
 level
   rotate: false
-  xy: 1543, 783
+  xy: 1543, 653
   size: 128, 128
   orig: 128, 128
   offset: 0, 0
   index: 4
 level
   rotate: false
-  xy: 1543, 653
-  size: 128, 128
-  orig: 128, 128
-  offset: 0, 0
-  index: 5
-level
-  rotate: false
   xy: 1543, 523
   size: 128, 128
   orig: 128, 128
   offset: 0, 0
-  index: 6
+  index: 5
 buffButton
   rotate: false
   xy: 1543, 457
@@ -840,140 +840,140 @@ level
   size: 128, 128
   orig: 128, 128
   offset: 0, 0
-  index: 7
+  index: 6
 level
   rotate: false
   xy: 1673, 653
   size: 128, 128
   orig: 128, 128
   offset: 0, 0
-  index: 8
+  index: 7
 level
   rotate: false
   xy: 1673, 523
   size: 128, 128
   orig: 128, 128
   offset: 0, 0
-  index: 9
+  index: 8
 level
   rotate: false
   xy: 1705, 393
   size: 128, 128
   orig: 128, 128
   offset: 0, 0
-  index: 10
+  index: 9
 level
   rotate: false
   xy: 1561, 327
   size: 128, 128
   orig: 128, 128
   offset: 0, 0
-  index: 11
-Moral-Banner
+  index: 10
+level
   rotate: false
   xy: 1803, 783
   size: 128, 128
   orig: 128, 128
   offset: 0, 0
-  index: -1
-Nina
+  index: 11
+Moral-Banner
   rotate: false
   xy: 1803, 653
   size: 128, 128
   orig: 128, 128
   offset: 0, 0
   index: -1
-NinaAttack
+Nina
   rotate: false
   xy: 1803, 523
+  size: 128, 128
+  orig: 128, 128
+  offset: 0, 0
+  index: -1
+NinaAttack
+  rotate: false
+  xy: 1835, 393
   size: 128, 128
   orig: 128, 128
   offset: 0, 0
   index: 0
 NinaAttack
   rotate: false
-  xy: 1803, 523
+  xy: 1835, 393
   size: 128, 128
   orig: 128, 128
   offset: 0, 0
   index: 11
 NinaAttack
   rotate: false
-  xy: 1835, 393
+  xy: 1691, 263
   size: 128, 128
   orig: 128, 128
   offset: 0, 0
   index: 1
 NinaAttack
   rotate: false
-  xy: 1835, 393
+  xy: 1691, 263
   size: 128, 128
   orig: 128, 128
   offset: 0, 0
   index: 10
 NinaAttack
   rotate: false
-  xy: 1691, 263
+  xy: 1561, 197
   size: 128, 128
   orig: 128, 128
   offset: 0, 0
   index: 2
 NinaAttack
   rotate: false
-  xy: 1691, 263
+  xy: 1561, 197
   size: 128, 128
   orig: 128, 128
   offset: 0, 0
   index: 9
 NinaAttack
   rotate: false
-  xy: 1561, 197
+  xy: 1821, 263
   size: 128, 128
   orig: 128, 128
   offset: 0, 0
   index: 3
 NinaAttack
   rotate: false
-  xy: 1561, 197
+  xy: 1821, 263
   size: 128, 128
   orig: 128, 128
   offset: 0, 0
   index: 8
 NinaAttack
   rotate: false
-  xy: 1821, 263
+  xy: 1691, 133
   size: 128, 128
   orig: 128, 128
   offset: 0, 0
   index: 4
 NinaAttack
   rotate: false
-  xy: 1821, 263
+  xy: 1691, 133
   size: 128, 128
   orig: 128, 128
   offset: 0, 0
   index: 7
 NinaAttack
   rotate: false
-  xy: 1691, 133
+  xy: 1561, 67
   size: 128, 128
   orig: 128, 128
   offset: 0, 0
   index: 5
 NinaAttack
   rotate: false
-  xy: 1691, 133
-  size: 128, 128
-  orig: 128, 128
-  offset: 0, 0
-  index: 6
-NinaIdle
-  rotate: false
   xy: 1561, 67
   size: 128, 128
   orig: 128, 128
   offset: 0, 0
-  index: 0
+  index: 6
 gold-button-disabled
   rotate: false
   xy: 1561, 1
@@ -994,21 +994,21 @@ NinaIdle
   size: 128, 128
   orig: 128, 128
   offset: 0, 0
-  index: 1
-NinaIdle
-  rotate: false
-  xy: 1821, 133
-  size: 128, 128
-  orig: 128, 128
-  offset: 0, 0
-  index: 3
+  index: 0
 NinaIdle
   rotate: false
   xy: 1853, 3
   size: 128, 128
   orig: 128, 128
   offset: 0, 0
-  index: 2
+  index: 1
+NinaIdle
+  rotate: false
+  xy: 1853, 3
+  size: 128, 128
+  orig: 128, 128
+  offset: 0, 0
+  index: 3
 goButton
   rotate: false
   xy: 1723, 1
@@ -1049,42 +1049,42 @@ slimeDead
   orig: 512, 512
   offset: 0, 0
   index: 1
-rabbitDead
+NinaIdle
   rotate: false
   xy: 1, 261
+  size: 128, 128
+  orig: 128, 128
+  offset: 0, 0
+  index: 2
+rabbitDead
+  rotate: false
+  xy: 1543, 775
   size: 128, 128
   orig: 128, 128
   offset: 0, 0
   index: 0
 rabbitHit
   rotate: false
-  xy: 1, 261
+  xy: 1543, 775
   size: 128, 128
   orig: 128, 128
   offset: 0, 0
   index: 1
 rabbitHit
   rotate: false
-  xy: 1, 261
+  xy: 1543, 775
   size: 128, 128
   orig: 128, 128
   offset: 0, 0
   index: 3
 rabbitDead
   rotate: false
-  xy: 1543, 775
+  xy: 1, 131
   size: 128, 128
   orig: 128, 128
   offset: 0, 0
   index: 1
 rabbitHit
-  rotate: false
-  xy: 1543, 775
-  size: 128, 128
-  orig: 128, 128
-  offset: 0, 0
-  index: 2
-rabbitDead
   rotate: false
   xy: 1, 131
   size: 128, 128
@@ -1097,17 +1097,17 @@ rabbitDead
   size: 128, 128
   orig: 128, 128
   offset: 0, 0
-  index: 3
-rabbitHit
+  index: 2
+rabbitDead
   rotate: false
   xy: 1543, 645
   size: 128, 128
   orig: 128, 128
   offset: 0, 0
-  index: 0
-rabbitIdle
+  index: 3
+rabbitHit
   rotate: false
-  xy: 1543, 645
+  xy: 1673, 775
   size: 128, 128
   orig: 128, 128
   offset: 0, 0
@@ -1115,20 +1115,27 @@ rabbitIdle
 rabbitIdle
   rotate: false
   xy: 1673, 775
+  size: 128, 128
+  orig: 128, 128
+  offset: 0, 0
+  index: 0
+rabbitIdle
+  rotate: false
+  xy: 1, 1
   size: 128, 128
   orig: 128, 128
   offset: 0, 0
   index: 1
 rabbitIdle
   rotate: false
-  xy: 1673, 775
+  xy: 1, 1
   size: 128, 128
   orig: 128, 128
   offset: 0, 0
   index: 3
 rabbitIdle
   rotate: false
-  xy: 1, 1
+  xy: 131, 131
   size: 128, 128
   orig: 128, 128
   offset: 0, 0
@@ -1142,28 +1149,28 @@ power-button-disabled
   index: -1
 power-button
   rotate: false
-  xy: 423, 325
+  xy: 261, 259
   size: 160, 64
   orig: 160, 64
   offset: 0, 0
   index: -1
 menuButton
   rotate: false
-  xy: 131, 195
+  xy: 1543, 579
   size: 128, 64
   orig: 128, 64
   offset: 0, 0
   index: -1
 reset-button-down
   rotate: false
-  xy: 1543, 579
+  xy: 1673, 709
   size: 128, 64
   orig: 128, 64
   offset: 0, 0
   index: -1
 reset-button
   rotate: false
-  xy: 1673, 709
+  xy: 131, 65
   size: 128, 64
   orig: 128, 64
   offset: 0, 0

@@ -172,6 +172,10 @@ public class HeroTable extends Table {
         add(name).padBottom(20f).center().padLeft(20f);add();add(touchPower).center().row();
     }
 
+    public void updateInheritance(){
+        abilityGroups.get(abilityList.getAbilitiesUnlocked() - 1).updateDescription();
+    }
+
     public void reset(){
         this.clearChildren();
         addHero();

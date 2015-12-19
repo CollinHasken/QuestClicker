@@ -150,6 +150,10 @@ public class UpgradeTable extends Table {
         heroTable.reset();
     }
 
+    public void updateInheritance(){
+        heroTable.updateInheritance();
+    }
+
     /**
      * Load each table
      */

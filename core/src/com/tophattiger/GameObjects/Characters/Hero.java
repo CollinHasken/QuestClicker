@@ -5,6 +5,7 @@ import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
+import com.tophattiger.GameWorld.GameRenderer;
 import com.tophattiger.Helper.Data.AssetLoader;
 import com.tophattiger.Helper.Data.DataManagement;
 import com.tophattiger.Helper.Data.Gold;
@@ -34,11 +35,13 @@ public class Hero extends Actor {
     String name,questDescription;
     Animation idle,attack,animation,levelAnimation;
     TextureRegion frame,levelFrame;
+    GameRenderer game;
 
     /**
      * The hero stores the click data, quest data, name and level
      */
-    public Hero(){
+    public Hero(GameRenderer _game){
+        game = _game;
         questCompleted = inheritance= 0;
         touchPower = artifactDamage = 1;
         questProgress = 0;
@@ -83,7 +86,7 @@ public class Hero extends Actor {
     public void draw(Batch batch, float parentAlpha) {
         if(level){
             levelFrame = levelAnimation.getKeyFrame(levelAnimationTime);
-            batch.draw(levelFrame,positionX-80,positionY-40,256,256);
+            batch.draw(levelFrame, positionX - 80, positionY - 40, 256, 256);
         }
         frame = animation.getKeyFrame(animationTime,true);
         batch.draw(frame, positionX, positionY, 256, 256);
@@ -97,6 +100,7 @@ public class Hero extends Actor {
         touchCost = touchCost * 1.5;
         touchPower = touchLevel*1.2;
         levelAnimation();
+        game.getTable().updateInheritance();
     }
 
     /**
@@ -139,8 +143,12 @@ public class Hero extends Actor {
         inheritance += touchLevel; //Need to come up with algorithm
     }
 
+    public int getPossibleInheritance(){
+        return touchLevel;
+    }
+
     /**
-     * subtract inheritance after bying artifact
+     * subtract inheritance after buying artifact
      */
     public void buyArtifact(double cost){
         inheritance -= cost;

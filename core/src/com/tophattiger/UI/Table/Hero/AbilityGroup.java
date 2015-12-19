@@ -66,6 +66,10 @@ public class AbilityGroup {
         }
         else abilityButton.setChecked(false);
     }
+    public void updateDescription(){
+        ability.setDescription();
+        description.setText(ability.getDescription());
+    }
     public void reset(){
         level.setText("Level " + Gold.getNumberWithSuffix(ability.getLevel()));
         currentAmount.setText("Current: " + Gold.getNumberWithSuffix(ability.getCurrentAmount()));

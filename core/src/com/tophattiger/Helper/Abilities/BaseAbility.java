@@ -93,6 +93,8 @@ public class BaseAbility extends Button{
             });
 
         }
+        else
+            picture = new Image(AssetLoader.textureAtlas.findRegion("abilityRetireIcon"));
     }
 
     /**
@@ -215,7 +217,7 @@ public class BaseAbility extends Button{
     /**
      * Set the description of the ability in the upgrade shop
      */
-    private void setDescription(){
+    public void setDescription(){
         description = "Activate ability to ";
         if(type == TYPE.BIGDAMAGE){
             description += "deal " + Gold.getNumberWithSuffix(amount) + " damage to the enemy";
@@ -227,7 +229,7 @@ public class BaseAbility extends Button{
             description += "drop "+ Gold.getNumberWithSuffix(amount) + " gold every tap";
         }
         else if(type == TYPE.RETIRE){
-            description += "restart with " + Gold.getNumberWithSuffix(amount) + " artifacts";
+            description += "restart with " + Gold.getNumberWithSuffix(game.getHero().getPossibleInheritance()) + " artifacts";
         }
     }
 
@@ -241,6 +243,7 @@ public class BaseAbility extends Button{
         setStats();
         setCost();
         setDescription();
+        game.getTable().updateInheritance();
     }
 
     /**
