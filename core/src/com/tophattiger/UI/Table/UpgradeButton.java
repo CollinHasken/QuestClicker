@@ -50,6 +50,9 @@ public class UpgradeButton extends Button {
         });
     }
 
+    /**
+     * Closes the button and table
+     */
     public void close(){
         mta.reset();
         mta.setPosition(0, 285);
