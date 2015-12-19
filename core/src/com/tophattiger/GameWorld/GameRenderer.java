@@ -10,15 +10,15 @@ import com.badlogic.gdx.scenes.scene2d.ui.ImageButton;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.utils.Array;
 import com.badlogic.gdx.utils.Pool;
-import com.tophattiger.GameObjects.Coin;
 import com.tophattiger.GameObjects.Characters.Enemy;
 import com.tophattiger.GameObjects.Characters.Helpers;
 import com.tophattiger.GameObjects.Characters.Hero;
+import com.tophattiger.GameObjects.Coin;
 import com.tophattiger.GameObjects.Text;
 import com.tophattiger.Helper.Abilities.AbilityList;
 import com.tophattiger.Helper.Artifacts.ArtifactList;
-import com.tophattiger.Helper.Data.AssetLoader;
 import com.tophattiger.Helper.Combos.ComboList;
+import com.tophattiger.Helper.Data.AssetLoader;
 import com.tophattiger.Helper.Data.DataHolder;
 import com.tophattiger.Helper.Data.DataManagement;
 import com.tophattiger.UI.Background;
@@ -32,8 +32,8 @@ import com.tophattiger.UI.Table.UpgradeTable;
 public class GameRenderer {
 
     //Update to keep record of which version is downloaded
-    private static final int newestVersion = 8;
-    private static final String newestVersionString = "0.2.3 ";
+    private static final int newestVersion = 10;
+    private static final String newestVersionString = "0.3.0 ";
 
     Stage stage;
     Skin skin;
@@ -272,9 +272,9 @@ public class GameRenderer {
      * Resets everything instead of only when retiring
      */
     public void hardReset(){
-        table.hardReset();
         hero.hardReset();
         artifactList.reset();
+        table.hardReset();
     }
 
     //Getters for variables
@@ -295,6 +295,7 @@ public class GameRenderer {
     public int getVersion(){return newestVersion;}
     public static String getNewestVersionString(){return newestVersionString;}
     public double getArtifactEnemyGold(){return artifactEnemyGold;}
+    public UpgradeButton getUpgradeButton(){return upgradeButton;}
 
     /**
      * Dispose of assets

@@ -49,4 +49,14 @@ public class UpgradeButton extends Button {
             }
         });
     }
+
+    public void close(){
+        mta.reset();
+        mta.setPosition(0, 285);
+        mta.setDuration(0.5f);
+        DataHolder.open = true;
+        table.move();
+        DataHolder.open = false;
+        this.addAction(mta);
+    }
 }

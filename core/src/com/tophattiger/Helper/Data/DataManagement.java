@@ -5,7 +5,6 @@ import com.badlogic.gdx.files.FileHandle;
 import com.badlogic.gdx.utils.IntArray;
 import com.badlogic.gdx.utils.Json;
 import com.tophattiger.GameWorld.GameRenderer;
-import com.tophattiger.Helper.Artifacts.BaseArtifact;
 
 import java.util.Calendar;
 
@@ -134,7 +133,7 @@ public  class DataManagement {
         public static IntArray helpers = new IntArray();
         public static IntArray comboLevels = new IntArray();
         public static IntArray artifacts = new IntArray();
-        public static BaseArtifact offeringArtifact;
+        public static int offeringArtifact;
         IntArray artifact;
         IntArray comboLevel;
         IntArray helper;

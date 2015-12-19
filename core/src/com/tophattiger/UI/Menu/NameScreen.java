@@ -56,6 +56,7 @@ public class NameScreen extends Table {
      */
     public void show() {
         SettingName = true;
+        game.getUpgradeButton().close();
         setVisible(true);
         this.toFront();
     }
@@ -83,13 +84,16 @@ public class NameScreen extends Table {
             @Override
             public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
                 super.touchDown(event, x, y, pointer, button);
-                game.getHero().setName(text.getText());
-                Gdx.input.setOnscreenKeyboardVisible(false);
-                game.getTable().updateName();
-                nameScreen.setVisible(false);
-                game.getMenu().close();
-                SettingName = false;
-                return true;
+                if(!text.getText().equals("Hero's Name") && !text.getText().equals("")){
+                    game.getHero().setName(text.getText());
+                    Gdx.input.setOnscreenKeyboardVisible(false);
+                    game.getTable().updateName();
+                    nameScreen.setVisible(false);
+                    game.getMenu().close();
+                    SettingName = false;
+                    return true;
+                }
+                return false;
             }
         });
     }

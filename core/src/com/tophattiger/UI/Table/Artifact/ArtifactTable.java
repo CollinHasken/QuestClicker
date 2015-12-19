@@ -15,6 +15,7 @@ import com.tophattiger.UI.Table.UpgradeTable;
 public class ArtifactTable extends Table {
     ScrollPane container;
     ArtifactList artifactList;
+    UpgradeTable table;
     Array<ArtifactGroup> artifactGroups = new Array<ArtifactGroup>();
     Skin skin;
     Hero hero;
@@ -24,10 +25,11 @@ public class ArtifactTable extends Table {
      * @param _skin Skin for looks
      * @param _artifacts    List of artifacts to make table from
      */
-    public ArtifactTable(Skin _skin, ArtifactList _artifacts,Hero _hero){
+    public ArtifactTable(Skin _skin, ArtifactList _artifacts,Hero _hero,UpgradeTable _table){
         super(_skin);
         hero = _hero;
         skin = _skin;
+        table = _table;
         artifactList = _artifacts;
         container = new ScrollPane(this);
     }
@@ -77,10 +79,17 @@ public class ArtifactTable extends Table {
         BaseArtifact newArtifact = artifactList.getRandomArtifact();
         if(newArtifact != null){
             artifactGroups.add(new ArtifactGroup(this, newArtifact));
+            artifactGroups.get(artifactGroups.size - 1).add();
             artifactList.addArtifact();
         }
     }
 
+    /**
+     * Updates the title when an artifact is bought
+     */
+    public void updateTitle(){
+        table.updateTitle();
+    }
     public int getMaxArtifacts(){return artifactList.getArtifactMax();}
     public Hero getHero(){return hero;}
 

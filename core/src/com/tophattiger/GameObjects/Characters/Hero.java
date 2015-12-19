@@ -69,6 +69,7 @@ public class Hero extends Actor {
             questProgress = 0;
             questRequired += 10*questCompleted;
             questCompleted ++;
+            newQuest();
         }
         checkAnimation();
     }
@@ -139,6 +140,13 @@ public class Hero extends Actor {
     }
 
     /**
+     * Subtract amount of artifacts hero has after buying
+     * @param amount Amount to decrease artifacts by
+     */
+    public void subtractArtifact(double amount){
+        artifacts -= amount;
+    }
+    /**
      * Set the quest description to a random quest from a pool of quests.
      */
     public void newQuest(){
@@ -160,7 +168,7 @@ public class Hero extends Actor {
                 questDescription = "Find the holy stick of butt scratching.";
                 break;
             case 2:
-                questDescription = "Rescue Mike Hawk from being eaten by wild animals.";
+                questDescription = "Kill some slimes to get jelly for my toast..";
                 break;
             case 3:
                 questDescription = "Run around in circles for a bit.";
@@ -175,13 +183,13 @@ public class Hero extends Actor {
                 questDescription = "Grab me some ice cream, I'm starving!";
                 break;
             case 7:
-                questDescription = "Fix our over population problem. Or was it endangered...";
+                questDescription = "Fix our over population problem. Or were they endangered...";
                 break;
             case 8:
                 questDescription = "Find a date for the royal ball. Ask the princess, or prince. I don't judge.";
                 break;
             case 9:
-                questDescription = "Find your spirit animal. My guess is it's a chicken. A baby chicken.";
+                questDescription = "Get some ingredients for rabbit stew";
                 break;
 
         }

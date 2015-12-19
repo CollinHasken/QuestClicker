@@ -106,7 +106,7 @@ public class BaseArtifact {
     }
 
     public void setCost(){
-        cost = 0.5*(level)*(level) + 2;
+        cost = (int)(0.5*(level)*(level) + 2);
     }
 
     public void switchOffering(){offering = !offering;}
@@ -128,6 +128,7 @@ public class BaseArtifact {
         amount = originalAmount;
         currentAmount = 0;
         level = 0;
+        offering = false;
         setDescription();
         setCost();
     }
@@ -153,8 +154,6 @@ public class BaseArtifact {
      */
     public void save(){
         DataManagement.JsonData.artifacts.add(level);
-        if(offering)
-            DataManagement.JsonData.offeringArtifact = this;
     }
 
 }

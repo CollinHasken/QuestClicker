@@ -8,7 +8,7 @@ android {
         }
     }
     buildToolsVersion "22.0.1"
-    compileSdkVersion 22
+    compileSdkVersion 23
     sourceSets {
         main {
             manifest.srcFile 'AndroidManifest.xml'
@@ -31,8 +31,8 @@ android {
         }
     }
     defaultConfig {
-        versionName '0.2.3'
-        versionCode 8
+        versionName '0.2.4'
+        versionCode 9
     }
     productFlavors {
     }

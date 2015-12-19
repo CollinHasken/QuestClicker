@@ -5,14 +5,13 @@ import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.InputListener;
-import com.badlogic.gdx.scenes.scene2d.Touchable;
 import com.badlogic.gdx.scenes.scene2d.Stage;
+import com.badlogic.gdx.scenes.scene2d.Touchable;
 import com.badlogic.gdx.utils.Array;
 import com.tophattiger.GameObjects.Characters.Enemy;
 import com.tophattiger.GameWorld.GameRenderer;
 import com.tophattiger.Helper.Data.AssetLoader;
 import com.tophattiger.Helper.Data.DataHolder;
-import com.tophattiger.Helper.Data.Gold;
 import com.tophattiger.UI.Menu.NameScreen;
 
 
@@ -56,7 +55,6 @@ public class Background extends Actor {
                         game.dropCoins((int)abilityGoldAmount,1);
                     }
                     touch = true;
-                    Gold.add(10000);
                     combo.tap();    //Increase combo
                     for (int i = activeEnemies.size; --i >= 0; ) {
                         game.getHero().attack();

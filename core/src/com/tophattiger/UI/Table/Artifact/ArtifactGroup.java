@@ -41,12 +41,13 @@ public class ArtifactGroup {
             public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
                 super.touchDown(event, x, y, pointer, button);
                 if (!artifactButton.isChecked() && artifact.getCost() <= table.getHero().getArtifacts()) {  //If the user has enough gold
-                    Gold.subtract(artifact.getCost());
+                    table.getHero().subtractArtifact(artifact.getCost());
                     artifact.level();
                     artifactButton.setText(Gold.getNumberWithSuffix(artifact.getCost()));
                     level.setText("Level " + Gold.getNumberWithSuffix(artifact.getLevel()));
                     currentAmount.setText("Current: " + Gold.getNumberWithSuffix(artifact.getCurrentAmount()));
                     description.setText(artifact.getDescription());
+                    table.updateTitle();
                     if (artifact.getLevel() == 1) {     //If this is the first level, add another artifact to the table
                         artifact.switchOffering();
                         table.addArtifact();
@@ -63,7 +64,7 @@ public class ArtifactGroup {
      * Check whether the button should be able to press or not if the player has enough goldd
      */
     public void updateState(){
-        if(Gold.isLess(artifact.getCost())){
+        if(table.getHero().getArtifacts() < artifact.getCost()){
             artifactButton.setChecked(true);
         }
         else artifactButton.setChecked(false);

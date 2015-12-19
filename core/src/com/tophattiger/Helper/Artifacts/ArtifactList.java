@@ -2,6 +2,7 @@ package com.tophattiger.Helper.Artifacts;
 
 import com.badlogic.gdx.utils.Array;
 import com.tophattiger.GameWorld.GameRenderer;
+import com.tophattiger.Helper.Data.DataManagement;
 
 import java.util.Random;
 
@@ -76,7 +77,7 @@ public class ArtifactList {
      * Reset the each artifact
      */
     public void reset(){
-        for(int i = 0;i< artifactsUnlocked;i++){
+        for(int i = 0;i< artifacts.size;i++){
             artifacts.get(i).reset();
         }
         artifactsUnlocked = 1;
@@ -86,8 +87,10 @@ public class ArtifactList {
      * Save each artifact
      */
     public void save(){
-        for(int i = 0;i< artifactsUnlocked;i++){
+        for(int i = 0;i< artifacts.size;i++){
             artifacts.get(i).save();
+            if(artifacts.get(i).offering)
+                DataManagement.JsonData.offeringArtifact = i;
         }
     }
 
@@ -95,9 +98,10 @@ public class ArtifactList {
      * Load each artifact
      */
     public void load(){
-        for(int i = 0;i< artifactsUnlocked;i++){
+        for(int i = 0;i< artifacts.size;i++){
             artifacts.get(i).load(i);
         }
+        artifacts.get(DataManagement.JsonData.offeringArtifact).offering = true;
     }
 
 }
