@@ -82,7 +82,7 @@ public class Enemy extends Actor implements Pool.Poolable {
 
     /**
      * Multiply the gold dropped by the artifact amount
-     * @param artifactGold Amount to increase gold dropping from artifacts
+     * @param artifactGold Amount to increase gold dropping from artifactsUnlocked
      */
     public void setGold(double artifactGold){
         gold /= game.getArtifactEnemyGold();
