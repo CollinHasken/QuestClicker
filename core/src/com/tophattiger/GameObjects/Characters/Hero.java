@@ -147,13 +147,6 @@ public class Hero extends Actor {
     }
 
     /**
-     * Subtract amount of artifacts hero has after buying
-     * @param amount Amount to decrease artifacts by
-     */
-    public void subtractArtifact(double amount){
-        artifacts -= amount;
-    }
-    /**
      * Set the quest description to a random quest from a pool of quests.
      */
     public void newQuest(){
@@ -196,7 +189,7 @@ public class Hero extends Actor {
                 questDescription = "Find a date for the royal ball. Ask the princess, or prince. I don't judge.";
                 break;
             case 9:
-                questDescription = "Get some ingredients for rabbit stew";
+                questDescription = "Get some ingredients for rabbit stew.";
                 break;
 
         }

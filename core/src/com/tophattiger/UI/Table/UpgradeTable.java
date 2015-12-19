@@ -76,7 +76,7 @@ public class UpgradeTable extends Table {
         else if(table == artifactTable){
             tableInt = 2;
             artifactTable.setAsContainer(this);
-            title.setText("Artifact Upgrades: " + game.getHero().getArtifacts());
+            title.setText("Artifact Upgrades: " + game.getHero().getInheritance());
             helperButton.setChecked(false);
             heroButton.setChecked(false);
             clearChildren();
@@ -110,7 +110,7 @@ public class UpgradeTable extends Table {
      * Updates the title after buying something with the artifacts
      */
     public void updateTitle(){
-        title.setText("Artifact Upgrades: " +game.getHero().getArtifacts());
+        title.setText("Artifact Upgrades: " +game.getHero().getInheritance());
     }
     /**
      * Move the upgrade table with the upgrade button has been pressed
