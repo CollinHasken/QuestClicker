@@ -50,16 +50,24 @@ public class Helper1 extends com.tophattiger.GameObjects.Characters.GeneralHelpe
         createBuffs();
     }
 
-    /**
-     * Set the power, gold, and the costs for this helper specifically
-     */
     @Override
-    public void set() {
-        super.autoPower = super.pLevel;
-        super.autoGold = super.gLevel;
-        super.autoPowerCost = 10 * (super.pLevel + 1)*(super.pLevel+1);
-        super.autoGoldCost = 10 * (super.gLevel + 1)*(super.gLevel+1);
-        super.set();
+    protected double levelGoldAlg(int goldLevel){
+        return goldLevel;
+    }
+
+    @Override
+    protected double levelPowerAlg(int powerLevel) {
+        return powerLevel;
+    }
+
+    @Override
+    protected double levelGoldCostAlg(int goldLevel) {
+        return 10 * (goldLevel + 1) * (goldLevel + 1);
+    }
+
+    @Override
+    protected double levelPowerCostAlg(int powerLevel) {
+        return 10 * (powerLevel + 1) * (powerLevel + 1);
     }
 
     /**

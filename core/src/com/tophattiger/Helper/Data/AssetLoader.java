@@ -9,7 +9,7 @@ import com.badlogic.gdx.scenes.scene2d.ui.Image;
 
 public class AssetLoader {
 
-    public static Image healthBar,progressBar,bob;
+    public static Image healthBar,progressBar,bob,volumeBar;
     public static Sprite regBackground,table;
     static public BitmapFont goldFont,healthFont,questFont,timerFont,nameFont;
     public static TextureAtlas textureAtlas;
@@ -40,6 +40,10 @@ public class AssetLoader {
         progressBar.setPosition(28,88);progressBar.setSize(1865, 44);
         DataHolder.pBarWidth = (int)progressBar.getWidth();
         progressBar.setWidth(0);
+        volumeBar = new Image(textureAtlas.findRegion("volumeBar"));
+        volumeBar.setPosition(28,14);volumeBar.setSize(1865, 46);
+        DataHolder.vBarWidth = (int)volumeBar.getWidth();
+        volumeBar.setWidth(0);
         regBackground = new Sprite(textureAtlas.findRegion("regBackground"));
         table = new Sprite(textureAtlas.findRegion("table"));
     }

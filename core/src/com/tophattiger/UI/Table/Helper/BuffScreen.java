@@ -10,6 +10,7 @@ import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.utils.Drawable;
 import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
 import com.tophattiger.GameObjects.Characters.GeneralHelper;
+import com.tophattiger.Helper.Controllers.AdsController;
 import com.tophattiger.Helper.Data.AssetLoader;
 
 /**
@@ -28,13 +29,15 @@ public class BuffScreen extends Table {
     Image[] buffIs = new Image[9];
     BuffScreen buffScreen;
     Skin skin;
+    AdsController adsController;
 
     /**
      * Screen to popup to see the description of the buffs each helper has to unlock
      * @param _skin Skin for looks
      */
-    public BuffScreen(Skin _skin) {
+    public BuffScreen(Skin _skin, final AdsController adsController) {
         super();
+        this.adsController = adsController;
         skin = _skin;
         buffScreen = this;
         setBackground(sprite);
@@ -50,6 +53,7 @@ public class BuffScreen extends Table {
                 super.touchDown(event, x, y, pointer, button);
                 buffScreen.setVisible(false);
                 buffOpen = false;
+                adsController.showBannerAd();
                 return true;
             }
         });
@@ -74,6 +78,7 @@ public class BuffScreen extends Table {
         name.setText(_helper.getName());
         buffOpen = true;
         setVisible(true);
+        adsController.hideBannerAd();
     }
 
     /**

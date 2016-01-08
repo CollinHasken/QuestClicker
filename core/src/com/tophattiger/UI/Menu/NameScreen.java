@@ -59,6 +59,7 @@ public class NameScreen extends Table {
         game.getUpgradeButton().close();
         setVisible(true);
         this.toFront();
+        game.getAdsController().hideBannerAd();
     }
 
     /**

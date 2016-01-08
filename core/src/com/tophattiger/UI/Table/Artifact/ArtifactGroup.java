@@ -28,13 +28,14 @@ public class ArtifactGroup {
         table = _table;
         artifact = _artifact;
         level = new Label("Level " + Gold.getNumberWithSuffix(artifact.getLevel()),table.getSkin(),"level");
-        currentAmount = new Label("Current: " + Gold.getNumberWithSuffix(artifact.getCurrentAmount()),table.getSkin(),"level");
+        currentAmount = new Label(artifact.getCurrentAmountString() + " -> " + artifact.getNextAmountString(),table.getSkin(),"value");
         description = new Label(artifact.getDescription(),table.getSkin(),"combo");
         description.setWrap(true);
-        description.setAlignment(Align.right);
         picture = artifact.getPicture();
         artifactButton = new TextButton(Gold.getNumberWithSuffix(artifact.getCost()),table.skin,"gold");
         artifactButton.setDisabled(true);
+        artifactButton.getLabel().setAlignment(Align.right);
+        artifactButton.padRight(20);
         artifactButton.addListener(new InputListener() {
 
             @Override
@@ -45,7 +46,7 @@ public class ArtifactGroup {
                     artifact.level();
                     artifactButton.setText(Gold.getNumberWithSuffix(artifact.getCost()));
                     level.setText("Level " + Gold.getNumberWithSuffix(artifact.getLevel()));
-                    currentAmount.setText("Current: " + Gold.getNumberWithSuffix(artifact.getCurrentAmount()));
+                    currentAmount.setText(artifact.getCurrentAmountString() + " -> " + artifact.getNextAmountString());
                     description.setText(artifact.getDescription());
                     table.updateTitle();
                     if (artifact.getLevel() == 1) {     //If this is the first level, add another artifact to the table
@@ -75,7 +76,7 @@ public class ArtifactGroup {
      */
     public void reset(){
         level.setText("Level " + Gold.getNumberWithSuffix(artifact.getLevel()));
-        currentAmount.setText("Current: " + Gold.getNumberWithSuffix(artifact.getCurrentAmount()));
+        currentAmount.setText(artifact.getCurrentAmountString() + " -> " + artifact.getNextAmountString());
         description.setText(artifact.getDescription());
         artifactButton.setText(Gold.getNumberWithSuffix(artifact.getCost()));
     }
@@ -87,6 +88,6 @@ public class ArtifactGroup {
         table.add(picture).width(128).left().padLeft(20f);
         table.add(description).pad(5, 20, 0, 20).width(446);
         table.add(artifactButton).width(200f).row();
-        table.add(level).left().padLeft(20f);table.add();table.add(currentAmount).row();
+        table.add(level).left().padLeft(20f);table.add(currentAmount).colspan(2).right().padRight(40).row();
     }
 }

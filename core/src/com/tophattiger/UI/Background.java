@@ -55,7 +55,6 @@ public class Background extends Actor {
                     if(abilityGoldTime > 0){    //Drop coins if the gold ability is activated and tapped
                         game.dropCoins((int)abilityGoldAmount,1);
                     }
-                    Gold.add(100000);
                     touch = true;
                     combo.tap();    //Increase combo
                     for (int i = activeEnemies.size; --i >= 0; ) {

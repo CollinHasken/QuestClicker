@@ -9,6 +9,7 @@ import com.badlogic.gdx.scenes.scene2d.ui.ScrollPane;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
+import com.badlogic.gdx.utils.Align;
 import com.badlogic.gdx.utils.Array;
 import com.tophattiger.GameObjects.Characters.Hero;
 import com.tophattiger.Helper.Abilities.AbilityList;
@@ -57,9 +58,11 @@ public class HeroTable extends Table {
         nameText = new GlyphLayout(AssetLoader.nameFont,hero.getName());
         name = new Label(nameText.toString(),skin, "name");
         heroLevel = new Label("Level " + Gold.getNumberWithSuffix(hero.getLevel()),skin,"level");
-        touchPower = new Label(Gold.getNumberWithSuffix(hero.getTouchPower()) + " Damage",skin,"level");
+        touchPower = new Label(hero.getTouchPowerString() + " -> " + hero.getNextTouchPowerString(),skin,"value");
         heroButton = new TextButton(Gold.getNumberWithSuffix(hero.getTouchCost()),skin,"gold");
         heroButton.setDisabled(true);
+        heroButton.getLabel().setAlignment(Align.right);
+        heroButton.padRight(20);
         heroButton.addListener(new InputListener() {
 
             @Override
@@ -70,7 +73,7 @@ public class HeroTable extends Table {
                     hero.levelTouch();
                     heroButton.setText(Gold.getNumberWithSuffix(hero.getTouchCost()));
                     heroLevel.setText("Level " + Gold.getNumberWithSuffix(hero.getLevel()));
-                    touchPower.setText(hero.getTouchPowerString() + " Damage");
+                    touchPower.setText(hero.getTouchPowerString() + " -> " + hero.getNextTouchPowerString());
                     return true;
                 }
                 return false;
@@ -93,6 +96,7 @@ public class HeroTable extends Table {
                 abilityGroups.get(i).updateState();
             }
         }
+        touchPower.setText(hero.getTouchPowerString() + " -> " + hero.getNextTouchPowerString());
     }
 
     public void addCombo(){
@@ -162,14 +166,15 @@ public class HeroTable extends Table {
             comboGroups.get(i).add();
         }
         heroLevel.setText("Level " + Gold.getNumberWithSuffix(hero.getLevel()));
-        touchPower.setText(Gold.getNumberWithSuffix(hero.getTouchPower()) + " Damage");
+        touchPower.setText(hero.getTouchPowerString() + " -> " + hero.getNextTouchPowerString());
         heroButton.setText(Gold.getNumberWithSuffix(hero.getTouchCost()));
     }
 
     public void addHero(){
         this.setWidth(800);
-        add(heroImage).width(128).left().padLeft(20f);add(heroLevel).right().padRight(20);add(heroButton).width(200).row();
-        add(name).padBottom(20f).center().padLeft(20f);add();add(touchPower).center().row();
+        add(heroImage).width(128).left().padLeft(20f);add(name).bottom().left().padLeft(20);
+        add(heroButton).width(200).row();
+        add(heroLevel).padBottom(20f).center().padLeft(20f);add(touchPower).colspan(2).right().padRight(40).row();
     }
 
     public void updateInheritance(){
@@ -181,7 +186,7 @@ public class HeroTable extends Table {
         addHero();
         heroButton.setText(Gold.getNumberWithSuffix(hero.getTouchCost()));
         heroLevel.setText("Level " + Gold.getNumberWithSuffix(hero.getLevel()));
-        touchPower.setText(Gold.getNumberWithSuffix(hero.getTouchPower()) + " Damage");
+        touchPower.setText(hero.getTouchPowerString() + " -> " + hero.getNextTouchPowerString());
         abilityGroups.clear();
         abilityGroups.add(new AbilityGroup(this, abilityList.getAbility(0)));
         abilityGroups.get(0).add();

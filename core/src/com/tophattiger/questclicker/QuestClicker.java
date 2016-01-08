@@ -1,6 +1,7 @@
 package com.tophattiger.questclicker;
 
 import com.badlogic.gdx.Game;
+import com.tophattiger.Helper.Controllers.AdsController;
 import com.tophattiger.Screens.MainScreen;
 import com.tophattiger.Helper.Data.AssetLoader;
 
@@ -10,11 +11,17 @@ import com.tophattiger.Helper.Data.AssetLoader;
  */
 public class QuestClicker extends Game {
 
+    private AdsController adsController;
+
+    public QuestClicker(AdsController adsController){
+        this.adsController = adsController;
+    }
+
     public void create(){
 
         AssetLoader.load();
 
-        this.setScreen(new MainScreen());
+        this.setScreen(new MainScreen(adsController));
     }
 
     public void render(){

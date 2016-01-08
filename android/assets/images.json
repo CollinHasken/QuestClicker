@@ -4,7 +4,8 @@
     "small":{"file":"small.fnt"},
     "buff":{"file":"bufffont.fnt"},
     "name":{"file":"namefont.fnt"},
-    "button":{"file":"buttonfont.fnt"}
+    "button":{"file":"buttonfont.fnt"},
+    "value":{"file":"helpervalue.fnt"}
   },
   "com.badlogic.gdx.graphics.Color": {
     "white": { "r": 1, "g": 1, "b": 1, "a": 1 },
@@ -13,14 +14,15 @@
   "com.badlogic.gdx.scenes.scene2d.ui.Label$LabelStyle": {
     "default": { "font": "regular" , "fontColor": "white","background":"emptyHealth"},
     "upgrade":  {"font": "small", "fontColor": "white"},
-    "name":{"font": "small","fontColor":"white"},
+    "name":{"font": "regular","fontColor":"white"},
     "level":{"font":"small","fontColor":"white"},
     "buffi":{"font":"buff","fontColor":"white","background":"buffi"},
     "combo":{"font":"buff","fontColor":"white"},
+    "value" :{"font": "value","fontColor":"white"},
     "version":{"font":"small","fontColor":"white"},                                                 //Fix
     "title":{"font": "regular","fontColor":"white"},                                                 //Fix
     "nameAsk":{"font": "small","fontColor":"white"},                                             //Fix
-    "nameTitle":{"font": "regular","fontColor":"white"}                                                 //Fix
+    "nameTitle":{"font": "regular","fontColor":"white"}                                           //Fix
   },
   "com.badlogic.gdx.scenes.scene2d.ui.Button$ButtonStyle": {
     "upgrade": { "down": "upgrade-tab-down", "up": "upgrade-tab", "checked": "upgrade-tab-down"},
@@ -35,7 +37,8 @@
   "com.badlogic.gdx.scenes.scene2d.ui.TextButton$TextButtonStyle":{
     "gold":{"checked":"gold-button-disabled","up":"gold-button","down":"gold-button-disabled","font":"button"},
     "power":{"checked":"power-button-disabled","up":"power-button","down":"power-button-disabled","font":"button"},
-    "buff":{"checked":"buffButton","up":"buffButton","down":"buffButton","font":"button"}
+    "buff":{"checked":"buffButton","up":"buffButton","down":"buffButton","font":"button"},
+    "switchTable" : {"checked":"buffButton","up":"buffButton","down":"buffButton","font":"small"}
   },
 
   "com.badlogic.gdx.scenes.scene2d.ui.TextButton$TextButtonStyle": {

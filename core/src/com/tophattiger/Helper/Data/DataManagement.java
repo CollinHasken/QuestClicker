@@ -105,6 +105,7 @@ public  class DataManagement {
         game.getAbilityList().reset();
         DataHolder.helperAmount = 1;
         game.getTable().resetButton();
+        game.getEnemy().reset();
         game.getMenu().close();
         game.getNameScreen().show();
     }
@@ -127,7 +128,7 @@ public  class DataManagement {
 
     /** Class to hold data for saving and loading*/
     public static class JsonData{
-        public int questCompleted,questRequired,questSelect,helperAmount,touchLevel,combosUnlocked,abilitiesUnlocked,currentVersion,artifactsUnlocked, inheritance;
+        public int questCompleted,questRequired,questSelect,volCompleted,volRequired,helperAmount,touchLevel,combosUnlocked,abilitiesUnlocked,currentVersion,artifactsUnlocked, inheritance;
         public boolean hasRetired;
         public static IntArray abilityLevels = new IntArray();
         public static IntArray helpers = new IntArray();
@@ -138,7 +139,7 @@ public  class DataManagement {
         IntArray comboLevel;
         IntArray helper;
         IntArray abilityLevel;
-        public double clickPower,questProgress,gold,touchCost;
+        public double clickPower,questProgress,gold,touchCost,volProgress;
         public Calendar closeTime;
         public String name;
     }

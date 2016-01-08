@@ -85,7 +85,6 @@ public class BaseArtifact {
         else if(type == TYPE.ENEMYGOLD){
             description += "gold dropped by enemies ";
         }
-        description += "by " + Gold.getNumberWithSuffix(amount);
     }
 
     /**
@@ -119,7 +118,8 @@ public class BaseArtifact {
 
     public Image getPicture(){return picture;}
 
-    public double getCurrentAmount(){return currentAmount;}
+    public String getCurrentAmountString(){return Gold.getNumberWithSuffix(currentAmount);}
+    public String getNextAmountString(){return Gold.getNumberWithSuffix(amount);}
 
     /**
      * Reset to default values and reset description and cost

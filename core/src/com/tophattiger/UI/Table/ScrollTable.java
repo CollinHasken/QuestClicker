@@ -6,6 +6,7 @@ import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.utils.Array;
 import com.tophattiger.GameObjects.Characters.Helpers;
+import com.tophattiger.Helper.Controllers.AdsController;
 import com.tophattiger.Helper.Data.DataHolder;
 import com.tophattiger.UI.Table.Helper.BuffScreen;
 import com.tophattiger.UI.Table.Helper.HelperGroup;
@@ -18,11 +19,11 @@ public class ScrollTable extends Table {
     Skin skin;
     BuffScreen buffScreen;
 
-    public ScrollTable(Skin _skin, Helpers _helpers){
+    public ScrollTable(Skin _skin, Helpers _helpers,AdsController adsController){
         super(_skin);
         skin = _skin;
         helpers = _helpers;
-        buffScreen = new BuffScreen(skin);
+        buffScreen = new BuffScreen(skin,adsController);
         container = new ScrollPane(this);
     }
 

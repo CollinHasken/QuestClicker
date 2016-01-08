@@ -40,12 +40,12 @@ public class UpgradeTable extends Table {
     public UpgradeTable(Skin _skin, GameRenderer _game) {
         super();
         game = _game;
-        helperTable = new ScrollTable(_skin, game.getHelpers());
+        helperTable = new ScrollTable(_skin, game.getHelpers(), game.getAdsController());
         heroTable = new HeroTable(_skin,game.getHero(),game.getComboList(),game.getAbilityList());
         artifactTable = new ArtifactTable(_skin,game.getArtifactList(),game.getHero(),this);
-        helperButton = new SwitchTableButton("Helpers",_skin,"power",helperTable,this);
-        heroButton = new SwitchTableButton("Hero",_skin,"power",heroTable,this);
-        artifactButton = new SwitchTableButton("Artifacts",_skin,"power",artifactTable,this);
+        helperButton = new SwitchTableButton("Helpers",_skin,"switchTable",helperTable,this);
+        heroButton = new SwitchTableButton("Hero",_skin,"switchTable",heroTable,this);
+        artifactButton = new SwitchTableButton("Artifacts",_skin,"switchTable",artifactTable,this);
         this.setBackground(sprite);
         this.setFillParent(false);
         this.setHeight(1080f);

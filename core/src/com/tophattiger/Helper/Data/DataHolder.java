@@ -9,7 +9,7 @@ public class DataHolder {
     public static double timeDif;
     public static float width,height;
     public static boolean open;
-    public static int hBarWidth,pBarWidth,helperAmount;
+    public static int hBarWidth,pBarWidth,vBarWidth,helperAmount;
     public static Calendar currentTime, pastTime;
 
     /**

@@ -21,7 +21,7 @@ public class Text extends Actor {
      * Enume to know what to do with functions, can make 1 class
      */
     public enum TYPE{
-        GOLD,QUEST,HEALTH
+        GOLD,QUEST,HEALTH,VOL,HERODPS,HELPERDPS
     }
 
     /**
@@ -44,6 +44,14 @@ public class Text extends Actor {
             case HEALTH:
                 font = AssetLoader.healthFont;
                 break;
+            case HERODPS:
+                font = AssetLoader.goldFont;
+                break;
+            case HELPERDPS:
+                font = AssetLoader.goldFont;
+                break;
+            case VOL:
+                font = AssetLoader.questFont;
         }
         layout = new GlyphLayout();
     }
@@ -58,17 +66,32 @@ public class Text extends Actor {
         switch(type){
             case GOLD:
                 layout.setText(font, Gold.getGoldWithSuffix() + " Gold");
-                font.draw(batch, layout, (int) (1650 - layout.width/2), 1050);
+                font.draw(batch, layout, (int) (1650 - layout.width / 2), 1050);
                 break;
             case QUEST:
-                layout.setText(font,"Quest " + (Gold.getNumberWithSuffix(stage.getHero().getQuestCompleted())) + ": " + stage.getHero().getQuestDescription());
+                layout.setText(font,"Quest " + (Gold.getNumberWithSuffix(stage.getHero().getQuestCompleted() + 1)) + ": " + stage.getHero().getQuestDescription());
                 font.draw(batch,layout,DataHolder.width*.5f - layout.width/2,128);
                 break;
             case HEALTH:
                 layout.setText(font,Gold.getNumberWithSuffix(stage.getEnemy().getHealth()) + " / " + Gold.getNumberWithSuffix(stage.getEnemy().getTotalHealth()) + " HP");
                 font.draw(batch,layout,1650 - layout.width/2,950);
                 break;
+            case HERODPS:
+                layout.setText(font,"Hero DPS: " + stage.getHero().getDPSString());
+                font.draw(batch,layout,1050 + (int)(stage.getHelperDPSText().getLayout().width  / 90) * 90,210);
+                break;
+            case HELPERDPS:
+                layout.setText(font,"Helper DPS: " + stage.getHelpers().getTotalDPS());
+                font.draw(batch,layout,930,210);
+                break;
+            case VOL:
+                layout.setText(font,"Volume " + (Gold.getNumberWithSuffix(stage.getHero().getVolCompleted() + 1)) + ": " + stage.getHero().getVolDescription());
+                font.draw(batch,layout,DataHolder.width*.5f - layout.width/2,50);
         }
+    }
+
+    public GlyphLayout getLayout(){
+        return layout;
     }
     public void dispose(){
         font.dispose();

@@ -24,13 +24,14 @@ public class ComboGroup {
         table = _table;
         combo = _combo;
         level = new Label("Level " + Gold.getNumberWithSuffix(combo.getLevel()),table.getSkin(),"level");
-        currentAmount = new Label("Current: " + Gold.getNumberWithSuffix(combo.getCurrentAmount()),table.getSkin(),"level");
+        currentAmount = new Label(combo.getCurrentAmountString() + " -> " + combo.getNextAmountString(),table.getSkin(),"value");
         description = new Label(combo.getDescription(),table.getSkin(),"combo");
         description.setWrap(true);
-        description.setAlignment(Align.right);
         picture = combo.getPicture();
         comboButton = new TextButton(Gold.getNumberWithSuffix(combo.getCost()),table.skin,"gold");
         comboButton.setDisabled(true);
+        comboButton.getLabel().setAlignment(Align.right);
+        comboButton.padRight(20);
         comboButton.addListener(new InputListener() {
 
             @Override
@@ -41,7 +42,7 @@ public class ComboGroup {
                     combo.level();
                     comboButton.setText(Gold.getNumberWithSuffix(combo.getCost()));
                     level.setText("Level " + Gold.getNumberWithSuffix(combo.getLevel()));
-                    currentAmount.setText("Current: " + Gold.getNumberWithSuffix(combo.getCurrentAmount()));
+                    currentAmount.setText(combo.getCurrentAmountString() + " -> " + combo.getNextAmountString());
                     description.setText(combo.getDescription());
                     if (combo.getLevel() == 1 && table.getComboSize() < table.getComboMax()) {
                         table.addCombo();
@@ -61,7 +62,7 @@ public class ComboGroup {
     }
     public void reset(){
         level.setText("Level " + Gold.getNumberWithSuffix(combo.getLevel()));
-        currentAmount.setText("Current: " + Gold.getNumberWithSuffix(combo.getCurrentAmount()));
+        currentAmount.setText(combo.getCurrentAmountString() + " -> " + combo.getNextAmountString());
         description.setText(combo.getDescription());
         comboButton.setText(Gold.getNumberWithSuffix(combo.getCost()));
     }
@@ -73,6 +74,6 @@ public class ComboGroup {
         else
             table.add(description).pad(5, 20, 0, 20).width(446);
         table.add(comboButton).width(200f).row();
-        table.add(level).left().padLeft(20f);table.add();table.add(currentAmount).row();
+        table.add(level).left().padLeft(20f);table.add(currentAmount).colspan(2).right().padRight(40).row();
     }
 }

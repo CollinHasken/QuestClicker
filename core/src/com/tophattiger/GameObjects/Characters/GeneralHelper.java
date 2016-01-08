@@ -14,6 +14,7 @@ import com.tophattiger.GameObjects.Projectile;
 import com.tophattiger.Helper.Data.AssetLoader;
 import com.tophattiger.Helper.Buff;
 import com.tophattiger.Helper.Data.DataManagement;
+import com.tophattiger.Helper.Data.Gold;
 
 /**
  * Created by Collin on 7/1/2015.
@@ -138,8 +139,16 @@ public class GeneralHelper extends Actor {
      * Set the variables based on the levels and buffs
      */
     public void set(){
-        totalGold = autoGold;
-        totalPower = autoPower;
+        autoPower = levelPowerAlg(pLevel);
+        autoGold = levelGoldAlg(gLevel);
+        autoPowerCost = levelPowerCostAlg(pLevel);
+        autoGoldCost = levelGoldCostAlg(gLevel);
+        totalGold = findTotalGold(autoGold);
+        totalPower = findTotalPower(autoPower);
+    }
+
+    private double findTotalPower(double power){
+        double totalPower = power;
         if(buffPower.size != 0){    //If the buff power is active, then increase the total power
             for(int i =0;i<buffPower.size;i++){
                 totalPower *= buffPower.get(i);
@@ -155,11 +164,17 @@ public class GeneralHelper extends Actor {
                 totalPower *= comboPower.get(i);
             }
         }
+        return totalPower;
+    }
+
+    private double findTotalGold(double gold){
+        double totalGold = gold;
         if(buffGold.size != 0){         //If the buff gold is active, increase the total gold
             for(int i=0;i<buffGold.size;i++){
                 totalGold *= buffGold.get(i);
             }
         }
+        return totalGold;
     }
 
     /**
@@ -195,6 +210,22 @@ public class GeneralHelper extends Actor {
         level++;
         checkBuffs();
         set();
+    }
+
+    protected double levelGoldAlg(int goldLevel){
+        return 1;
+    }
+
+    protected double levelGoldCostAlg(int goldLevel){
+        return 1;
+    }
+
+    protected double levelPowerAlg(int powerLevel){
+        return 1;
+    }
+
+    protected double levelPowerCostAlg(int powerLevel){
+        return 1;
     }
 
     /**
@@ -323,7 +354,7 @@ public class GeneralHelper extends Actor {
         abilitySpeedAmount = amount;
         abilitySpeedTime = length;
         abilitySpeed = true;
-        attack.setFrameDuration((attackTime/attackFrames)/(float)amount);   //Speed up animation
+        attack.setFrameDuration((attackTime / attackFrames) / (float) amount);   //Speed up animation
     }
 
     public String getBuffDesc(int i){
@@ -404,6 +435,10 @@ public class GeneralHelper extends Actor {
 
     public double getAutoGold(){return totalGold;}
 
+    public double getEachProjectileTime(){return eachProjectileTime;}
+
+    public double getDPS(){return getAutoPower()/getEachProjectileTime();}
+
     public int getProjectileX(){return projectileX;}
 
     public int getProjectileY(){return projectileY;}
@@ -419,4 +454,11 @@ public class GeneralHelper extends Actor {
     public float getProjectileGravity(){return gravity;}
 
     public float getProjectileAnimationTime(){return projectileAnimationTime;}
+
+    public String getCurrentTotalPowerString(){
+        return Gold.getNumberWithSuffix(totalPower);}
+    public String getNextTotalPowerString(){return Gold.getNumberWithSuffix(findTotalPower(levelPowerAlg(pLevel + 1)));}
+
+    public String getCurrentTotalGoldString(){return Gold.getNumberWithSuffix(findTotalGold(autoGold));}
+    public String getNextTotalGoldString(){return Gold.getNumberWithSuffix(findTotalGold(levelGoldAlg(gLevel + 1)));}
 }

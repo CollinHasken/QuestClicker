@@ -5,6 +5,7 @@ import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.utils.viewport.FitViewport;
 import com.tophattiger.GameWorld.GameRenderer;
+import com.tophattiger.Helper.Controllers.AdsController;
 import com.tophattiger.Helper.Data.DataHolder;
 import com.tophattiger.Helper.Data.DataManagement;
 import java.util.Calendar;
@@ -17,12 +18,12 @@ public class MainScreen implements Screen{
     /**
      * Create a stage and renderer
      */
-	public MainScreen(){
+	public MainScreen(AdsController adsController){
         stage = new Stage(new FitViewport(1920,1080));      //Make the resolution 1920x1080
         DataHolder.width = stage.getWidth();
         DataHolder.height = stage.getHeight();
         DataHolder.helperAmount = 1;
-        renderer = new GameRenderer(stage);
+        renderer = new GameRenderer(stage, adsController);
         Gdx.input.setInputProcessor(stage);
 	}
 

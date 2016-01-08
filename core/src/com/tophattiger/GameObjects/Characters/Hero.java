@@ -6,6 +6,7 @@ import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.tophattiger.GameWorld.GameRenderer;
+import com.tophattiger.Helper.Combos.ComboBuff;
 import com.tophattiger.Helper.Data.AssetLoader;
 import com.tophattiger.Helper.Data.DataManagement;
 import com.tophattiger.Helper.Data.Gold;
@@ -27,29 +28,35 @@ public class Hero extends Actor {
     final int positionY = 414;
 
     int questCompleted,questRequired, touchLevel,inheritance,questSelect;
-    double questProgress,touchCost,touchPower,artifactDamage;
-    float animationTime,levelAnimationTime;
-    boolean level,retired;
+    int volCompleted, volRequired;
+    double questProgress,touchCost,touchPower,artifactDamage, comboDamage, dps;
+    double volProgress;
+    float animationTime,levelAnimationTime, dpsTime, dpsStop, adTime;
+    boolean level,retired, dpsStart, adActivate;
     Random rand;
     Image picture;
-    String name,questDescription;
+    String name,questDescription,volDescription;
     Animation idle,attack,animation,levelAnimation;
     TextureRegion frame,levelFrame;
     GameRenderer game;
+    ComboBuff adBuff; //Using combo buff because very similar
 
     /**
      * The hero stores the click data, quest data, name and level
      */
     public Hero(GameRenderer _game){
         game = _game;
-        questCompleted = inheritance= 0;
-        touchPower = artifactDamage = 1;
-        questProgress = 0;
+        volCompleted = questCompleted = inheritance= 0;
+        touchPower = artifactDamage = comboDamage = 1;
+        volProgress = questProgress = 0;
         rand = new Random();
         newQuest();
-        animationTime = 0;
+        newVol();
+        dpsStop = 3;
+        dps = dpsTime = animationTime = adTime = 0;
         touchLevel = 1;
         touchCost = 10;
+        adActivate = dpsStart = false;
         name = "Hero's Name";
         retired = level = false;
         idle = new Animation(idleTime/idleFrames,AssetLoader.textureAtlas.findRegions("heroIdle"));
@@ -68,11 +75,35 @@ public class Hero extends Actor {
     public void act(float delta) {
         animationTime += delta;
         levelAnimationTime += delta;
+        if(adActivate){
+            if(adTime <= 0){
+                adActivate = false;
+                adBuff.undo();
+            }
+            adTime -= delta;
+        }
+        if(dpsStart){
+            dpsStop -= delta;
+            dpsTime += delta;
+        }
         if(questProgress >= questRequired){
             questProgress = 0;
             questRequired += 10*questCompleted;
             questCompleted ++;
             newQuest();
+            volProgress++;
+            if(volProgress >= volRequired){
+                volProgress = 0;
+                volRequired += 10*volCompleted;
+                volCompleted ++;
+                newVol();
+            }
+        }
+        if(dpsStop <= 0){
+            dpsTime = 0.00001f;
+            dpsStop = 3;
+            dps = 0;
+            dpsStart = false;
         }
         checkAnimation();
     }
@@ -84,12 +115,12 @@ public class Hero extends Actor {
      */
     @Override
     public void draw(Batch batch, float parentAlpha) {
+        frame = animation.getKeyFrame(animationTime,true);
+        batch.draw(frame, positionX, positionY, 256, 256);
         if(level){
             levelFrame = levelAnimation.getKeyFrame(levelAnimationTime);
             batch.draw(levelFrame, positionX - 80, positionY - 40, 256, 256);
         }
-        frame = animation.getKeyFrame(animationTime,true);
-        batch.draw(frame, positionX, positionY, 256, 256);
     }
 
     /**
@@ -98,9 +129,13 @@ public class Hero extends Actor {
     public void levelTouch(){
         touchLevel ++;
         touchCost = touchCost * 1.5;
-        touchPower = touchLevel*1.2;
+        touchPower = levelAlg(touchLevel);
         levelAnimation();
         game.getTable().updateInheritance();
+    }
+
+    private double levelAlg(int touchLevel){
+        return touchLevel * 1.2;
     }
 
     /**
@@ -129,6 +164,9 @@ public class Hero extends Actor {
      * Play the attack animation
      */
     public void attack(){
+        dps ++;
+        dpsStop = 3;
+        dpsStart = true;
         if(animation != attack) {
             animation = attack;
             animationTime = 0;
@@ -154,6 +192,19 @@ public class Hero extends Actor {
         inheritance -= cost;
     }
 
+    public void newVol(){
+        switch (volCompleted){
+            case 0:
+                volDescription = "A Baby's First Click";
+                break;
+            case 1:
+                volDescription = "The Clickening";
+                break;
+            default:
+                volDescription = "The Final Click";
+        }
+    }
+
     /**
      * Set the quest description to a random quest from a pool of quests.
      */
@@ -170,22 +221,22 @@ public class Hero extends Actor {
     public void setQuestDescription(int questNumber){
         switch (questNumber){
             case 0:
-                questDescription = "Raise your self-esteem by defeating animals.";
+                questDescription = "Raise your self-esteem by defeating animals";
                 break;
             case 1:
-                questDescription = "Find the holy stick of butt scratching.";
+                questDescription = "Find the holy stick of butt scratching";
                 break;
             case 2:
-                questDescription = "Kill some slimes to get jelly for my toast..";
+                questDescription = "Kill some slimes to get jelly for my toast";
                 break;
             case 3:
-                questDescription = "Run around in circles for a bit.";
+                questDescription = "Run around in circles for a bit";
                 break;
             case 4:
-                questDescription = "Hang on while I think of another quest.";
+                questDescription = "Hang on while I think of another quest";
                 break;
             case 5:
-                questDescription = "Go to the farthest corner of the world. Then clean it.";
+                questDescription = "Go to the farthest corner of the world. Then clean it";
                 break;
             case 6:
                 questDescription = "Grab me some ice cream, I'm starving!";
@@ -194,20 +245,51 @@ public class Hero extends Actor {
                 questDescription = "Fix our over population problem. Or were they endangered...";
                 break;
             case 8:
-                questDescription = "Find a date for the royal ball. Ask the princess, or prince. I don't judge.";
+                questDescription = "Find a date for the royal ball. Ask the princess, or prince. I don't judge";
                 break;
             case 9:
-                questDescription = "Get some ingredients for rabbit stew.";
+                questDescription = "Get some ingredients for rabbit stew";
                 break;
 
         }
     }
+
+    public double totalPower(double amount){
+        double power = amount;
+        power *= comboDamage;
+        power *= artifactDamage;
+        return power;
+    }
+
+    public ComboBuff makeAdBuff(){
+        int buffSelect = rand.nextInt(3);
+        switch (buffSelect){
+            case 0:
+                adBuff = new ComboBuff(1.5,10, ComboBuff.TYPE.ALLHELPERDAMAGE,game);
+                adTime = 60;
+                break;
+            case 1:
+                adBuff = new ComboBuff(1.5,10, ComboBuff.TYPE.HERODAMAGE,game);
+                adTime = 60;
+                break;
+            case 2:
+                adBuff = new ComboBuff(1.5,10, ComboBuff.TYPE.GOLD,game);
+                adTime = 120;
+        }
+        return adBuff;
+    }
+
+    public void AdActivate(){
+        adActivate = true;
+        adBuff.activate();
+    }
+
     /**
      * Change the attack power by multiplying by the damage from the combo
      * @param amount Amount to multiply damage by
      */
     public void comboDamage(double amount){
-        touchPower *= amount;
+        comboDamage *= amount;
     }
 
     /**
@@ -215,7 +297,7 @@ public class Hero extends Actor {
      * @param amount Amount to undo damage by
      */
     public void undoComboDamage(double amount){
-        touchPower /= amount;
+        comboDamage /= amount;
     }
 
     /**
@@ -223,9 +305,7 @@ public class Hero extends Actor {
      * @param amount Amount to multiply damage by
      */
     public void artifactDamage(double amount){
-        touchPower /= artifactDamage;
-        touchPower *= amount;
-        artifactDamage = amount;
+        artifactDamage *= amount;
     }
 
     public String getName(){
@@ -249,13 +329,19 @@ public class Hero extends Actor {
     public boolean hasRetired(){return retired;}
     public int getInheritance(){return inheritance;}
 
-    public String getTouchPowerString(){return Gold.getNumberWithSuffix(touchPower);}
-    public double getTouchPower(){return touchPower;}
+    public String getTouchPowerString(){return Gold.getNumberWithSuffix(totalPower(touchPower));}
+    public double getTouchPower(){return totalPower(touchPower);}
+    public String getNextTouchPowerString(){return Gold.getNumberWithSuffix(totalPower(levelAlg(touchLevel+1)));}
+    public String getDPSString(){return dpsTime == 0 ? "0" : Gold.getNumberWithSuffix((int)((dps*totalPower(touchPower))/dpsTime));}
     public void setTouchPower(double _power){touchPower = _power;}
-    public int getQuestCompleted(){return questCompleted+1;}
+    public int getQuestCompleted(){return questCompleted;}
     public int getQuestRequired(){return questRequired;}
     public double getQuestProgress(){return questProgress;}
     public String getQuestDescription(){return questDescription;}
+    public int getVolCompleted(){return volCompleted;}
+    public int getVolRequired(){return volRequired;}
+    public double getVolProgress(){return volProgress;}
+    public String getVolDescription(){return volDescription;}
 
     /**
      * Load the quest, name and power data from JSON
@@ -267,6 +353,10 @@ public class Hero extends Actor {
             questCompleted = jData.questCompleted;
             questProgress = jData.questProgress;
             questRequired = jData.questRequired;
+            volCompleted = jData.volCompleted;
+            volRequired = jData.volRequired;
+            volProgress = jData.volProgress;
+            newVol();
             setName(jData.name);
             setTouchCost(jData.touchCost);
             setTouchLevel(jData.touchLevel);
@@ -286,6 +376,9 @@ public class Hero extends Actor {
         jData.questCompleted = questCompleted;
         jData.questProgress = questProgress;
         jData.questRequired = questRequired;
+        jData.volCompleted = volCompleted;
+        jData.volProgress = volProgress;
+        jData.volRequired = volRequired;
         jData.touchCost = getTouchCost();
         jData.touchLevel = getTouchLevel();
         jData.name = getName();
@@ -299,11 +392,12 @@ public class Hero extends Actor {
      */
     public void reset(){
         touchPower = 1;
-        questCompleted = 0;
-        questProgress = 0;
-        questRequired = 10;
+        volCompleted = questCompleted = 0;
+        volProgress =  questProgress = 0;
+        volRequired = questRequired = 10;
         name = "Hero";
         newQuest();
+        newVol();
         touchCost = 10;
         touchLevel = 1;
     }

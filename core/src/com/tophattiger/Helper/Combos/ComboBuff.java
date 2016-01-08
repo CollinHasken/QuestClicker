@@ -64,7 +64,7 @@ public class ComboBuff {
     /**
      * Activate the buff. Check what the type is and activate the corresponding buff
      */
-    private void activate(){
+    public void activate(){
         if(type == TYPE.ALLHELPERDAMAGE){
             game.getHelpers().comboDamage(currentAmount);
         }
@@ -122,7 +122,20 @@ public class ComboBuff {
         else if(type == TYPE.GOLD){
             description += "gold dropped by enemies ";
         }
-        description += "by " + Gold.getNumberWithSuffix(amount);
+    }
+
+    public String getAdDescription(){
+        description = "multiply";
+        if(type == TYPE.ALLHELPERDAMAGE){
+            description += "all helper damage ";
+        }
+        else if(type == TYPE.HERODAMAGE){
+            description += "the hero's damage ";
+        }
+        else if(type == TYPE.GOLD){
+            description += "gold dropped by enemies ";
+        }
+        return description + "by " + amount + "?";
     }
 
     public String getDescription(){
@@ -139,7 +152,9 @@ public class ComboBuff {
 
     public Image getPicture(){return picture;}
 
-    public double getCurrentAmount(){return currentAmount;}
+    public String getCurrentAmountString(){return Gold.getNumberWithSuffix(currentAmount);}
+
+    public String getNextAmountString(){return Gold.getNumberWithSuffix(amount);}
 
     /**
      * Reset to default values and reset description and cost

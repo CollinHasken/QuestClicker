@@ -5,6 +5,7 @@ import com.badlogic.gdx.scenes.scene2d.actions.MoveToAction;
 import com.badlogic.gdx.scenes.scene2d.ui.Button;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.utils.ChangeListener;
+import com.tophattiger.Helper.Controllers.AdsController;
 import com.tophattiger.Helper.Data.DataHolder;
 import com.tophattiger.UI.Menu.NameScreen;
 
@@ -22,7 +23,7 @@ public class UpgradeButton extends Button {
      * @param styleName Name for style
      * @param _table Table the button is hooked with
      */
-    public UpgradeButton(Skin skin, String styleName, UpgradeTable _table) {
+    public UpgradeButton(Skin skin, String styleName, UpgradeTable _table, final AdsController adsController) {
         super(skin, styleName);
         this.setPosition(0, 285);
         this.setSize(64, 390);
@@ -42,7 +43,12 @@ public class UpgradeButton extends Button {
                     if (DataHolder.open) {
                         mta.setX(0);
                         DataHolder.open = false;
-                    } else DataHolder.open = true;
+                        adsController.hideBannerAd();
+                    }
+                    else {
+                        DataHolder.open = true;
+                        adsController.showBannerAd();
+                    }
                     actor.addAction(mta);
                     table.getGame().getAbilityList().move();
                 }

@@ -13,11 +13,13 @@ import com.badlogic.gdx.utils.Pool;
 import com.tophattiger.GameObjects.Characters.Enemy;
 import com.tophattiger.GameObjects.Characters.Helpers;
 import com.tophattiger.GameObjects.Characters.Hero;
+import com.tophattiger.GameObjects.Chest;
 import com.tophattiger.GameObjects.Coin;
 import com.tophattiger.GameObjects.Text;
 import com.tophattiger.Helper.Abilities.AbilityList;
 import com.tophattiger.Helper.Artifacts.ArtifactList;
 import com.tophattiger.Helper.Combos.ComboList;
+import com.tophattiger.Helper.Controllers.AdsController;
 import com.tophattiger.Helper.Data.AssetLoader;
 import com.tophattiger.Helper.Data.DataHolder;
 import com.tophattiger.Helper.Data.DataManagement;
@@ -34,6 +36,7 @@ public class GameRenderer {
     //Update to keep record of which version is downloaded
     private static final int newestVersion = 10;
     private static final String newestVersionString = "0.3.0 ";
+    private AdsController adsController;
 
     Stage stage;
     Skin skin;
@@ -44,13 +47,14 @@ public class GameRenderer {
     Helpers helpers;
     UpgradeTable table;
     Enemy enemy;
+    Chest chest;
 
     UpgradeButton upgradeButton;
     ImageButton menuButton;
     Menu menu;
     NameScreen nameScreen;
-    Text goldText,questText,healthText;
-    Image progressBar,healthBar;
+    Text goldText,questText,healthText,volText,heroDPSText, helperDPSText;
+    Image progressBar,healthBar,volumeBar;
 
     AbilityList abilityList;
     ArtifactList artifactList;
@@ -78,10 +82,11 @@ public class GameRenderer {
 
     /**
      * Create the game renderer
-     * @param stag Stage to put the game renderer in
+     * @param stage Stage to put the game renderer in
      */
-    public GameRenderer(Stage stag){
-        stage = stag;
+    public GameRenderer(Stage stage, AdsController adsController){
+        this.stage = stage;
+        this.adsController = adsController;
 
         loadAssets();
         addActors();
@@ -110,6 +115,7 @@ public class GameRenderer {
      * Set the bar graphics
      */
     public void setBar(){
+        volumeBar.setWidth((int) (((hero.getVolProgress() / hero.getVolRequired())) * DataHolder.vBarWidth));
         progressBar.setWidth((int) (((hero.getQuestProgress() / hero.getQuestRequired())) * DataHolder.pBarWidth));
         healthBar.setWidth((int) ((enemy.getHealth() / enemy.getTotalHealth()) * DataHolder.hBarWidth));
     }
@@ -119,12 +125,17 @@ public class GameRenderer {
      */
     public void addActors(){
         stage.addActor(background);
+        stage.addActor(chest);
         stage.addActor(progressBar);
+        stage.addActor(volumeBar);
         stage.addActor(healthBar);
         stage.addActor(enemy);
         stage.addActor(goldText);
         stage.addActor(questText);
+        stage.addActor(volText);
         stage.addActor(healthText);
+        stage.addActor(heroDPSText);
+        stage.addActor(helperDPSText);
         stage.addActor(hero);
         helpers.addActors(stage);
         stage.addActor(menuButton);
@@ -136,6 +147,7 @@ public class GameRenderer {
         stage.addActor(table.getBuffScreen());
         stage.addActor(menu);
         stage.addActor(nameScreen);
+        stage.addActor(chest.getAdScreen());
     }
 
     /**
@@ -150,6 +162,7 @@ public class GameRenderer {
         activeEnemies.add(enemy);
         helpers = new Helpers(this);
         skin = new Skin(Gdx.files.internal("images.json"));
+        chest = new Chest(this,skin);
         combos = new ComboList(this);
         comboText = new ComboText(combos);
         abilityList = new AbilityList(this);
@@ -157,11 +170,15 @@ public class GameRenderer {
         background = new Background(this);
         healthBar = AssetLoader.healthBar;
         progressBar = AssetLoader.progressBar;
+        volumeBar = AssetLoader.volumeBar;
         goldText = new Text(this, Text.TYPE.GOLD);
         questText = new Text(this,Text.TYPE.QUEST);
+        volText = new Text(this,Text.TYPE.VOL);
         healthText = new Text(this,Text.TYPE.HEALTH);
+        heroDPSText = new Text(this, Text.TYPE.HERODPS);
+        helperDPSText = new Text(this, Text.TYPE.HELPERDPS);
         table = new UpgradeTable(skin,this);
-        upgradeButton = new UpgradeButton(skin,"upgrade",table);
+        upgradeButton = new UpgradeButton(skin,"upgrade",table,adsController);
         nameScreen = new NameScreen(skin,this);
         menu = new Menu(skin,this);
         menuButton = new ImageButton(skin,"menu");
@@ -296,6 +313,8 @@ public class GameRenderer {
     public static String getNewestVersionString(){return newestVersionString;}
     public double getArtifactEnemyGold(){return artifactEnemyGold;}
     public UpgradeButton getUpgradeButton(){return upgradeButton;}
+    public AdsController getAdsController(){return adsController;}
+    public Text getHelperDPSText(){return helperDPSText;}
 
     /**
      * Dispose of assets
@@ -304,6 +323,9 @@ public class GameRenderer {
         healthText.dispose();
         goldText.dispose();
         questText.dispose();
+        volText.dispose();
+        heroDPSText.dispose();
+        helperDPSText.dispose();
         skin.dispose();
         stage.dispose();
         for(int i = 0;i< abilityList.getAbilities().size;i++){

@@ -150,22 +150,22 @@ public class Gold {
             return "tre";
         }
         if(i == 4){
-            return "quattuor";
+            return "quat";
         }
         if(i == 5){
-            return "quinqua";
+            return "quin";
         }
         if(i == 6){
             return "sex";
         }
         if(i == 7){
-            return "septen";
+            return "sept";
         }
         if(i == 8){
-            return "octo";
+            return "oct";
         }
         if(i == 9){
-            return "noven";
+            return "nov";
         }
         return "";
     }
@@ -183,28 +183,28 @@ public class Gold {
             return "deci";
         }
         if(i == 2){
-            return "viginti";
+            return "vigi";
         }
         if(i == 3){
-            return "triginti";
+            return "trigi";
         }
         if(i == 4){
-            return "quadraginti";
+            return "quadra";
         }
         if(i == 5){
-            return "quinquaginti";
+            return "quinqua";
         }
         if(i == 6){
-            return "sexaginti";
+            return "sexa";
         }
         if(i == 7){
-            return "septuaginti";
+            return "septua";
         }
         if(i == 8){
-            return "octoginti";
+            return "octogi";
         }
         if(i == 9){
-            return "nonaginti";
+            return "nona";
         }
         return "";
     }
@@ -222,28 +222,28 @@ public class Gold {
             return "centi";
         }
         if(i == 2){
-            return "ducenti";
+            return "duce";
         }
         if(i == 3){
-            return "trecenti";
+            return "trece";
         }
         if(i == 4){
-            return "quadringenti";
+            return "quadri";
         }
         if(i == 5){
-            return "quingenti";
+            return "quinge";
         }
         if(i == 6){
-            return "sexcenti";
+            return "sexce";
         }
         if(i == 7){
-            return "septingenti";
+            return "septi";
         }
         if(i == 8){
-            return "octingenti";
+            return "octi";
         }
         if(i == 9){
-            return "nongenti";
+            return "nonge";
         }
         return "";
     }

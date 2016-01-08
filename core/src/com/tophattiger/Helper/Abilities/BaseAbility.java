@@ -220,16 +220,16 @@ public class BaseAbility extends Button{
     public void setDescription(){
         description = "Activate ability to ";
         if(type == TYPE.BIGDAMAGE){
-            description += "deal " + Gold.getNumberWithSuffix(amount) + " damage to the enemy";
+            description += "deal a large amount of damage to the enemy";
         }
         else if(type == TYPE.HELPERSPEED){
-            description += "multiply helpers' attack speed by " + Gold.getNumberWithSuffix(amount);
+            description += "multiply helpers' attack speed";
         }
         else if(type == TYPE.GOLDDROP){
-            description += "drop "+ Gold.getNumberWithSuffix(amount) + " gold every tap";
+            description += "drop extra gold every tap";
         }
         else if(type == TYPE.RETIRE){
-            description += "restart with " + Gold.getNumberWithSuffix(game.getHero().getPossibleInheritance()) + " artifacts";
+            description += "restart with inheritance to purchase artifacts";
         }
     }
 
@@ -343,6 +343,8 @@ public class BaseAbility extends Button{
     public Image getPicture(){return picture;}
 
     public double getCurrentAmount(){return currentAmount;}
+    public String getCurrentAmountString(){return Gold.getNumberWithSuffix(currentAmount);}
+    public String getNextAmountString(){return Gold.getNumberWithSuffix(amount);}
 
     public TYPE getType(){return type;}
 

@@ -23,17 +23,18 @@ public class AbilityGroup {
         table = _table;
         ability = _ability;
         level = new Label("Level " + Gold.getNumberWithSuffix(ability.getLevel()),table.getSkin(),"level");
-        currentAmount = new Label("Current: " + Gold.getNumberWithSuffix(ability.getCurrentAmount()),table.getSkin(),"level");
+        currentAmount = new Label(ability.getCurrentAmountString() + " -> " + ability.getNextAmountString(),table.getSkin(),"value");
         if(ability.getType() == BaseAbility.TYPE.RETIRE){
             currentAmount.setText("");
             level.setText("Retire");
         }
         description = new Label(ability.getDescription(),table.getSkin(),"combo");
         description.setWrap(true);
-        description.setAlignment(Align.right);
         picture = ability.getPicture();
         abilityButton = new TextButton(Gold.getNumberWithSuffix(ability.getCost()),table.skin,"gold");
         abilityButton.setDisabled(true);
+        abilityButton.getLabel().setAlignment(Align.right);
+        abilityButton.padRight(20);
         abilityButton.addListener(new InputListener() {
 
             @Override
@@ -48,7 +49,7 @@ public class AbilityGroup {
                     ability.level();
                     abilityButton.setText(Gold.getNumberWithSuffix(ability.getCost()));
                     level.setText("Level " + Gold.getNumberWithSuffix(ability.getLevel()));
-                    currentAmount.setText("Current: " + Gold.getNumberWithSuffix(ability.getCurrentAmount()));
+                    currentAmount.setText(ability.getCurrentAmountString() + " -> " + ability.getNextAmountString());
                     description.setText(ability.getDescription());
                     if (ability.getLevel() == 1 && table.getAbilitySize() < table.getAbilityMax()) {
                         table.addAbility();
@@ -72,7 +73,7 @@ public class AbilityGroup {
     }
     public void reset(){
         level.setText("Level " + Gold.getNumberWithSuffix(ability.getLevel()));
-        currentAmount.setText("Current: " + Gold.getNumberWithSuffix(ability.getCurrentAmount()));
+        currentAmount.setText(ability.getCurrentAmountString() + " -> " + ability.getNextAmountString());
         description.setText(ability.getDescription());
         abilityButton.setText(Gold.getNumberWithSuffix(ability.getCost()));
     }
@@ -84,6 +85,6 @@ public class AbilityGroup {
         else
             table.add(description).pad(5, 20, 0, 20).width(446);
         table.add(abilityButton).width(200f).row();
-        table.add(level).left().padLeft(20f);table.add();table.add(currentAmount).row();
+        table.add(level).left().padLeft(20f);table.add(currentAmount).colspan(2).right().padRight(40).row();
     }
 }

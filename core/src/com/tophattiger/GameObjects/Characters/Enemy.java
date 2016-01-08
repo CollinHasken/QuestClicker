@@ -91,6 +91,7 @@ public class Enemy extends Actor implements Pool.Poolable {
 
     @Override
     public void reset() {
+        set();
     }
 
     /**

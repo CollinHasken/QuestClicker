@@ -160,8 +160,16 @@ public class Helpers {
      */
     public void abilitySpeed(double amount, int length){
         for(int i = 0; i < DataHolder.helperAmount;i++){
-            helpers.get(i).abilitySpeed(amount,length);
+            helpers.get(i).abilitySpeed(amount, length);
         }
+    }
+
+    public String getTotalDPS(){
+        double dps = 0;
+        for(int i = 0; i < DataHolder.helperAmount;i++){
+            dps += helpers.get(i).getDPS();
+        }
+        return Gold.getNumberWithSuffix(dps);
     }
 
     public int getMax(){return helpers.size;}
