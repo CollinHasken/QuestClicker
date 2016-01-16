@@ -28,6 +28,15 @@ public  class DataManagement {
         jData.combosUnlocked = game.getComboList().getCombosUnlocked();
         jData.abilitiesUnlocked = game.getAbilityList().getAbilitiesUnlocked();
         jData.artifactsUnlocked = game.getArtifactList().getArtifactsUnlocked();
+        jData.damageDoneI = JsonData.damageDone;
+        jData.damageDoneByHelpersI = JsonData.damageDoneByHelpers;
+        jData.damageDoneByHeroI = JsonData.damageDoneByHero;
+        jData.clicksI = JsonData.clicks;
+        jData.enemiesDefeatedI = JsonData.enemiesDefeated;
+        jData.goldCollectedI = JsonData.goldCollected;
+        jData.idleGoldCollectedI = JsonData.idleGoldCollected;
+        jData.maxComboI = JsonData.maxCombo;
+        jData.timeSpentI = JsonData.timeSpent;
         JsonData.helpers.clear();
         JsonData.comboLevels.clear();
         JsonData.abilityLevels.clear();
@@ -64,6 +73,7 @@ public  class DataManagement {
             //Check for version recorded to make sure version conflicts don't arise when updating
             if(jData.currentVersion >= 9){
                 JsonData.artifacts = jData.artifact;
+                JsonData.offeringArtifact = jData.offeringArtifactI;
                 game.getArtifactList().setArtifactsUnlocked(jData.artifactsUnlocked);
                 game.getArtifactList().load();
             }
@@ -81,11 +91,24 @@ public  class DataManagement {
                     JsonData.abilityLevels = jData.abilityLevel;
                     game.getAbilityList().setAbilitiesUnlocked(jData.abilitiesUnlocked);
                     game.getAbilityList().load();
+                    if(jData.currentVersion >= 11) {
+                        JsonData.clicks = jData.clicksI;
+                        JsonData.enemiesDefeated = jData.enemiesDefeatedI;
+                        JsonData.damageDone = jData.damageDoneI;
+                        JsonData.damageDoneByHelpers = jData.damageDoneByHelpersI;
+                        JsonData.damageDoneByHero = jData.damageDoneByHeroI;
+                        JsonData.goldCollected = jData.goldCollectedI;
+                        JsonData.idleGoldCollected = jData.idleGoldCollectedI;
+                        JsonData.timeSpent = jData.timeSpentI;
+                        JsonData.maxCombo = jData.maxComboI;
+                    }
                 }
             }
             else {
                 DataHolder.pastTime = DataHolder.currentTime;
                 DataHolder.helperAmount = 1;
+                JsonData.clicks = JsonData.enemiesDefeated = JsonData.damageDone = JsonData.damageDoneByHelpers = JsonData.damageDoneByHero  = JsonData.goldCollected = JsonData.idleGoldCollected = JsonData.maxCombo= 0;
+                JsonData.timeSpent = 0;
             }
         }
         if(save.isEmpty() || game.getHero().getName().equals("Hero's Name"))
@@ -134,11 +157,14 @@ public  class DataManagement {
         public static IntArray helpers = new IntArray();
         public static IntArray comboLevels = new IntArray();
         public static IntArray artifacts = new IntArray();
-        public static int offeringArtifact;
+        public static int offeringArtifact,clicks,enemiesDefeated,damageDone,damageDoneByHero,damageDoneByHelpers,goldCollected,idleGoldCollected, maxCombo;
+        public static float timeSpent;
         IntArray artifact;
         IntArray comboLevel;
         IntArray helper;
         IntArray abilityLevel;
+        int offeringArtifactI,clicksI,enemiesDefeatedI,damageDoneI,damageDoneByHeroI,damageDoneByHelpersI,goldCollectedI,idleGoldCollectedI, maxComboI;
+        float timeSpentI;
         public double clickPower,questProgress,gold,touchCost,volProgress;
         public Calendar closeTime;
         public String name;

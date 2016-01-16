@@ -53,6 +53,10 @@ public class HelperGroup {
                     gLevel.setText("Idle Gold\n" + helper.getCurrentTotalGoldString() + " -> " + helper.getNextTotalGoldString());
                     level.setText("Level " + Gold.getNumberWithSuffix(helper.getLevel()));
                     if (helper.getLevel() == 1 && DataHolder.helperAmount < table.getMaxHelpers()) {
+                        if(helper.getName().equals("Bob") && table.getHelpers().getGame().getAdsController().getSignedInGPGS())
+                            table.getHelpers().getGame().getAdsController().unlockAchievementGPGS(DataHolder.guildOwner);
+                        else if(helper.getName().equals("Nina") && table.getHelpers().getGame().getAdsController().getSignedInGPGS())
+                            table.getHelpers().getGame().getAdsController().unlockAchievementGPGS(DataHolder.nina);
                         table.addHelper();      //If this is the first level, create the next helper
                     }
                     return true;

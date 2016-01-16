@@ -16,7 +16,47 @@ public class DesktopLauncher {
 			}
 
 			@Override
+			public void rateGame() {
+
+			}
+
+            @Override
+            public void stepAchievementGPGS(String achievementID, int amount) {
+
+            }
+
+            @Override
 			public void hideBannerAd() {
+
+			}
+
+			@Override
+			public void showOrLoadInterstitial() {
+
+			}
+
+			@Override
+			public boolean getSignedInGPGS() {
+				return false;
+			}
+
+			@Override
+			public void loginGPGS() {
+
+			}
+
+			@Override
+			public void unlockAchievementGPGS(String achievementID) {
+
+			}
+
+			@Override
+			public void getAchievementsGPGS() {
+
+			}
+
+			@Override
+			public void incrementAchievementGPGS(String achievementID, int amount) {
 
 			}
 		}), config);

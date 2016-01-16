@@ -27,20 +27,23 @@ import com.tophattiger.UI.Background;
 import com.tophattiger.UI.ComboText;
 import com.tophattiger.UI.Menu.Menu;
 import com.tophattiger.UI.Menu.NameScreen;
+import com.tophattiger.UI.Menu.StatScreen;
 import com.tophattiger.UI.Table.UpgradeButton;
 import com.tophattiger.UI.Table.UpgradeTable;
+import com.tophattiger.UI.Tap;
 
 
 public class GameRenderer {
 
     //Update to keep record of which version is downloaded
-    private static final int newestVersion = 10;
-    private static final String newestVersionString = "0.3.0 ";
+    private static final int newestVersion = 11;
+    private static final String newestVersionString = "0.3.2";
     private AdsController adsController;
 
     Stage stage;
     Skin skin;
     Background background;
+    Tap tap;
     GameRenderer renderer = this;
 
     Hero hero;
@@ -58,6 +61,7 @@ public class GameRenderer {
 
     AbilityList abilityList;
     ArtifactList artifactList;
+    StatScreen statScreen;
     Coin coin;
     ComboText comboText;
     ComboList combos;
@@ -70,13 +74,6 @@ public class GameRenderer {
         @Override
         protected Coin newObject() {
             return new Coin();
-        }
-    };
-    Array<Enemy> activeEnemies = new Array<Enemy>();
-    Pool<Enemy> enemyPool = new Pool<Enemy>(){
-        @Override
-        protected Enemy newObject() {
-            return new Enemy(renderer);
         }
     };
 
@@ -103,6 +100,7 @@ public class GameRenderer {
 
         table.update();
         updateCoins(runTime);
+        DataManagement.JsonData.timeSpent += runTime;
 
         setBar();
 
@@ -125,6 +123,7 @@ public class GameRenderer {
      */
     public void addActors(){
         stage.addActor(background);
+        stage.addActor(enemy);
         stage.addActor(chest);
         stage.addActor(progressBar);
         stage.addActor(volumeBar);
@@ -146,8 +145,10 @@ public class GameRenderer {
         stage.addActor(comboText);
         stage.addActor(table.getBuffScreen());
         stage.addActor(menu);
+        stage.addActor(statScreen);
         stage.addActor(nameScreen);
         stage.addActor(chest.getAdScreen());
+        stage.addActor(tap);
     }
 
     /**
@@ -157,9 +158,7 @@ public class GameRenderer {
         DataHolder.Initialize();
 
         hero = new Hero(this);
-        enemy = enemyPool.obtain();
-        enemy.init();
-        activeEnemies.add(enemy);
+        enemy = new Enemy(this);
         helpers = new Helpers(this);
         skin = new Skin(Gdx.files.internal("images.json"));
         chest = new Chest(this,skin);
@@ -168,6 +167,7 @@ public class GameRenderer {
         abilityList = new AbilityList(this);
         artifactList = new ArtifactList(this);
         background = new Background(this);
+        statScreen = new StatScreen(skin);
         healthBar = AssetLoader.healthBar;
         progressBar = AssetLoader.progressBar;
         volumeBar = AssetLoader.volumeBar;
@@ -181,11 +181,14 @@ public class GameRenderer {
         upgradeButton = new UpgradeButton(skin,"upgrade",table,adsController);
         nameScreen = new NameScreen(skin,this);
         menu = new Menu(skin,this);
+        tap = new Tap();
         menuButton = new ImageButton(skin,"menu");
         menuButton.setPosition(20, 916);
         menuButton.addListener(new InputListener() {
             @Override
             public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
+                if(NameScreen.SettingName)
+                    return false;
                 menu.show();
                 return true;
             }
@@ -241,26 +244,6 @@ public class GameRenderer {
     }
 
     /**
-     * Remove the enemy from the array and pool
-     * @param enemy Enemy to delete
-     */
-    public void removeEnemy(Enemy enemy){
-        enemy.remove();
-        activeEnemies.removeValue(enemy, true);
-        enemyPool.free(enemy);
-    }
-
-    /**
-     * Create a new enemy in the pool and array
-     */
-    public void newEnemy(){
-        enemy = enemyPool.obtain();
-        enemy.init();
-        activeEnemies.add(enemy);
-        stage.addActor(enemy);
-    }
-
-    /**
      * Multiply the combo gold amount increase
      * @param amount Amount to multiply by
      */
@@ -298,7 +281,6 @@ public class GameRenderer {
     public ComboList getComboList(){return combos;}
     public AbilityList getAbilityList(){return abilityList;}
     public ArtifactList getArtifactList(){return artifactList;}
-    public Array<Enemy> getEnemies(){return activeEnemies;}
     public Enemy getEnemy(){return enemy;}
     public Stage getStage(){return stage;}
     public ComboText getCombo(){return comboText;}
@@ -315,6 +297,8 @@ public class GameRenderer {
     public UpgradeButton getUpgradeButton(){return upgradeButton;}
     public AdsController getAdsController(){return adsController;}
     public Text getHelperDPSText(){return helperDPSText;}
+    public StatScreen getStatScreen(){return statScreen;}
+    public Tap getTap(){return tap;}
 
     /**
      * Dispose of assets

@@ -23,6 +23,9 @@ public class MainScreen implements Screen{
         DataHolder.width = stage.getWidth();
         DataHolder.height = stage.getHeight();
         DataHolder.helperAmount = 1;
+
+        if(!adsController.getSignedInGPGS())
+            adsController.loginGPGS();
         renderer = new GameRenderer(stage, adsController);
         Gdx.input.setInputProcessor(stage);
 	}

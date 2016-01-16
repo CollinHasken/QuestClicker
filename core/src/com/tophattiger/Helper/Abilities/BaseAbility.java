@@ -251,11 +251,8 @@ public class BaseAbility extends Button{
      */
     public void activate(){
         if(type == TYPE.BIGDAMAGE){
-           for(int i = 0; i< game.getEnemies().size;i++){
-               if(!game.getEnemies().get(i).isDead()){
-                   game.getEnemies().get(i).getHit(currentAmount);
-               }
-           }
+            if(!game.getEnemy().isDead())
+                game.getEnemy().getHit(currentAmount);
             resetTime = 300;
         }
         else if(type == TYPE.HELPERSPEED){

@@ -17,7 +17,7 @@ public class ComboBuff {
 
     String description;
     double amount,cost,originalAmount,currentAmount;
-    int reqCombo, level;
+    int reqCombo, level, adTime;
     TYPE type;
     boolean active, leveled;
     Image picture;
@@ -125,7 +125,7 @@ public class ComboBuff {
     }
 
     public String getAdDescription(){
-        description = "multiply";
+        description = "multiply ";
         if(type == TYPE.ALLHELPERDAMAGE){
             description += "all helper damage ";
         }
@@ -135,7 +135,8 @@ public class ComboBuff {
         else if(type == TYPE.GOLD){
             description += "gold dropped by enemies ";
         }
-        return description + "by " + amount + "?";
+        currentAmount = amount;
+        return description + "by " + amount + " for " + adTime + " seconds?";
     }
 
     public String getDescription(){
@@ -147,6 +148,8 @@ public class ComboBuff {
     }
 
     public double getCost(){return cost;}
+
+    public void setAdTime(int time){adTime = time;}
 
     public int getLevel(){return level;}
 

@@ -7,6 +7,8 @@ import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.utils.Pool;
 import com.tophattiger.GameWorld.GameRenderer;
 import com.tophattiger.Helper.Data.AssetLoader;
+import com.tophattiger.Helper.Data.DataHolder;
+import com.tophattiger.Helper.Data.DataManagement;
 
 import java.util.Random;
 
@@ -20,7 +22,7 @@ public class Enemy extends Actor implements Pool.Poolable {
 
     int gold, progress,coins, identifier;
     double health,totalHealth,multiplier;
-    boolean hit,dead,newEnemy;
+    boolean hit,dead;
     float enemyTime;
     TextureRegion enemyFrame;
     Animation animation,eIdle,eHit,eDead;
@@ -34,7 +36,7 @@ public class Enemy extends Actor implements Pool.Poolable {
     public Enemy(GameRenderer _game){
         game = _game;
         rand = new Random();
-        newEnemy = false;
+        init();
     }
 
     /**
@@ -102,13 +104,8 @@ public class Enemy extends Actor implements Pool.Poolable {
     public void act(float delta) {
         super.act(delta);
         enemyTime += delta;
-        if (health < 0){        //If the helpers bring the enemies health lower than 0, kill it
+        if (health < 0 && !dead){        //If the helpers bring the enemies health lower than 0, kill it
             dead();
-        }
-        if(DeathTime < enemyTime && newEnemy){      //If the timer is past the buffer and there needs to be a new enemy, create one
-            game.newEnemy();
-            game.dropCoins(gold,coins);
-            newEnemy = false;
         }
         if(hit && this.animation.isAnimationFinished(enemyTime)){   //If the enemies been hit and the animation is finished, go back to idleling
             enemyTime = 0;
@@ -117,7 +114,8 @@ public class Enemy extends Actor implements Pool.Poolable {
         }
         else if(dead && this.animation.isAnimationFinished(enemyTime)){ //If the dead animation is done, increase progress and remove enemy
             game.getHero().questProgress += progress;
-            game.removeEnemy(this);
+            game.dropCoins(gold,coins);
+            init();
         }
         else if(dead && animation != eDead){    //If the enemy has died without the animation being the dead one, then set it as such
             animation = eDead;
@@ -145,6 +143,7 @@ public class Enemy extends Actor implements Pool.Poolable {
         if(health> 0){
             hit = true;
             animation = eHit;
+            DataManagement.JsonData.damageDone += damage;
         }
         else{
             dead();
@@ -159,6 +158,7 @@ public class Enemy extends Actor implements Pool.Poolable {
     public void helperAttack(double damage){
         if(!dead) {
             health -= damage;
+            DataManagement.JsonData.damageDone += damage;
             if (health <= 0) {
                 dead();
             }
@@ -175,7 +175,9 @@ public class Enemy extends Actor implements Pool.Poolable {
         dead = true;
         animation = eDead;
         enemyTime = 0;
-        newEnemy = true;
+        if(game.getAdsController().getSignedInGPGS())
+            game.getAdsController().incrementAchievementGPGS(DataHolder.hundredEnemies,1);
+        DataManagement.JsonData.enemiesDefeated++;
     }
 
     public boolean isDead(){return dead;}

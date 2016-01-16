@@ -11,6 +11,8 @@ public class DataHolder {
     public static boolean open;
     public static int hBarWidth,pBarWidth,vBarWidth,helperAmount;
     public static Calendar currentTime, pastTime;
+    public static String hundredCombo = "CgkIiLfOgJEBEAIQAQ", hundredEnemies = "CgkIiLfOgJEBEAIQAg", tenQeusts = "CgkIiLfOgJEBEAIQAw", thousandTaps = "CgkIiLfOgJEBEAIQCA", restart = "CgkIiLfOgJEBEAIQBQ";
+    public static String nina = "CgkIiLfOgJEBEAIQBA", guildOwner = "CgkIiLfOgJEBEAIQBw";
 
     /**
      * Initialize the current and past time calendar dates.

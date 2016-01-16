@@ -9,9 +9,9 @@ import com.badlogic.gdx.scenes.scene2d.ui.Image;
 
 public class AssetLoader {
 
-    public static Image healthBar,progressBar,bob,volumeBar;
+    public static Image healthBar,progressBar,volumeBar;
     public static Sprite regBackground,table;
-    static public BitmapFont goldFont,healthFont,questFont,timerFont,nameFont;
+    static public BitmapFont goldFont,healthFont,questFont,timerFont,nameFont,dpsFont,titleFont;
     public static TextureAtlas textureAtlas;
     public static Animation rabIdle,rabHit,rabDead,slimeIdle,slimeHit,slimeDead,octopusIdle,octopusHit,octopusDead,coinIdle,coinGot;
 
@@ -21,16 +21,18 @@ public class AssetLoader {
         questFont = new BitmapFont(Gdx.files.internal("questfont.fnt"));
         timerFont = new BitmapFont(Gdx.files.internal("timerfont.fnt"));
         nameFont = new BitmapFont(Gdx.files.internal("namefont.fnt"));
+        dpsFont = new BitmapFont(Gdx.files.internal("dpsfont.fnt"));
+        titleFont = new BitmapFont(Gdx.files.internal("titlefont.fnt"));
         textureAtlas = new TextureAtlas(Gdx.files.internal("images.atlas"));
         rabIdle = new Animation(.25f,textureAtlas.findRegions("rabbitIdle"));
         rabHit = new Animation(.20f,textureAtlas.findRegions("rabbitHit"));
-        rabDead = new Animation(.33f,textureAtlas.findRegions("rabbitDead"));
+        rabDead = new Animation(.2f,textureAtlas.findRegions("rabbitDead"));
         slimeIdle = new Animation(.2f,textureAtlas.findRegions("slimeIdle"));
         slimeHit = new Animation(.12f,textureAtlas.findRegions("slimeHit"));
-        slimeDead = new Animation(.25f,textureAtlas.findRegions("slimeDead"));
+        slimeDead = new Animation(.2f,textureAtlas.findRegions("slimeDead"));
         octopusIdle = new Animation(.25f,textureAtlas.findRegions("octopusIdle"));
         octopusHit = new Animation(.10f,textureAtlas.findRegions("octopusHit"));
-        octopusDead = new Animation(.25f,textureAtlas.findRegions("octopusDead"));
+        octopusDead = new Animation(.2f,textureAtlas.findRegions("octopusDead"));
         coinIdle = new Animation(.25f,textureAtlas.findRegions("coinIdle"));
         coinGot = new Animation(.33f,textureAtlas.findRegions("coinGot"));
         healthBar = new Image(textureAtlas.findRegion("healthBar"));
@@ -53,6 +55,8 @@ public class AssetLoader {
         questFont.dispose();
         timerFont.dispose();
         nameFont.dispose();
+        dpsFont.dispose();
         textureAtlas.dispose();
+        titleFont.dispose();
     }
 }

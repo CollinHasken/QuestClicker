@@ -37,7 +37,7 @@ public class GeneralHelper extends Actor {
     Array<Buff> buffs = new Array<Buff>();
     com.tophattiger.GameObjects.Characters.Helpers helpers;
     TextureRegion frame;
-    Animation attack,idle;
+    Animation attack,idle,speed;
     GeneralHelper helper = this;
     Array<Projectile> activeProjectiles = new Array<Projectile>();
     Pool<Projectile> projectilePool = new Pool<Projectile>() {
@@ -61,6 +61,7 @@ public class GeneralHelper extends Actor {
         abilitySpeedTime = projectileTime=0;
         artifactDamage =1;
         abilitySpeed = false;
+        speed = new Animation(.1f,AssetLoader.textureAtlas.findRegions("helperBuff"));
     }
 
     /**
@@ -120,13 +121,17 @@ public class GeneralHelper extends Actor {
     public void draw(Batch batch, float parentAlpha) {
         if(level > 0 && animationTime >= 0) {
             if(pLevel > 0) {    //Set animation to attack if power level is greater than 0
-                frame = attack.getKeyFrame(animationTime, true);
                 if (activeProjectiles.size != 0) {
                     for (int i = activeProjectiles.size; --i >= 0; ) { //Run through projectiles and check if they are active, then draw
                         projectile = activeProjectiles.get(i);
                         projectile.draw(batch, parentAlpha);
                     }
                 }
+                if(abilitySpeed){
+                    frame = speed.getKeyFrame(animationTime,true);
+                    batch.draw(frame, positionX-20, positionY-22, 128, 75);
+                }
+                frame = attack.getKeyFrame(animationTime, true);
             }
             else
                 frame = idle.getKeyFrame(animationTime,true);
@@ -355,6 +360,7 @@ public class GeneralHelper extends Actor {
         abilitySpeedTime = length;
         abilitySpeed = true;
         attack.setFrameDuration((attackTime / attackFrames) / (float) amount);   //Speed up animation
+
     }
 
     public String getBuffDesc(int i){
@@ -373,7 +379,8 @@ public class GeneralHelper extends Actor {
      * Hit the enemy for total power
      */
     private void hitEnemy(){
-        helpers.getGame().getEnemies().get(helpers.getGame().getEnemies().size -1).helperAttack(totalPower);
+        helpers.getGame().getEnemy().helperAttack(totalPower);
+        DataManagement.JsonData.damageDoneByHelpers+= totalPower;
     }
 
     /**

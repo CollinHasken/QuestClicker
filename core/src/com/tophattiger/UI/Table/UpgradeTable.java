@@ -43,7 +43,7 @@ public class UpgradeTable extends Table {
         helperTable = new ScrollTable(_skin, game.getHelpers(), game.getAdsController());
         heroTable = new HeroTable(_skin,game.getHero(),game.getComboList(),game.getAbilityList());
         artifactTable = new ArtifactTable(_skin,game.getArtifactList(),game.getHero(),this);
-        helperButton = new SwitchTableButton("Helpers",_skin,"switchTable",helperTable,this);
+        helperButton = new SwitchTableButton("Guild",_skin,"switchTable",helperTable,this);
         heroButton = new SwitchTableButton("Hero",_skin,"switchTable",heroTable,this);
         artifactButton = new SwitchTableButton("Artifacts",_skin,"switchTable",artifactTable,this);
         this.setBackground(sprite);
@@ -52,7 +52,7 @@ public class UpgradeTable extends Table {
         this.setWidth(911f);
         this.setPosition(-911, 0);
 
-        title = new Label("Hero Upgrades",_skin,"upgrade");
+        title = new Label("Hero Upgrades",_skin,"title");
         title.setAlignment(Align.center);
         title.setWrap(true);
 
@@ -67,7 +67,7 @@ public class UpgradeTable extends Table {
         if(table == helperTable){
             tableInt = 1;
             helperTable.setAsContainer(this);
-            title.setText("Helper Upgrades");
+            title.setText("Guild Upgrades");
             heroButton.setChecked(false);
             artifactButton.setChecked(false);
             clearChildren();

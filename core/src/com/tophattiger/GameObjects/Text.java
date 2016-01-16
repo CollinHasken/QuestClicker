@@ -45,10 +45,10 @@ public class Text extends Actor {
                 font = AssetLoader.healthFont;
                 break;
             case HERODPS:
-                font = AssetLoader.goldFont;
+                font = AssetLoader.dpsFont;
                 break;
             case HELPERDPS:
-                font = AssetLoader.goldFont;
+                font = AssetLoader.dpsFont;
                 break;
             case VOL:
                 font = AssetLoader.questFont;
@@ -78,7 +78,7 @@ public class Text extends Actor {
                 break;
             case HERODPS:
                 layout.setText(font,"Hero DPS: " + stage.getHero().getDPSString());
-                font.draw(batch,layout,1050 + (int)(stage.getHelperDPSText().getLayout().width  / 90) * 90,210);
+                font.draw(batch,layout,1000 + (int)(stage.getHelperDPSText().getLayout().width  / 90) * 90,210);
                 break;
             case HELPERDPS:
                 layout.setText(font,"Helper DPS: " + stage.getHelpers().getTotalDPS());

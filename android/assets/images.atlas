@@ -5,366 +5,436 @@ filter: Nearest,Nearest
 repeat: none
 fade
   rotate: false
-  xy: 1, 940
+  xy: 1, 957
   size: 1920, 1080
   orig: 1920, 1080
   offset: 0, 0
   index: -1
-emptyProgress
-  rotate: false
-  xy: 1, 810
-  size: 1280, 128
-  orig: 1280, 128
-  offset: 0, 0
-  index: 0
-octopusDead
-  rotate: false
-  xy: 1, 296
-  size: 512, 512
-  orig: 512, 512
-  offset: 0, 0
-  index: 0
-octopusHit
-  rotate: false
-  xy: 1, 296
-  size: 512, 512
-  orig: 512, 512
-  offset: 0, 0
-  index: 0
-octopusHit
-  rotate: false
-  xy: 1, 296
-  size: 512, 512
-  orig: 512, 512
-  offset: 0, 0
-  index: 4
-octopusDead
-  rotate: false
-  xy: 515, 296
-  size: 512, 512
-  orig: 512, 512
-  offset: 0, 0
-  index: 1
-octopusHit
-  rotate: false
-  xy: 515, 296
-  size: 512, 512
-  orig: 512, 512
-  offset: 0, 0
-  index: 1
-octopusHit
-  rotate: false
-  xy: 515, 296
-  size: 512, 512
-  orig: 512, 512
-  offset: 0, 0
-  index: 3
-octopusDead
-  rotate: false
-  xy: 1029, 296
-  size: 512, 512
-  orig: 512, 512
-  offset: 0, 0
-  index: 2
-octopusDead
-  rotate: false
-  xy: 1029, 296
-  size: 512, 512
-  orig: 512, 512
-  offset: 0, 0
-  index: 3
-MenuPopup
-  rotate: false
-  xy: 1543, 38
-  size: 500, 900
-  orig: 500, 900
-  offset: 0, 0
-  index: -1
-chest
-  rotate: false
-  xy: 1, 38
-  size: 256, 256
-  orig: 256, 256
-  offset: 0, 0
-  index: 0
-chest
-  rotate: false
-  xy: 259, 38
-  size: 256, 256
-  orig: 256, 256
-  offset: 0, 0
-  index: 1
-chest
-  rotate: false
-  xy: 517, 38
-  size: 256, 256
-  orig: 256, 256
-  offset: 0, 0
-  index: 2
-chest
-  rotate: false
-  xy: 775, 38
-  size: 256, 256
-  orig: 256, 256
-  offset: 0, 0
-  index: 3
-chest
-  rotate: false
-  xy: 1033, 38
-  size: 256, 256
-  orig: 256, 256
-  offset: 0, 0
-  index: 4
 upgrade-tab-down
   rotate: false
-  xy: 1923, 1630
+  xy: 1923, 1647
   size: 64, 390
   orig: 64, 390
   offset: 0, 0
   index: -1
 upgrade-tab
   rotate: false
-  xy: 1923, 1238
+  xy: 1923, 1255
   size: 64, 390
   orig: 64, 390
   offset: 0, 0
   index: -1
-10
-  rotate: false
-  xy: 1283, 810
-  size: 128, 128
-  orig: 128, 128
-  offset: 0, 0
-  index: -1
-100
-  rotate: false
-  xy: 1413, 810
-  size: 128, 128
-  orig: 128, 128
-  offset: 0, 0
-  index: -1
-1000
-  rotate: false
-  xy: 1291, 166
-  size: 128, 128
-  orig: 128, 128
-  offset: 0, 0
-  index: -1
-1a
-  rotate: false
-  xy: 1291, 36
-  size: 128, 128
-  orig: 128, 128
-  offset: 0, 0
-  index: -1
-emptyHealth
-  rotate: false
-  xy: 1, 4
-  size: 200, 32
-  orig: 200, 32
-  offset: 0, 0
-  index: -1
-healthBar
-  rotate: false
-  xy: 203, 4
-  size: 128, 32
-  orig: 128, 32
-  offset: 0, 0
-  index: -1
-progressBar
-  rotate: false
-  xy: 333, 4
-  size: 128, 32
-  orig: 128, 32
-  offset: 0, 0
-  index: -1
 default64
   rotate: false
-  xy: 1923, 1172
+  xy: 1923, 1189
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
 exit
   rotate: false
-  xy: 1421, 230
+  xy: 1923, 1123
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
+MenuPopup
+  rotate: false
+  xy: 1, 55
+  size: 500, 900
+  orig: 500, 900
+  offset: 0, 0
+  index: -1
 BobProjectile
   rotate: false
-  xy: 1989, 1988
+  xy: 1923, 1089
   size: 32, 32
   orig: 32, 32
   offset: 0, 0
   index: 0
 JillProjectile
   rotate: false
-  xy: 1989, 1988
+  xy: 1923, 1089
   size: 32, 32
   orig: 32, 32
   offset: 0, 0
   index: 1
 BobProjectile
   rotate: false
-  xy: 463, 4
+  xy: 1923, 1055
   size: 32, 32
   orig: 32, 32
   offset: 0, 0
   index: 1
 JillProjectile
   rotate: false
-  xy: 463, 4
+  xy: 1923, 1055
   size: 32, 32
   orig: 32, 32
   offset: 0, 0
   index: 2
 BobProjectile
   rotate: false
-  xy: 1923, 1138
+  xy: 1923, 1021
   size: 32, 32
   orig: 32, 32
   offset: 0, 0
   index: 2
 JillProjectile
   rotate: false
-  xy: 1923, 1138
+  xy: 1923, 1021
   size: 32, 32
   orig: 32, 32
   offset: 0, 0
   index: 0
 coinGot
   rotate: false
-  xy: 1421, 196
+  xy: 1923, 987
   size: 32, 32
   orig: 32, 32
   offset: 0, 0
   index: 0
 coinGot
   rotate: false
-  xy: 1421, 196
+  xy: 1923, 987
   size: 32, 32
   orig: 32, 32
   offset: 0, 0
   index: 1
 coinIdle
   rotate: false
-  xy: 1421, 196
+  xy: 1923, 987
   size: 32, 32
   orig: 32, 32
   offset: 0, 0
   index: 0
 coinGot
   rotate: false
-  xy: 1487, 262
+  xy: 1923, 953
   size: 32, 32
   orig: 32, 32
   offset: 0, 0
   index: 2
 coinIdle
   rotate: false
-  xy: 1989, 1954
+  xy: 1957, 1089
   size: 32, 32
   orig: 32, 32
   offset: 0, 0
   index: 1
 coinIdle
   rotate: false
-  xy: 1989, 1954
+  xy: 1957, 1089
   size: 32, 32
   orig: 32, 32
   offset: 0, 0
   index: 7
 coinIdle
   rotate: false
-  xy: 497, 4
+  xy: 1989, 2005
   size: 32, 32
   orig: 32, 32
   offset: 0, 0
   index: 2
 coinIdle
   rotate: false
-  xy: 497, 4
+  xy: 1989, 2005
   size: 32, 32
   orig: 32, 32
   offset: 0, 0
   index: 6
 coinIdle
   rotate: false
-  xy: 1923, 1104
+  xy: 1989, 1971
   size: 32, 32
   orig: 32, 32
   offset: 0, 0
   index: 3
 coinIdle
   rotate: false
-  xy: 1923, 1104
+  xy: 1989, 1971
   size: 32, 32
   orig: 32, 32
   offset: 0, 0
   index: 5
 coinIdle
   rotate: false
-  xy: 1421, 162
+  xy: 1989, 1937
   size: 32, 32
   orig: 32, 32
   offset: 0, 0
   index: 4
 NinaProjectile
   rotate: false
-  xy: 1989, 1920
+  xy: 1989, 1903
   size: 32, 32
   orig: 32, 32
   offset: 0, 0
   index: 0
 NinaProjectile
   rotate: false
-  xy: 1989, 1920
+  xy: 1989, 1903
   size: 32, 32
   orig: 32, 32
   offset: 0, 0
   index: 2
 NinaProjectile
   rotate: false
-  xy: 531, 4
+  xy: 1989, 1869
   size: 32, 32
   orig: 32, 32
   offset: 0, 0
   index: 1
 NinaProjectile
   rotate: false
-  xy: 1923, 1070
+  xy: 1989, 1835
   size: 32, 32
   orig: 32, 32
   offset: 0, 0
   index: 3
+tap
+  rotate: false
+  xy: 1989, 1817
+  size: 16, 16
+  orig: 16, 16
+  offset: 0, 0
+  index: 0
+tap
+  rotate: false
+  xy: 1989, 1799
+  size: 16, 16
+  orig: 16, 16
+  offset: 0, 0
+  index: 1
+tap
+  rotate: false
+  xy: 1989, 1781
+  size: 16, 16
+  orig: 16, 16
+  offset: 0, 0
+  index: 2
+tap
+  rotate: false
+  xy: 1989, 1763
+  size: 16, 16
+  orig: 16, 16
+  offset: 0, 0
+  index: 3
+tap
+  rotate: false
+  xy: 1989, 1745
+  size: 16, 16
+  orig: 16, 16
+  offset: 0, 0
+  index: 4
+tap
+  rotate: false
+  xy: 1989, 1727
+  size: 16, 16
+  orig: 16, 16
+  offset: 0, 0
+  index: 5
+tap
+  rotate: false
+  xy: 1989, 1709
+  size: 16, 16
+  orig: 16, 16
+  offset: 0, 0
+  index: 6
+tap
+  rotate: false
+  xy: 1989, 1691
+  size: 16, 16
+  orig: 16, 16
+  offset: 0, 0
+  index: 7
 cursor
   rotate: false
-  xy: 2023, 1988
+  xy: 1989, 1657
   size: 5, 32
   orig: 5, 32
   offset: 0, 0
   index: -1
 buffa
   rotate: false
-  xy: 1, 1
+  xy: 1989, 1654
   size: 1, 1
   orig: 1, 1
   offset: 0, 0
   index: -1
 buffi
   rotate: false
-  xy: 1957, 1169
+  xy: 1989, 1651
   size: 1, 1
   orig: 1, 1
   offset: 0, 0
   index: -1
 volumeBar
   rotate: false
-  xy: 1455, 227
+  xy: 1989, 1648
   size: 1, 1
   orig: 1, 1
+  offset: 0, 0
+  index: -1
+emptyProgress
+  rotate: false
+  xy: 503, 823
+  size: 1280, 128
+  orig: 1280, 128
+  offset: 0, 0
+  index: 0
+chest
+  rotate: false
+  xy: 1785, 695
+  size: 256, 256
+  orig: 256, 256
+  offset: 0, 0
+  index: 0
+octopusDead
+  rotate: false
+  xy: 503, 309
+  size: 512, 512
+  orig: 512, 512
+  offset: 0, 0
+  index: 0
+octopusHit
+  rotate: false
+  xy: 503, 309
+  size: 512, 512
+  orig: 512, 512
+  offset: 0, 0
+  index: 0
+octopusHit
+  rotate: false
+  xy: 503, 309
+  size: 512, 512
+  orig: 512, 512
+  offset: 0, 0
+  index: 4
+octopusDead
+  rotate: false
+  xy: 1017, 309
+  size: 512, 512
+  orig: 512, 512
+  offset: 0, 0
+  index: 1
+octopusHit
+  rotate: false
+  xy: 1017, 309
+  size: 512, 512
+  orig: 512, 512
+  offset: 0, 0
+  index: 1
+octopusHit
+  rotate: false
+  xy: 1017, 309
+  size: 512, 512
+  orig: 512, 512
+  offset: 0, 0
+  index: 3
+octopusDead
+  rotate: false
+  xy: 1531, 181
+  size: 512, 512
+  orig: 512, 512
+  offset: 0, 0
+  index: 2
+octopusDead
+  rotate: false
+  xy: 1531, 181
+  size: 512, 512
+  orig: 512, 512
+  offset: 0, 0
+  index: 3
+helperBuff
+  rotate: false
+  xy: 1531, 746
+  size: 128, 75
+  orig: 128, 75
+  offset: 0, 0
+  index: 0
+emptyHealth
+  rotate: false
+  xy: 1531, 712
+  size: 200, 32
+  orig: 200, 32
+  offset: 0, 0
+  index: -1
+horseRun
+  rotate: false
+  xy: 503, 51
+  size: 600, 256
+  orig: 600, 256
+  offset: 0, 0
+  index: 0
+achievementButton
+  rotate: false
+  xy: 1105, 232
+  size: 400, 75
+  orig: 400, 75
+  offset: 0, 0
+  index: -1
+rateButton
+  rotate: false
+  xy: 1105, 155
+  size: 400, 75
+  orig: 400, 75
+  offset: 0, 0
+  index: -1
+healthBar
+  rotate: false
+  xy: 1, 21
+  size: 128, 32
+  orig: 128, 32
+  offset: 0, 0
+  index: -1
+progressBar
+  rotate: false
+  xy: 131, 21
+  size: 128, 32
+  orig: 128, 32
+  offset: 0, 0
+  index: -1
+10
+  rotate: false
+  xy: 1507, 51
+  size: 128, 128
+  orig: 128, 128
+  offset: 0, 0
+  index: -1
+resetButton
+  rotate: false
+  xy: 1105, 78
+  size: 400, 75
+  orig: 400, 75
+  offset: 0, 0
+  index: -1
+statButton
+  rotate: false
+  xy: 1105, 1
+  size: 400, 75
+  orig: 400, 75
+  offset: 0, 0
+  index: -1
+100
+  rotate: false
+  xy: 1637, 51
+  size: 128, 128
+  orig: 128, 128
+  offset: 0, 0
+  index: -1
+1000
+  rotate: false
+  xy: 1767, 51
+  size: 128, 128
+  orig: 128, 128
+  offset: 0, 0
+  index: -1
+1a
+  rotate: false
+  xy: 1897, 51
+  size: 128, 128
+  orig: 128, 128
   offset: 0, 0
   index: -1
 
@@ -374,296 +444,254 @@ filter: Nearest,Nearest
 repeat: none
 NameScreen
   rotate: false
-  xy: 1, 913
+  xy: 1, 924
   size: 1920, 1080
   orig: 1920, 1080
   offset: 0, 0
   index: -1
 octopusHit
   rotate: false
-  xy: 1, 399
+  xy: 1, 410
   size: 512, 512
   orig: 512, 512
   offset: 0, 0
   index: 2
+octopusIdle
+  rotate: false
+  xy: 515, 410
+  size: 512, 512
+  orig: 512, 512
+  offset: 0, 0
+  index: 0
+horseRun
+  rotate: false
+  xy: 1029, 666
+  size: 600, 256
+  orig: 600, 256
+  offset: 0, 0
+  index: 1
 chest
   rotate: false
-  xy: 1, 141
+  xy: 1631, 666
   size: 256, 256
   orig: 256, 256
   offset: 0, 0
-  index: 5
+  index: 1
 1i
   rotate: false
-  xy: 1, 11
+  xy: 1889, 794
   size: 128, 128
   orig: 128, 128
   offset: 0, 0
   index: -1
 2000
   rotate: false
-  xy: 131, 11
-  size: 128, 128
-  orig: 128, 128
-  offset: 0, 0
-  index: -1
-chest
-  rotate: false
-  xy: 259, 141
-  size: 256, 256
-  orig: 256, 256
-  offset: 0, 0
-  index: 6
-25
-  rotate: false
-  xy: 261, 11
-  size: 128, 128
-  orig: 128, 128
-  offset: 0, 0
-  index: -1
-250
-  rotate: false
-  xy: 391, 11
+  xy: 1889, 664
   size: 128, 128
   orig: 128, 128
   offset: 0, 0
   index: -1
 octopusIdle
   rotate: false
-  xy: 515, 399
-  size: 512, 512
-  orig: 512, 512
-  offset: 0, 0
-  index: 0
-chest
-  rotate: false
-  xy: 517, 141
-  size: 256, 256
-  orig: 256, 256
-  offset: 0, 0
-  index: 7
-2a
-  rotate: false
-  xy: 521, 11
-  size: 128, 128
-  orig: 128, 128
-  offset: 0, 0
-  index: -1
-2i
-  rotate: false
-  xy: 651, 11
-  size: 128, 128
-  orig: 128, 128
-  offset: 0, 0
-  index: -1
-chest
-  rotate: false
-  xy: 775, 141
-  size: 256, 256
-  orig: 256, 256
-  offset: 0, 0
-  index: 8
-3a
-  rotate: false
-  xy: 781, 11
-  size: 128, 128
-  orig: 128, 128
-  offset: 0, 0
-  index: -1
-3i
-  rotate: false
-  xy: 911, 11
-  size: 128, 128
-  orig: 128, 128
-  offset: 0, 0
-  index: -1
-octopusIdle
-  rotate: false
-  xy: 1029, 399
+  xy: 1029, 152
   size: 512, 512
   orig: 512, 512
   offset: 0, 0
   index: 1
 octopusIdle
   rotate: false
-  xy: 1029, 399
+  xy: 1029, 152
   size: 512, 512
   orig: 512, 512
   offset: 0, 0
   index: 3
+horseRun
+  rotate: false
+  xy: 1, 152
+  size: 600, 256
+  orig: 600, 256
+  offset: 0, 0
+  index: 2
 chest
   rotate: false
-  xy: 1033, 141
+  xy: 603, 152
   size: 256, 256
   orig: 256, 256
   offset: 0, 0
-  index: 9
+  index: 2
+buffButton
+  rotate: false
+  xy: 861, 344
+  size: 160, 64
+  orig: 160, 64
+  offset: 0, 0
+  index: -1
+gold-button-disabled
+  rotate: false
+  xy: 861, 278
+  size: 160, 64
+  orig: 160, 64
+  offset: 0, 0
+  index: -1
+gold-button
+  rotate: false
+  xy: 861, 212
+  size: 160, 64
+  orig: 160, 64
+  offset: 0, 0
+  index: -1
+power-button-disabled
+  rotate: false
+  xy: 861, 146
+  size: 160, 64
+  orig: 160, 64
+  offset: 0, 0
+  index: -1
+chest
+  rotate: false
+  xy: 1543, 406
+  size: 256, 256
+  orig: 256, 256
+  offset: 0, 0
+  index: 3
+chest
+  rotate: false
+  xy: 1543, 148
+  size: 256, 256
+  orig: 256, 256
+  offset: 0, 0
+  index: 4
+25
+  rotate: false
+  xy: 1023, 22
+  size: 128, 128
+  orig: 128, 128
+  offset: 0, 0
+  index: -1
+250
+  rotate: false
+  xy: 1153, 22
+  size: 128, 128
+  orig: 128, 128
+  offset: 0, 0
+  index: -1
+2a
+  rotate: false
+  xy: 1283, 22
+  size: 128, 128
+  orig: 128, 128
+  offset: 0, 0
+  index: -1
+2i
+  rotate: false
+  xy: 1413, 22
+  size: 128, 128
+  orig: 128, 128
+  offset: 0, 0
+  index: -1
+3a
+  rotate: false
+  xy: 1543, 18
+  size: 128, 128
+  orig: 128, 128
+  offset: 0, 0
+  index: -1
+3i
+  rotate: false
+  xy: 1673, 18
+  size: 128, 128
+  orig: 128, 128
+  offset: 0, 0
+  index: -1
+power-button
+  rotate: false
+  xy: 1801, 598
+  size: 160, 64
+  orig: 160, 64
+  offset: 0, 0
+  index: -1
 4a
   rotate: false
-  xy: 1041, 11
+  xy: 1801, 468
   size: 128, 128
   orig: 128, 128
   offset: 0, 0
   index: -1
 4i
   rotate: false
-  xy: 1171, 11
+  xy: 1801, 338
   size: 128, 128
   orig: 128, 128
   offset: 0, 0
   index: -1
-chest
-  rotate: false
-  xy: 1291, 141
-  size: 256, 256
-  orig: 256, 256
-  offset: 0, 0
-  index: 10
-chest
-  rotate: false
-  xy: 1291, 141
-  size: 256, 256
-  orig: 256, 256
-  offset: 0, 0
-  index: 11
 50
   rotate: false
-  xy: 1301, 11
+  xy: 1801, 208
   size: 128, 128
   orig: 128, 128
   offset: 0, 0
   index: -1
 500
   rotate: false
-  xy: 1431, 11
+  xy: 1803, 78
   size: 128, 128
   orig: 128, 128
   offset: 0, 0
   index: -1
-chest
+helperBuff
   rotate: false
-  xy: 1543, 655
-  size: 256, 256
-  orig: 256, 256
+  xy: 1803, 1
+  size: 128, 75
+  orig: 128, 75
   offset: 0, 0
-  index: 12
+  index: 1
 5a
   rotate: false
-  xy: 1543, 525
+  xy: 1, 22
   size: 128, 128
   orig: 128, 128
-  offset: 0, 0
-  index: -1
-buffButton
-  rotate: false
-  xy: 1543, 459
-  size: 160, 64
-  orig: 160, 64
   offset: 0, 0
   index: -1
 5i
   rotate: false
-  xy: 1673, 525
+  xy: 131, 22
   size: 128, 128
   orig: 128, 128
   offset: 0, 0
   index: -1
 6a
   rotate: false
-  xy: 1801, 783
+  xy: 261, 22
   size: 128, 128
   orig: 128, 128
   offset: 0, 0
   index: -1
-gold-button-disabled
-  rotate: false
-  xy: 1801, 717
-  size: 160, 64
-  orig: 160, 64
-  offset: 0, 0
-  index: -1
-chest
-  rotate: false
-  xy: 1549, 201
-  size: 256, 256
-  orig: 256, 256
-  offset: 0, 0
-  index: 13
-gold-button
-  rotate: false
-  xy: 1705, 459
-  size: 160, 64
-  orig: 160, 64
-  offset: 0, 0
-  index: -1
 6i
   rotate: false
-  xy: 1803, 587
+  xy: 391, 22
   size: 128, 128
   orig: 128, 128
   offset: 0, 0
   index: -1
 750
   rotate: false
-  xy: 1867, 457
+  xy: 521, 22
   size: 128, 128
   orig: 128, 128
   offset: 0, 0
   index: -1
 7a
   rotate: false
-  xy: 1807, 327
+  xy: 651, 22
   size: 128, 128
   orig: 128, 128
   offset: 0, 0
   index: -1
 7i
   rotate: false
-  xy: 1807, 197
+  xy: 781, 16
   size: 128, 128
   orig: 128, 128
-  offset: 0, 0
-  index: -1
-8a
-  rotate: false
-  xy: 1561, 71
-  size: 128, 128
-  orig: 128, 128
-  offset: 0, 0
-  index: -1
-power-button-disabled
-  rotate: false
-  xy: 1561, 5
-  size: 160, 64
-  orig: 160, 64
-  offset: 0, 0
-  index: -1
-power-button
-  rotate: false
-  xy: 1691, 131
-  size: 160, 64
-  orig: 160, 64
-  offset: 0, 0
-  index: -1
-8i
-  rotate: false
-  xy: 1853, 67
-  size: 128, 128
-  orig: 128, 128
-  offset: 0, 0
-  index: -1
-9a
-  rotate: false
-  xy: 1723, 1
-  size: 128, 128
-  orig: 128, 128
-  offset: 0, 0
-  index: -1
-goButton
-  rotate: false
-  xy: 1853, 1
-  size: 128, 64
-  orig: 128, 64
   offset: 0, 0
   index: -1
 
@@ -692,363 +720,244 @@ slimeDead
   orig: 512, 512
   offset: 0, 0
   index: 0
-slimeDead
+horseRun
   rotate: false
-  xy: 1029, 397
-  size: 512, 512
-  orig: 512, 512
+  xy: 1029, 653
+  size: 600, 256
+  orig: 600, 256
   offset: 0, 0
-  index: 1
+  index: 3
 chest
   rotate: false
-  xy: 1543, 653
+  xy: 1631, 653
   size: 256, 256
   orig: 256, 256
   offset: 0, 0
-  index: 14
-chest
+  index: 5
+8a
   rotate: false
-  xy: 1543, 395
-  size: 256, 256
-  orig: 256, 256
-  offset: 0, 0
-  index: 15
-9i
-  rotate: false
-  xy: 1801, 781
+  xy: 1889, 781
   size: 128, 128
   orig: 128, 128
   offset: 0, 0
   index: -1
+8i
+  rotate: false
+  xy: 1889, 651
+  size: 128, 128
+  orig: 128, 128
+  offset: 0, 0
+  index: -1
+slimeDead
+  rotate: false
+  xy: 1029, 139
+  size: 512, 512
+  orig: 512, 512
+  offset: 0, 0
+  index: 1
+horseRun
+  rotate: false
+  xy: 1, 139
+  size: 600, 256
+  orig: 600, 256
+  offset: 0, 0
+  index: 4
+chest
+  rotate: false
+  xy: 603, 139
+  size: 256, 256
+  orig: 256, 256
+  offset: 0, 0
+  index: 6
+9a
+  rotate: false
+  xy: 861, 267
+  size: 128, 128
+  orig: 128, 128
+  offset: 0, 0
+  index: -1
+9i
+  rotate: false
+  xy: 861, 137
+  size: 128, 128
+  orig: 128, 128
+  offset: 0, 0
+  index: -1
+chest
+  rotate: false
+  xy: 1543, 393
+  size: 256, 256
+  orig: 256, 256
+  offset: 0, 0
+  index: 7
+chest
+  rotate: false
+  xy: 1543, 135
+  size: 256, 256
+  orig: 256, 256
+  offset: 0, 0
+  index: 8
 abilityDamage
   rotate: false
-  xy: 1801, 651
+  xy: 991, 9
   size: 128, 128
   orig: 128, 128
   offset: 0, 0
   index: -1
 abilityDamageIcon
   rotate: false
-  xy: 1801, 521
+  xy: 1121, 9
   size: 128, 128
   orig: 128, 128
   offset: 0, 0
   index: -1
 abilityDamageUsed
   rotate: false
-  xy: 1801, 391
+  xy: 1251, 9
   size: 128, 128
   orig: 128, 128
   offset: 0, 0
   index: -1
-chest
-  rotate: false
-  xy: 1, 139
-  size: 256, 256
-  orig: 256, 256
-  offset: 0, 0
-  index: 16
-chest
-  rotate: false
-  xy: 259, 139
-  size: 256, 256
-  orig: 256, 256
-  offset: 0, 0
-  index: 17
-chest
-  rotate: false
-  xy: 517, 139
-  size: 256, 256
-  orig: 256, 256
-  offset: 0, 0
-  index: 18
-chest
-  rotate: false
-  xy: 775, 139
-  size: 256, 256
-  orig: 256, 256
-  offset: 0, 0
-  index: 19
-chest
-  rotate: false
-  xy: 775, 139
-  size: 256, 256
-  orig: 256, 256
-  offset: 0, 0
-  index: 20
-chest
-  rotate: false
-  xy: 775, 139
-  size: 256, 256
-  orig: 256, 256
-  offset: 0, 0
-  index: 21
-chest
-  rotate: false
-  xy: 775, 139
-  size: 256, 256
-  orig: 256, 256
-  offset: 0, 0
-  index: 22
-chest
-  rotate: false
-  xy: 775, 139
-  size: 256, 256
-  orig: 256, 256
-  offset: 0, 0
-  index: 23
 abilityGold
   rotate: false
-  xy: 1033, 267
+  xy: 1381, 9
   size: 128, 128
   orig: 128, 128
   offset: 0, 0
   index: -1
 abilityGoldIcon
   rotate: false
-  xy: 1163, 267
+  xy: 1511, 5
   size: 128, 128
   orig: 128, 128
   offset: 0, 0
   index: -1
 abilityGoldUsed
   rotate: false
-  xy: 1293, 267
+  xy: 1641, 5
   size: 128, 128
   orig: 128, 128
   offset: 0, 0
   index: -1
 abilityHelper
   rotate: false
-  xy: 1423, 265
+  xy: 1771, 5
   size: 128, 128
   orig: 128, 128
   offset: 0, 0
   index: -1
 abilityHelperIcon
   rotate: false
-  xy: 1033, 137
+  xy: 1801, 521
   size: 128, 128
   orig: 128, 128
   offset: 0, 0
   index: -1
 abilityHelperUsed
   rotate: false
-  xy: 1163, 137
+  xy: 1801, 391
   size: 128, 128
   orig: 128, 128
   offset: 0, 0
   index: -1
 abilityRetireIcon
   rotate: false
-  xy: 1293, 137
+  xy: 1801, 261
   size: 128, 128
   orig: 128, 128
   offset: 0, 0
   index: -1
 Bob
   rotate: false
-  xy: 1553, 265
+  xy: 1901, 131
   size: 128, 128
   orig: 128, 128
   offset: 0, 0
   index: -1
 BobAttack
   rotate: false
-  xy: 1683, 261
+  xy: 1901, 1
   size: 128, 128
   orig: 128, 128
   offset: 0, 0
   index: 0
 BobAttack
   rotate: false
-  xy: 1683, 261
+  xy: 1901, 1
   size: 128, 128
   orig: 128, 128
   offset: 0, 0
   index: 5
 BobAttack
   rotate: false
-  xy: 1423, 135
+  xy: 1, 9
   size: 128, 128
   orig: 128, 128
   offset: 0, 0
   index: 1
 BobAttack
   rotate: false
-  xy: 1423, 135
+  xy: 1, 9
   size: 128, 128
   orig: 128, 128
   offset: 0, 0
   index: 4
 BobAttack
   rotate: false
-  xy: 1553, 135
+  xy: 131, 9
   size: 128, 128
   orig: 128, 128
   offset: 0, 0
   index: 2
 BobAttack
   rotate: false
-  xy: 1553, 135
+  xy: 131, 9
   size: 128, 128
   orig: 128, 128
   offset: 0, 0
   index: 3
 BobIdle
-  rotate: false
-  xy: 1683, 131
-  size: 128, 128
-  orig: 128, 128
-  offset: 0, 0
-  index: 0
-BobIdle
-  rotate: false
-  xy: 1683, 131
-  size: 128, 128
-  orig: 128, 128
-  offset: 0, 0
-  index: 2
-BobIdle
-  rotate: false
-  xy: 1813, 261
-  size: 128, 128
-  orig: 128, 128
-  offset: 0, 0
-  index: 1
-Cosmic-Ghost-Sword
-  rotate: false
-  xy: 1813, 131
-  size: 128, 128
-  orig: 128, 128
-  offset: 0, 0
-  index: -1
-default128
-  rotate: false
-  xy: 1, 9
-  size: 128, 128
-  orig: 128, 128
-  offset: 0, 0
-  index: -1
-Golden-Skinning-Knife
-  rotate: false
-  xy: 131, 9
-  size: 128, 128
-  orig: 128, 128
-  offset: 0, 0
-  index: -1
-heroAttack
   rotate: false
   xy: 261, 9
   size: 128, 128
   orig: 128, 128
   offset: 0, 0
   index: 0
-heroAttack
+BobIdle
+  rotate: false
+  xy: 261, 9
+  size: 128, 128
+  orig: 128, 128
+  offset: 0, 0
+  index: 2
+BobIdle
   rotate: false
   xy: 391, 9
   size: 128, 128
   orig: 128, 128
   offset: 0, 0
   index: 1
-heroAttack
+Cosmic-Ghost-Sword
   rotate: false
   xy: 521, 9
   size: 128, 128
   orig: 128, 128
   offset: 0, 0
-  index: 2
-heroAttack
+  index: -1
+default128
   rotate: false
   xy: 651, 9
   size: 128, 128
   orig: 128, 128
   offset: 0, 0
-  index: 3
-heroAttack
+  index: -1
+Golden-Skinning-Knife
   rotate: false
-  xy: 781, 9
-  size: 128, 128
-  orig: 128, 128
-  offset: 0, 0
-  index: 4
-heroAttack
-  rotate: false
-  xy: 911, 7
-  size: 128, 128
-  orig: 128, 128
-  offset: 0, 0
-  index: 5
-heroIdle
-  rotate: false
-  xy: 1041, 7
-  size: 128, 128
-  orig: 128, 128
-  offset: 0, 0
-  index: 0
-heroIdle
-  rotate: false
-  xy: 1171, 7
-  size: 128, 128
-  orig: 128, 128
-  offset: 0, 0
-  index: 1
-heroIdle
-  rotate: false
-  xy: 1171, 7
-  size: 128, 128
-  orig: 128, 128
-  offset: 0, 0
-  index: 6
-heroIdle
-  rotate: false
-  xy: 1301, 5
-  size: 128, 128
-  orig: 128, 128
-  offset: 0, 0
-  index: 2
-heroIdle
-  rotate: false
-  xy: 1301, 5
-  size: 128, 128
-  orig: 128, 128
-  offset: 0, 0
-  index: 5
-heroIdle
-  rotate: false
-  xy: 1431, 5
-  size: 128, 128
-  orig: 128, 128
-  offset: 0, 0
-  index: 3
-heroIdle
-  rotate: false
-  xy: 1431, 5
-  size: 128, 128
-  orig: 128, 128
-  offset: 0, 0
-  index: 4
-heroMug
-  rotate: false
-  xy: 1561, 1
+  xy: 781, 7
   size: 128, 128
   orig: 128, 128
   offset: 0, 0
   index: -1
-level
-  rotate: false
-  xy: 1691, 1
-  size: 128, 128
-  orig: 128, 128
-  offset: 0, 0
-  index: 0
-level
-  rotate: false
-  xy: 1821, 1
-  size: 128, 128
-  orig: 128, 128
-  offset: 0, 0
-  index: 1
 
 images4.png
 format: RGBA8888
@@ -1056,357 +965,357 @@ filter: Nearest,Nearest
 repeat: none
 buffScreen
   rotate: false
-  xy: 1, 905
+  xy: 1, 935
   size: 1334, 1080
   orig: 1334, 1080
   offset: 0, 0
   index: -1
 slimeDead
   rotate: false
-  xy: 1, 391
+  xy: 1, 421
   size: 512, 512
   orig: 512, 512
   offset: 0, 0
   index: 2
 slimeDead
   rotate: false
-  xy: 1337, 1473
+  xy: 1337, 1503
   size: 512, 512
   orig: 512, 512
   offset: 0, 0
   index: 3
 slimeHit
   rotate: false
-  xy: 515, 391
+  xy: 515, 421
   size: 512, 512
   orig: 512, 512
   offset: 0, 0
   index: 0
 slimeHit
   rotate: false
-  xy: 515, 391
+  xy: 515, 421
   size: 512, 512
   orig: 512, 512
   offset: 0, 0
   index: 4
 slimeHit
   rotate: false
-  xy: 1337, 959
+  xy: 1337, 989
   size: 512, 512
   orig: 512, 512
   offset: 0, 0
   index: 1
 slimeHit
   rotate: false
-  xy: 1337, 959
+  xy: 1337, 989
   size: 512, 512
   orig: 512, 512
   offset: 0, 0
   index: 3
+horseRun
+  rotate: false
+  xy: 1, 163
+  size: 600, 256
+  orig: 600, 256
+  offset: 0, 0
+  index: 5
 slimeHit
   rotate: false
-  xy: 1029, 391
+  xy: 1029, 421
   size: 512, 512
   orig: 512, 512
   offset: 0, 0
   index: 2
+horseRun
+  rotate: false
+  xy: 603, 163
+  size: 600, 256
+  orig: 600, 256
+  offset: 0, 0
+  index: 6
+horseRun
+  rotate: false
+  xy: 1205, 163
+  size: 600, 256
+  orig: 600, 256
+  offset: 0, 0
+  index: 7
+chest
+  rotate: false
+  xy: 1543, 731
+  size: 256, 256
+  orig: 256, 256
+  offset: 0, 0
+  index: 9
+chest
+  rotate: false
+  xy: 1543, 473
+  size: 256, 256
+  orig: 256, 256
+  offset: 0, 0
+  index: 10
+chest
+  rotate: false
+  xy: 1543, 473
+  size: 256, 256
+  orig: 256, 256
+  offset: 0, 0
+  index: 11
+heroAttack
+  rotate: false
+  xy: 1851, 1887
+  size: 128, 128
+  orig: 128, 128
+  offset: 0, 0
+  index: 0
+heroAttack
+  rotate: false
+  xy: 1, 33
+  size: 128, 128
+  orig: 128, 128
+  offset: 0, 0
+  index: 1
+heroAttack
+  rotate: false
+  xy: 1851, 1757
+  size: 128, 128
+  orig: 128, 128
+  offset: 0, 0
+  index: 2
+heroAttack
+  rotate: false
+  xy: 131, 33
+  size: 128, 128
+  orig: 128, 128
+  offset: 0, 0
+  index: 3
+heroAttack
+  rotate: false
+  xy: 1851, 1627
+  size: 128, 128
+  orig: 128, 128
+  offset: 0, 0
+  index: 4
+heroAttack
+  rotate: false
+  xy: 261, 33
+  size: 128, 128
+  orig: 128, 128
+  offset: 0, 0
+  index: 5
+heroIdle
+  rotate: false
+  xy: 1851, 1497
+  size: 128, 128
+  orig: 128, 128
+  offset: 0, 0
+  index: 0
+heroIdle
+  rotate: false
+  xy: 391, 33
+  size: 128, 128
+  orig: 128, 128
+  offset: 0, 0
+  index: 1
+heroIdle
+  rotate: false
+  xy: 391, 33
+  size: 128, 128
+  orig: 128, 128
+  offset: 0, 0
+  index: 6
+heroIdle
+  rotate: false
+  xy: 1851, 1367
+  size: 128, 128
+  orig: 128, 128
+  offset: 0, 0
+  index: 2
+heroIdle
+  rotate: false
+  xy: 1851, 1367
+  size: 128, 128
+  orig: 128, 128
+  offset: 0, 0
+  index: 5
+heroIdle
+  rotate: false
+  xy: 521, 33
+  size: 128, 128
+  orig: 128, 128
+  offset: 0, 0
+  index: 3
+heroIdle
+  rotate: false
+  xy: 521, 33
+  size: 128, 128
+  orig: 128, 128
+  offset: 0, 0
+  index: 4
+heroMug
+  rotate: false
+  xy: 1851, 1237
+  size: 128, 128
+  orig: 128, 128
+  offset: 0, 0
+  index: -1
 level
   rotate: false
-  xy: 1, 261
+  xy: 651, 33
+  size: 128, 128
+  orig: 128, 128
+  offset: 0, 0
+  index: 0
+level
+  rotate: false
+  xy: 1851, 1107
+  size: 128, 128
+  orig: 128, 128
+  offset: 0, 0
+  index: 1
+level
+  rotate: false
+  xy: 781, 33
   size: 128, 128
   orig: 128, 128
   offset: 0, 0
   index: 2
 level
   rotate: false
-  xy: 1851, 1857
+  xy: 911, 33
   size: 128, 128
   orig: 128, 128
   offset: 0, 0
   index: 3
 level
   rotate: false
-  xy: 1, 131
+  xy: 1041, 33
   size: 128, 128
   orig: 128, 128
   offset: 0, 0
   index: 4
 level
   rotate: false
-  xy: 131, 261
+  xy: 1171, 33
   size: 128, 128
   orig: 128, 128
   offset: 0, 0
   index: 5
 level
   rotate: false
-  xy: 1851, 1727
+  xy: 1301, 33
   size: 128, 128
   orig: 128, 128
   offset: 0, 0
   index: 6
 level
   rotate: false
-  xy: 1, 1
+  xy: 1431, 33
   size: 128, 128
   orig: 128, 128
   offset: 0, 0
   index: 7
 level
   rotate: false
-  xy: 131, 131
+  xy: 1561, 33
   size: 128, 128
   orig: 128, 128
   offset: 0, 0
   index: 8
 level
   rotate: false
-  xy: 261, 261
+  xy: 1851, 977
   size: 128, 128
   orig: 128, 128
   offset: 0, 0
   index: 9
 level
   rotate: false
-  xy: 1851, 1597
+  xy: 1691, 33
   size: 128, 128
   orig: 128, 128
   offset: 0, 0
   index: 10
 level
   rotate: false
-  xy: 131, 1
+  xy: 1801, 847
   size: 128, 128
   orig: 128, 128
   offset: 0, 0
   index: 11
 Moral-Banner
   rotate: false
-  xy: 261, 131
+  xy: 1801, 717
   size: 128, 128
   orig: 128, 128
   offset: 0, 0
   index: -1
 Nina
   rotate: false
-  xy: 391, 261
+  xy: 1801, 587
   size: 128, 128
   orig: 128, 128
   offset: 0, 0
   index: -1
 NinaAttack
   rotate: false
-  xy: 1851, 1467
+  xy: 1801, 457
   size: 128, 128
   orig: 128, 128
   offset: 0, 0
   index: 0
 NinaAttack
   rotate: false
-  xy: 1851, 1467
+  xy: 1801, 457
   size: 128, 128
   orig: 128, 128
   offset: 0, 0
   index: 11
 NinaAttack
   rotate: false
-  xy: 261, 1
+  xy: 1807, 327
   size: 128, 128
   orig: 128, 128
   offset: 0, 0
   index: 1
 NinaAttack
   rotate: false
-  xy: 261, 1
+  xy: 1807, 327
   size: 128, 128
   orig: 128, 128
   offset: 0, 0
   index: 10
 NinaAttack
   rotate: false
-  xy: 391, 131
+  xy: 1807, 197
   size: 128, 128
   orig: 128, 128
   offset: 0, 0
   index: 2
 NinaAttack
   rotate: false
-  xy: 391, 131
+  xy: 1807, 197
   size: 128, 128
   orig: 128, 128
   offset: 0, 0
   index: 9
 NinaAttack
   rotate: false
-  xy: 521, 261
+  xy: 1821, 67
   size: 128, 128
   orig: 128, 128
   offset: 0, 0
   index: 3
 NinaAttack
   rotate: false
-  xy: 521, 261
+  xy: 1821, 67
   size: 128, 128
   orig: 128, 128
   offset: 0, 0
   index: 8
-NinaAttack
+goButton
   rotate: false
-  xy: 1851, 1337
-  size: 128, 128
-  orig: 128, 128
-  offset: 0, 0
-  index: 4
-NinaAttack
-  rotate: false
-  xy: 1851, 1337
-  size: 128, 128
-  orig: 128, 128
-  offset: 0, 0
-  index: 7
-NinaAttack
-  rotate: false
-  xy: 391, 1
-  size: 128, 128
-  orig: 128, 128
-  offset: 0, 0
-  index: 5
-NinaAttack
-  rotate: false
-  xy: 391, 1
-  size: 128, 128
-  orig: 128, 128
-  offset: 0, 0
-  index: 6
-NinaIdle
-  rotate: false
-  xy: 521, 131
-  size: 128, 128
-  orig: 128, 128
-  offset: 0, 0
-  index: 0
-NinaIdle
-  rotate: false
-  xy: 651, 261
-  size: 128, 128
-  orig: 128, 128
-  offset: 0, 0
-  index: 1
-NinaIdle
-  rotate: false
-  xy: 651, 261
-  size: 128, 128
-  orig: 128, 128
-  offset: 0, 0
-  index: 3
-NinaIdle
-  rotate: false
-  xy: 1851, 1207
-  size: 128, 128
-  orig: 128, 128
-  offset: 0, 0
-  index: 2
-rabbitDead
-  rotate: false
-  xy: 521, 1
-  size: 128, 128
-  orig: 128, 128
-  offset: 0, 0
-  index: 0
-rabbitHit
-  rotate: false
-  xy: 521, 1
-  size: 128, 128
-  orig: 128, 128
-  offset: 0, 0
-  index: 1
-rabbitHit
-  rotate: false
-  xy: 521, 1
-  size: 128, 128
-  orig: 128, 128
-  offset: 0, 0
-  index: 3
-rabbitDead
-  rotate: false
-  xy: 651, 131
-  size: 128, 128
-  orig: 128, 128
-  offset: 0, 0
-  index: 1
-rabbitHit
-  rotate: false
-  xy: 651, 131
-  size: 128, 128
-  orig: 128, 128
-  offset: 0, 0
-  index: 2
-rabbitDead
-  rotate: false
-  xy: 781, 261
-  size: 128, 128
-  orig: 128, 128
-  offset: 0, 0
-  index: 2
-rabbitDead
-  rotate: false
-  xy: 1851, 1077
-  size: 128, 128
-  orig: 128, 128
-  offset: 0, 0
-  index: 3
-rabbitHit
-  rotate: false
-  xy: 651, 1
-  size: 128, 128
-  orig: 128, 128
-  offset: 0, 0
-  index: 0
-rabbitIdle
-  rotate: false
-  xy: 651, 1
-  size: 128, 128
-  orig: 128, 128
-  offset: 0, 0
-  index: 0
-rabbitIdle
-  rotate: false
-  xy: 781, 131
-  size: 128, 128
-  orig: 128, 128
-  offset: 0, 0
-  index: 1
-rabbitIdle
-  rotate: false
-  xy: 781, 131
-  size: 128, 128
-  orig: 128, 128
-  offset: 0, 0
-  index: 3
-rabbitIdle
-  rotate: false
-  xy: 911, 261
-  size: 128, 128
-  orig: 128, 128
-  offset: 0, 0
-  index: 2
-menuButton
-  rotate: false
-  xy: 1851, 1011
-  size: 128, 64
-  orig: 128, 64
-  offset: 0, 0
-  index: -1
-reset-button-down
-  rotate: false
-  xy: 781, 65
-  size: 128, 64
-  orig: 128, 64
-  offset: 0, 0
-  index: -1
-reset-button
-  rotate: false
-  xy: 911, 195
+  xy: 1821, 1
   size: 128, 64
   orig: 128, 64
   offset: 0, 0
@@ -1418,43 +1327,330 @@ filter: Nearest,Nearest
 repeat: none
 table
   rotate: false
-  xy: 1, 515
+  xy: 1, 903
   size: 975, 1080
   orig: 975, 1080
   offset: 0, 0
   index: -1
 slimeIdle
   rotate: false
-  xy: 1, 1
+  xy: 1, 389
   size: 512, 512
   orig: 512, 512
   offset: 0, 0
   index: 0
 slimeIdle
   rotate: false
-  xy: 978, 1083
+  xy: 978, 1471
   size: 512, 512
   orig: 512, 512
   offset: 0, 0
   index: 1
 slimeIdle
   rotate: false
-  xy: 978, 1083
+  xy: 978, 1471
   size: 512, 512
   orig: 512, 512
   offset: 0, 0
   index: 3
 slimeIdle
   rotate: false
-  xy: 978, 1083
+  xy: 978, 1471
   size: 512, 512
   orig: 512, 512
   offset: 0, 0
   index: 4
 slimeIdle
   rotate: false
-  xy: 978, 569
+  xy: 978, 957
   size: 512, 512
   orig: 512, 512
   offset: 0, 0
   index: 2
+horseRun
+  rotate: false
+  xy: 1, 131
+  size: 600, 256
+  orig: 600, 256
+  offset: 0, 0
+  index: 8
+horseRun
+  rotate: false
+  xy: 515, 645
+  size: 600, 256
+  orig: 600, 256
+  offset: 0, 0
+  index: 9
+horseRun
+  rotate: false
+  xy: 1117, 699
+  size: 600, 256
+  orig: 600, 256
+  offset: 0, 0
+  index: 10
+horseRun
+  rotate: false
+  xy: 1117, 441
+  size: 600, 256
+  orig: 600, 256
+  offset: 0, 0
+  index: 11
+chest
+  rotate: false
+  xy: 1492, 1727
+  size: 256, 256
+  orig: 256, 256
+  offset: 0, 0
+  index: 12
+chest
+  rotate: false
+  xy: 1492, 1469
+  size: 256, 256
+  orig: 256, 256
+  offset: 0, 0
+  index: 13
+chest
+  rotate: false
+  xy: 1750, 1727
+  size: 256, 256
+  orig: 256, 256
+  offset: 0, 0
+  index: 14
+chest
+  rotate: false
+  xy: 1492, 1211
+  size: 256, 256
+  orig: 256, 256
+  offset: 0, 0
+  index: 15
+chest
+  rotate: false
+  xy: 1750, 1469
+  size: 256, 256
+  orig: 256, 256
+  offset: 0, 0
+  index: 16
+chest
+  rotate: false
+  xy: 1750, 1211
+  size: 256, 256
+  orig: 256, 256
+  offset: 0, 0
+  index: 17
+horseRun
+  rotate: false
+  xy: 603, 183
+  size: 600, 256
+  orig: 600, 256
+  offset: 0, 0
+  index: 12
+chest
+  rotate: false
+  xy: 1205, 183
+  size: 256, 256
+  orig: 256, 256
+  offset: 0, 0
+  index: 18
+chest
+  rotate: false
+  xy: 1463, 183
+  size: 256, 256
+  orig: 256, 256
+  offset: 0, 0
+  index: 19
+chest
+  rotate: false
+  xy: 1463, 183
+  size: 256, 256
+  orig: 256, 256
+  offset: 0, 0
+  index: 20
+chest
+  rotate: false
+  xy: 1463, 183
+  size: 256, 256
+  orig: 256, 256
+  offset: 0, 0
+  index: 21
+chest
+  rotate: false
+  xy: 1463, 183
+  size: 256, 256
+  orig: 256, 256
+  offset: 0, 0
+  index: 22
+chest
+  rotate: false
+  xy: 1463, 183
+  size: 256, 256
+  orig: 256, 256
+  offset: 0, 0
+  index: 23
+NinaAttack
+  rotate: false
+  xy: 1, 1
+  size: 128, 128
+  orig: 128, 128
+  offset: 0, 0
+  index: 4
+NinaAttack
+  rotate: false
+  xy: 1, 1
+  size: 128, 128
+  orig: 128, 128
+  offset: 0, 0
+  index: 7
+NinaAttack
+  rotate: false
+  xy: 1492, 1081
+  size: 128, 128
+  orig: 128, 128
+  offset: 0, 0
+  index: 5
+NinaAttack
+  rotate: false
+  xy: 1492, 1081
+  size: 128, 128
+  orig: 128, 128
+  offset: 0, 0
+  index: 6
+NinaIdle
+  rotate: false
+  xy: 515, 515
+  size: 128, 128
+  orig: 128, 128
+  offset: 0, 0
+  index: 0
+NinaIdle
+  rotate: false
+  xy: 131, 1
+  size: 128, 128
+  orig: 128, 128
+  offset: 0, 0
+  index: 1
+NinaIdle
+  rotate: false
+  xy: 131, 1
+  size: 128, 128
+  orig: 128, 128
+  offset: 0, 0
+  index: 3
+NinaIdle
+  rotate: false
+  xy: 1622, 1081
+  size: 128, 128
+  orig: 128, 128
+  offset: 0, 0
+  index: 2
+rabbitDead
+  rotate: false
+  xy: 645, 515
+  size: 128, 128
+  orig: 128, 128
+  offset: 0, 0
+  index: 0
+rabbitHit
+  rotate: false
+  xy: 645, 515
+  size: 128, 128
+  orig: 128, 128
+  offset: 0, 0
+  index: 1
+rabbitHit
+  rotate: false
+  xy: 645, 515
+  size: 128, 128
+  orig: 128, 128
+  offset: 0, 0
+  index: 3
+rabbitDead
+  rotate: false
+  xy: 261, 1
+  size: 128, 128
+  orig: 128, 128
+  offset: 0, 0
+  index: 1
+rabbitHit
+  rotate: false
+  xy: 261, 1
+  size: 128, 128
+  orig: 128, 128
+  offset: 0, 0
+  index: 2
+rabbitDead
+  rotate: false
+  xy: 1752, 1081
+  size: 128, 128
+  orig: 128, 128
+  offset: 0, 0
+  index: 2
+rabbitDead
+  rotate: false
+  xy: 775, 515
+  size: 128, 128
+  orig: 128, 128
+  offset: 0, 0
+  index: 3
+rabbitHit
+  rotate: false
+  xy: 391, 1
+  size: 128, 128
+  orig: 128, 128
+  offset: 0, 0
+  index: 0
+rabbitIdle
+  rotate: false
+  xy: 391, 1
+  size: 128, 128
+  orig: 128, 128
+  offset: 0, 0
+  index: 0
+rabbitIdle
+  rotate: false
+  xy: 905, 515
+  size: 128, 128
+  orig: 128, 128
+  offset: 0, 0
+  index: 1
+rabbitIdle
+  rotate: false
+  xy: 905, 515
+  size: 128, 128
+  orig: 128, 128
+  offset: 0, 0
+  index: 3
+rabbitIdle
+  rotate: false
+  xy: 1882, 1081
+  size: 128, 128
+  orig: 128, 128
+  offset: 0, 0
+  index: 2
+helperBuff
+  rotate: false
+  xy: 1492, 1004
+  size: 128, 75
+  orig: 128, 75
+  offset: 0, 0
+  index: 2
+menuButton
+  rotate: false
+  xy: 515, 449
+  size: 128, 64
+  orig: 128, 64
+  offset: 0, 0
+  index: -1
+noButton
+  rotate: false
+  xy: 1622, 1015
+  size: 128, 64
+  orig: 128, 64
+  offset: 0, 0
+  index: -1
+yesButton
+  rotate: false
+  xy: 645, 449
+  size: 128, 64
+  orig: 128, 64
+  offset: 0, 0
+  index: -1

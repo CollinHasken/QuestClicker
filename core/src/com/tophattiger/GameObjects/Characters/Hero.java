@@ -8,6 +8,7 @@ import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.tophattiger.GameWorld.GameRenderer;
 import com.tophattiger.Helper.Combos.ComboBuff;
 import com.tophattiger.Helper.Data.AssetLoader;
+import com.tophattiger.Helper.Data.DataHolder;
 import com.tophattiger.Helper.Data.DataManagement;
 import com.tophattiger.Helper.Data.Gold;
 
@@ -91,6 +92,8 @@ public class Hero extends Actor {
             questRequired += 10*questCompleted;
             questCompleted ++;
             newQuest();
+            if(game.getAdsController().getSignedInGPGS())
+                game.getAdsController().stepAchievementGPGS(DataHolder.tenQeusts,questCompleted);
             volProgress++;
             if(volProgress >= volRequired){
                 volProgress = 0;
@@ -178,6 +181,8 @@ public class Hero extends Actor {
      */
     public void retire(){
         retired = true;
+        if(game.getAdsController().getSignedInGPGS())
+            game.getAdsController().unlockAchievementGPGS(DataHolder.restart);
         inheritance += touchLevel; //Need to come up with algorithm
     }
 
@@ -245,7 +250,7 @@ public class Hero extends Actor {
                 questDescription = "Fix our over population problem. Or were they endangered...";
                 break;
             case 8:
-                questDescription = "Find a date for the royal ball. Ask the princess, or prince. I don't judge";
+                questDescription = "Find a date for the royal ball. Ask the princess or prince. I don't judge";
                 break;
             case 9:
                 questDescription = "Get some ingredients for rabbit stew";
@@ -276,6 +281,7 @@ public class Hero extends Actor {
                 adBuff = new ComboBuff(1.5,10, ComboBuff.TYPE.GOLD,game);
                 adTime = 120;
         }
+        adBuff.setAdTime((int)adTime);
         return adBuff;
     }
 

@@ -1,25 +1,28 @@
 package com.tophattiger.UI;
 
+import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.graphics.g2d.Sprite;
+import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.InputListener;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.Touchable;
 import com.badlogic.gdx.utils.Array;
+import com.badlogic.gdx.utils.FloatArray;
+import com.badlogic.gdx.utils.IntArray;
 import com.tophattiger.GameObjects.Characters.Enemy;
 import com.tophattiger.GameWorld.GameRenderer;
 import com.tophattiger.Helper.Data.AssetLoader;
 import com.tophattiger.Helper.Data.DataHolder;
+import com.tophattiger.Helper.Data.DataManagement;
 import com.tophattiger.Helper.Data.Gold;
 import com.tophattiger.UI.Menu.NameScreen;
 
 
 
 public class Background extends Actor {
-    Array<Enemy> activeEnemies;
-    Enemy enemy;
     float abilityGoldTime;
     boolean touch;
     double abilityGoldAmount;
@@ -46,26 +49,28 @@ public class Background extends Actor {
 
         combo = _game.getCombo();
 
-        activeEnemies = game.getEnemies();
-
         addListener(new InputListener() {
             @Override
             public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
                 if (!touch && !NameScreen.SettingName) {
+                    Gold.add(20000);
                     if(abilityGoldTime > 0){    //Drop coins if the gold ability is activated and tapped
                         game.dropCoins((int)abilityGoldAmount,1);
                     }
+                    game.getTap().tap((int)x,(int)y);
                     touch = true;
+                    DataManagement.JsonData.clicks++;
+                    if(game.getAdsController().getSignedInGPGS())
+                        game.getAdsController().incrementAchievementGPGS(DataHolder.thousandTaps,1);
                     combo.tap();    //Increase combo
-                    for (int i = activeEnemies.size; --i >= 0; ) {
-                        game.getHero().attack();
-                        enemy = activeEnemies.get(i);
-                        if (!enemy.isDead()) {
-                            if (!enemy.isHit())
-                                enemy.setEnemyTime(0);
-                            enemy.getHit(game.getHero().getTouchPower());
-                            return true;
-                        }
+                    game.getHero().attack();
+                    Enemy enemy = game.getEnemy();
+                    if (!enemy.isDead()) {
+                        if (!enemy.isHit())
+                            enemy.setEnemyTime(0);
+                        enemy.getHit(game.getHero().getTouchPower());
+                        DataManagement.JsonData.damageDoneByHero += game.getHero().getTouchPower();
+                        return true;
                     }
                 }
                 return false;
@@ -95,7 +100,6 @@ public class Background extends Actor {
     @Override
          public void draw(Batch batch, float parentAlpha) {
         sprite.draw(batch);
-
     }
 
     /**

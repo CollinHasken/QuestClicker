@@ -38,9 +38,16 @@ public class Gold {
 
     static public void subtract(int amount){gold -= amount;}
 
-    static public void add(double amount){gold += amount;}
+    static public void add(double amount){
+        gold += amount;
+        DataManagement.JsonData.goldCollected += amount;
+        DataManagement.JsonData.idleGoldCollected += amount;
+    }
 
-    static public void add(int amount){gold += amount;}
+    static public void add(int amount){
+        gold += amount;
+        DataManagement.JsonData.goldCollected += amount;
+    }
 
     /**
      * Get the gold with the proper suffix.
@@ -64,15 +71,19 @@ public class Gold {
      * @param _number Number to turn into suffix
      * @return String with the number and suffix
      */
-    static public String getNumberWithSuffix(double _number){
+    static public String getNumberWithSuffix(double _number) {
         suffix = getSuffix(_number);
-        if(!suffix.isEmpty()) {
+        if (!suffix.isEmpty()) {
             first = Character.toUpperCase(suffix.charAt(0));           //Make first letter capitalized
-            if(!suffix.equals("K"))
+            if (!suffix.equals("K"))
                 suffix = first + suffix.substring(1) + "llion";     //Add the suffix and llion if the suffix is not just K
             suffix = " " + suffix;
         }
-        return formater.format(displayNumber) + suffix;
+        String number = formater.format(displayNumber);
+        if (number.indexOf(".") > 1){
+            number = number.substring(0, 6 - number.indexOf("."));
+        }
+        return number + suffix;
     }
 
     static public String getSuffix(double number){

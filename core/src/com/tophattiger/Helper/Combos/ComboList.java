@@ -1,5 +1,6 @@
 package com.tophattiger.Helper.Combos;
 
+import com.badlogic.gdx.Game;
 import com.badlogic.gdx.utils.Array;
 import com.tophattiger.GameWorld.GameRenderer;
 
@@ -84,6 +85,7 @@ public class ComboList {
     public int getComboMax(){
         return combos.size;
     }
+    public GameRenderer getGame(){return game;}
 
     public int getCombosUnlocked(){return combosUnlocked;}
     public void setCombosUnlocked(int _combosUnlocked){combosUnlocked = _combosUnlocked;}

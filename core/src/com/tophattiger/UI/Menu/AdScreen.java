@@ -18,8 +18,6 @@ import com.tophattiger.Helper.Data.AssetLoader;
  * Created by Collin on 8/1/2015.
  */
 public class AdScreen extends Table {
-    public static boolean SettingName;
-
     Drawable sprite = new TextureRegionDrawable(AssetLoader.textureAtlas.findRegion("NameScreen"));
     ImageButton yes, no;
     Label title;
@@ -56,9 +54,10 @@ public class AdScreen extends Table {
      * Show the popup
      */
     public void show() {
-        SettingName = true;
+        NameScreen.SettingName = true;
         adBuff = game.getHero().makeAdBuff();
         title.setText("Would you like to watch an ad to " + adBuff.getAdDescription());
+        title.setWrap(true);
         game.getUpgradeButton().close();
         setVisible(true);
         this.toFront();
@@ -71,25 +70,25 @@ public class AdScreen extends Table {
      */
     private void createAssets(Skin skin){
         title = new Label("a" ,skin,"nameAsk"); //add buff desc
-        yes = new ImageButton(skin, "go");
+        yes = new ImageButton(skin, "yes");
         yes.addListener(new InputListener() {
             @Override
             public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
                 super.touchDown(event, x, y, pointer, button);
-                //play ad
+                game.getAdsController().showOrLoadInterstitial();
                 game.getHero().AdActivate();
                 adScreen.setVisible(false);
-                SettingName = false;
+                NameScreen.SettingName = false;
                 return true;
             }
         });
-        no = new ImageButton(skin, "go");
+        no = new ImageButton(skin, "no");
         no.addListener(new InputListener() {
             @Override
             public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
                 super.touchDown(event, x, y, pointer, button);
                 adScreen.setVisible(false);
-                SettingName = false;
+                NameScreen.SettingName = false;
                 return true;
             }
         });
@@ -100,8 +99,9 @@ public class AdScreen extends Table {
      */
     private void addActors(){
         this.top().left();
-        add().width(610).height(250).row();
-        add();add(title).colspan(3).top().left().row();
-        add();add(yes).pad(50, 170, 10, 0).right();add(no).bottom().left().padBottom(10).width(260).left();
+        add().width(610).height(225).row();
+        add();add(title).colspan(3).width(700).expandY().top().left().row();
+        add();add(yes).width(140).padLeft(105).padRight(105).bottom();add(no).width(140).padLeft(105).padRight(105).bottom().row();
+        add().height(600);
     }
 }

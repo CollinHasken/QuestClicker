@@ -5,7 +5,9 @@
     "buff":{"file":"bufffont.fnt"},
     "name":{"file":"namefont.fnt"},
     "button":{"file":"buttonfont.fnt"},
-    "value":{"file":"helpervalue.fnt"}
+    "value":{"file":"helpervalue.fnt"},
+    "stat":{"file":"helpervalue.fnt"},
+    "title":{"file":"titlefont.fnt"}
   },
   "com.badlogic.gdx.graphics.Color": {
     "white": { "r": 1, "g": 1, "b": 1, "a": 1 },
@@ -18,9 +20,10 @@
     "level":{"font":"small","fontColor":"white"},
     "buffi":{"font":"buff","fontColor":"white","background":"buffi"},
     "combo":{"font":"buff","fontColor":"white"},
+    "stat":{"font":"stat","fontColor":"white"},
     "value" :{"font": "value","fontColor":"white"},
     "version":{"font":"small","fontColor":"white"},                                                 //Fix
-    "title":{"font": "regular","fontColor":"white"},                                                 //Fix
+    "title":{"font": "title","fontColor":"white"},                                                 //Fix
     "nameAsk":{"font": "small","fontColor":"white"},                                             //Fix
     "nameTitle":{"font": "regular","fontColor":"white"}                                           //Fix
   },
@@ -29,10 +32,15 @@
     "default": { "down": "abilityDamageUsed", "up": "abilityDamage", "checked": "abilityDamageUsed"}
   },
   "com.badlogic.gdx.scenes.scene2d.ui.ImageButton$ImageButtonStyle": {
-    "reset":{"down":"reset-button-down","up":"reset-button"},
+    "reset":{"down":"resetButton","up":"resetButton"},
     "exit":{"down":"exit","up":"exit"},
     "menu":{"down":"menuButton","up":"menuButton"},
-    "go":{"down":"goButton","up":"goButton"}
+    "go":{"down":"goButton","up":"goButton"},
+    "no":{"down":"noButton","up":"noButton"},
+    "yes":{"down":"yesButton","up":"yesButton"},
+    "stat":{"down":"statButton","up":"statButton"},
+    "achievement":{"down":"achievementButton","up":"achievementButton"},
+    "rate":{"down":"rateButton","up":"rateButton"}
   },
   "com.badlogic.gdx.scenes.scene2d.ui.TextButton$TextButtonStyle":{
     "gold":{"checked":"gold-button-disabled","up":"gold-button","down":"gold-button-disabled","font":"button"},

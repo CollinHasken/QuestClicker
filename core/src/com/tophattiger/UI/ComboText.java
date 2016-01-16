@@ -10,6 +10,8 @@ import com.badlogic.gdx.utils.Array;
 import com.badlogic.gdx.utils.Pool;
 import com.tophattiger.Helper.Combos.Combo;
 import com.tophattiger.Helper.Combos.ComboList;
+import com.tophattiger.Helper.Data.DataHolder;
+import com.tophattiger.Helper.Data.DataManagement;
 
 /**
  * Created by Collin on 7/14/2015.
@@ -64,6 +66,10 @@ public class ComboText extends Actor {
         }
         if(comboTime < 0){
             comboTime = 0;
+            if(DataManagement.JsonData.maxCombo < combo)
+                DataManagement.JsonData.maxCombo = combo;
+            if(combos.getGame().getAdsController().getSignedInGPGS())
+                combos.getGame().getAdsController().stepAchievementGPGS(DataHolder.hundredCombo,combo);
             combo = 0;
             combos.undo();
         }
