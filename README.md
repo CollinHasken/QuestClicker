@@ -5,7 +5,7 @@ Thor's Hammer and Golden Finger to help you reach your goal. Don't forget to upg
 to improve everyone! Your hero will need to eventually settle down and retire, but fear not. Your child
 can use their inheritance to purchase artifacts that will make them even stronger than last time. So what are you
 waiting for? Head on over to the [open alpha](https://play.google.com/apps/testing/com.tophattiger.questclicker.android)
-to become a tester and receive updates as I improve upon the game!
+to become a tester and receive updates as I improve upon the game! If you want to see what's in the works, check out the [trello board](https://trello.com/b/r3O9ZZ5n/quest-clicker).
 
 ##About the Developer
 Hey, name's Collin. Freshmen year of college I was addicted to mobile rpgs and couldn't get enough. I noticed reoccurring
